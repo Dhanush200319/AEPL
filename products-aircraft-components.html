@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aircraft Components - Premium aerospace parts for commercial and military aircraft">
+    <meta name="keywords" content="aircraft components, aerospace parts, airframe components, aviation manufacturing">
+    <meta name="author" content="Aerospace Engineers Pvt. Ltd.">
+    <title>Aircraft Components - The Salem Aeropark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Zensar-inspired Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+
+    <!-- Custom Product Page Styles -->
+    <style>
+        .product-hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .product-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .product-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-hero p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 30px;
+            height: 100%;
+            border: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            color: #0066cc;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section {
+            background: #f8f9fa;
+            color: #000;
+        }
+
+        .section.bg-light {
+            background: #f8f9fa !important;
+            color: #000;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .product-features li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00a651;
+            font-weight: bold;
+        }
+
+        .product-specs {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .product-specs h5 {
+            color: #0066cc;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #0066cc;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            border-radius: 2px;
+        }
+
+        .alternating-layout .product-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-image {
+            order: 2;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-content {
+            order: 1;
+            text-align: right;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-features li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+            text-align: right;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-features li:before {
+            left: auto;
+            right: 0;
+        }
+
+        @media (max-width: 768px) {
+            .product-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .product-hero p {
+                font-size: 1.2rem;
+            }
+
+            .alternating-layout .product-card {
+                flex-direction: column !important;
+            }
+
+            .alternating-layout .product-card .product-image {
+                order: 0 !important;
+                height: 250px;
+            }
+
+            .alternating-layout .product-card .product-content {
+                order: 0 !important;
+                text-align: left !important;
+            }
+
+            .alternating-layout .product-card .product-features li {
+                padding-left: 1.5rem !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .alternating-layout .product-card .product-features li:before {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+
+        .product-image-frame {
+            position: relative;
+            border: 3px solid transparent;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .product-image-frame::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 8px;
+            padding: 3px;
+            background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+            background-size: 300% 300%;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            animation: rainbow-border 3s linear infinite;
+            z-index: -1;
+        }
+
+        .product-image-frame:hover::before {
+            animation: rainbow-border 1.5s linear infinite;
+        }
+
+        @keyframes rainbow-border {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .product-image-frame:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 166, 210, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Aerospace Engineers Pvt. Ltd. Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="products-aircraft-components.html" class="nav-link active">
+                        <span class="nav-link-content">Aircraft Components</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Product Hero Section -->
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <h1>Aircraft Components</h1>
+                    <p>Precision-engineered solutions for commercial and military aviation systems</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Aircraft Component Solutions</h2>
+                    <p class="lead">Our aircraft components division specializes in manufacturing critical parts that ensure safety, reliability, and performance across various aircraft systems. From airframe assemblies to sophisticated subsystem components, each element undergoes rigorous engineering and manufacturing processes to meet exacting aerospace standards.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Listing Section -->
+        <section class="section" style="background-color: black; color: white;">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title" style="color: white;">Our Aircraft Components Portfolio</h2>
+                    <p style="color: #e0e0e0;">Over 30 specialized products engineered for superior aviation performance</p>
+                </div>
+
+                <div class="alternating-layout">
+                    <!-- Product 1 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/aircraft-bracket.jpg" alt="Titanium Airframe Mounting Bracket" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Aircraft Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Titanium Airframe Mounting Bracket</h4>
+                                            <p>Aerospace-grade titanium mounting solution for critical load-bearing applications.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Titanium Airframe Mounting Bracket</h3>
+                                    <p class="product-description">Aerospace-grade titanium mounting solution designed for critical load-bearing applications in commercial and military aircraft structures. Manufactured with precision to meet exacting structural requirements.</p>
+                                    <ul class="product-features">
+                                        <li>Grade 5 titanium construction for maximum strength-to-weight ratio</li>
+                                        <li>Precision-machined to ±0.002" tolerance</li>
+                                        <li>Heat-treated for enhanced structural integrity</li>
+                                        <li>Anodized surface finish for corrosion resistance</li>
+                                        <li>Weight-optimized design for fuel efficiency</li>
+                                        <li>Compatible with standard aircraft fastening systems</li>
+                                        <li>Designed per MIL-STD specifications</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Grade 5 Titanium (Ti-6Al-4V)</h5></p>
+                                        <p><strong>Standards:</strong> AS9100:2016, NADCAP certified</p>
+                                        <p><strong>Applications:</strong> Primary airframe mounting points, wing-to-fuselage connections</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Multi-Port Hydraulic Control Valve Assembly</h3>
+                                    <p class="product-description">Precision-engineered hydraulic valve system for flight control and landing gear applications with redundant safety features. Ensures reliable operation in critical flight systems.</p>
+                                    <ul class="product-features">
+                                        <li>Dual-redundant control channels for fail-safe operation</li>
+                                        <li>Temperature-compensated flow regulation</li>
+                                        <li>Advanced elastomer seals for extreme temperature operation</li>
+                                        <li>Compact design with integrated pressure monitoring</li>
+                                        <li>Lightweight construction for fuel efficiency</li>
+                                        <li>Maintenance-free operation over extended service life</li>
+                                        <li>Compatible with MIL-H-5606 hydraulic fluid</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Stainless steel body, Monel internals, Viton seals</p>
+                                        <p><strong>Operating Pressure:</strong> 3000 PSI</p>
+                                        <p><strong>Standards:</strong> ARP4754, RTCA DO-178C, FAA TSO-C112</p>
+                                        <p><strong>Applications:</strong> Primary flight control systems, landing gear operation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/hydraulic-valve.jpg" alt="Multi-Port Hydraulic Control Valve Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Hydraulic System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Multi-Port Hydraulic Control Valve Assembly</h4>
+                                            <p>Precision-engineered hydraulic valve system for flight control and landing gear applications.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/composite-panel.jpg" alt="Carbon Fiber Composite Structural Panel" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Composite Panel</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Carbon Fiber Composite Structural Panel</h4>
+                                            <p>Advanced composite panel with optimized fiber orientation for critical structural applications.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Carbon Fiber Composite Structural Panel</h3>
+                                    <p class="product-description">Advanced composite panel with optimized fiber orientation for critical structural applications requiring high strength and weight savings. Manufactured with precision layup techniques.</p>
+                                    <ul class="product-features">
+                                        <li>Unidirectional carbon fiber with optimized layup patterns</li>
+                                        <li>Resin transfer molding for void-free construction</li>
+                                        <li>Integrated fastening points for assembly compatibility</li>
+                                        <li>Lightning strike protection with embedded mesh</li>
+                                        <li>Fire-resistant resin system meeting FAR 25.853</li>
+                                        <li>Non-destructive inspection compatibility</li>
+                                        <li>Corrosion-free operation in harsh environments</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> T800 Carbon Fiber, High-Tg Epoxy Resin</p>
+                                        <p><strong>Layup:</strong> 0°/±45°/90°</p>
+                                        <p><strong>Thickness:</strong> 4.5mm</p>
+                                        <p><strong>Standards:</strong> NADCAP AC7122, AS9100:2016, FAR 25.603</p>
+                                        <p><strong>Applications:</strong> Secondary structures, access panels, fairings</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">High-Pressure Fuel System Coupling</h3>
+                                    <p class="product-description">Fuel-tight coupling system designed for high-pressure aircraft fuel systems with redundant sealing and leak detection capabilities.</p>
+                                    <ul class="product-features">
+                                        <li>Two-stage sealing system with primary and backup seals</li>
+                                        <li>Pressure-rated for 200 PSI continuous operation</li>
+                                        <li>Integrated leak detection capabilities</li>
+                                        <li>Self-aligning design for vibration resistance</li>
+                                        <li>Temperature range -65°F to 200°F</li>
+                                        <li>Compatible with Jet A and Jet A-1 fuels</li>
+                                        <li>Quick-disconnect mechanism for maintenance efficiency</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Corrosion-resistant alloy steel, Fluorosilicone seals</p>
+                                        <p><strong>Temperature Range:</strong> -65°F to +200°F</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, ARP1428, API 1104</p>
+                                        <p><strong>Applications:</strong> Main fuel lines, crossfeed systems, auxiliary fuel pumps</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/fuel-coupling.jpg" alt="High-Pressure Fuel System Coupling" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Fuel System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>High-Pressure Fuel System Coupling</h4>
+                                            <p>Fuel-tight coupling system designed for high-pressure aircraft fuel systems.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/ec-system.jpg" alt="Environmental Control System Heat Exchanger" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">ECS Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Environmental Control System Heat Exchanger</h4>
+                                            <p>Compact heat exchanger for aircraft environmental control systems with optimized heat transfer.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Environmental Control System Heat Exchanger</h3>
+                                    <p class="product-description">Compact heat exchanger for aircraft environmental control systems with optimized heat transfer and low pressure drop characteristics.</p>
+                                    <ul class="product-features">
+                                        <li>Micro-channel aluminum core for maximum efficiency</li>
+                                        <li>Corrosion-resistant surface treatments</li>
+                                        <li>Vibration-resistant construction for flight operations</li>
+                                        <li>Integrated flow distribution for uniform heat transfer</li>
+                                        <li>Lightweight design for fuel efficiency</li>
+                                        <li>Maintenance access points for serviceability</li>
+                                        <li>Optimized for bleed air and electric ECS systems</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> High-grade aluminum alloy, Anodized surfaces</p>
+                                        <p><strong>Heat Transfer Area:</strong> 15 ft²</p>
+                                        <p><strong>Operating Pressure:</strong> 75 PSI</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, RTCA DO-160G, ARP1870</p>
+                                        <p><strong>Applications:</strong> Cabin cooling systems, cockpit environmental control</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Flight Control Actuator Assembly</h3>
+                                    <p class="product-description">Precision actuator system for primary flight controls with fail-safe mechanisms and redundant position feedback. Critical for aircraft maneuverability and safety.</p>
+                                    <ul class="product-features">
+                                        <li>Linear servo actuator with position feedback</li>
+                                        <li>Triple redundancy for fail-operational capability</li>
+                                        <li>High-torque brushless DC motor drive</li>
+                                        <li>Integrated control electronics</li>
+                                        <li>Backdrivable design for manual reversion</li>
+                                        <li>Prognostic health monitoring</li>
+                                        <li>Compliant with DO-178C DAL A</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Force Output:</strong> 5,000 lbs</p>
+                                        <p><strong>Stroke:</strong> ±4 inches</p>
+                                        <p><strong>Bandwidth:</strong> 10 Hz</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, DO-178C, DO-254</p>
+                                        <p><strong>Applications:</strong> Primary flight control surfaces, autopilot systems</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/flight-actuator.jpg" alt="Flight Control Actuator Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Flight Control</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Flight Control Actuator Assembly</h4>
+                                            <p>Precision actuator system for primary flight controls with fail-safe mechanisms.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/landing-gear.jpg" alt="Main Landing Gear Strut Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Landing Gear</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Main Landing Gear Strut Assembly</h4>
+                                            <p>Heavy-duty landing gear strut with integrated shock absorption and retraction mechanisms.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Main Landing Gear Strut Assembly</h3>
+                                    <p class="product-description">Heavy-duty landing gear strut with integrated shock absorption and retraction mechanisms. Engineered for high-cycle durability and safety.</p>
+                                    <ul class="product-features">
+                                        <li>Forged Ti-6Al-4V titanium construction</li>
+                                        <li>Multi-stage oleo-pneumatic shock absorption</li>
+                                        <li>Internal retraction actuator integration</li>
+                                        <li>Prognostic wear monitoring</li>
+                                        <li>High cycle fatigue life over 100,000 landings</li>
+                                        <li>Integrated brake control valve</li>
+                                        <li>Quick-change maintenance design</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Ti-6Al-4V titanium, SAE 4340 steel</p>
+                                        <p><strong>Capacity:</strong> 250,000 lbs static load</p>
+                                        <p><strong>Retraction Angle:</strong> 90°</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, TSO-C129, EASA CS-25</p>
+                                        <p><strong>Applications:</strong> Main landing gear for commercial aircraft</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Aircraft Engine Mount Assembly</h3>
+                                    <p class="product-description">Critical engine mounting system that isolates airframe from engine vibrations while transmitting operational loads. Features maintenance-free design with integrated dampening.</p>
+                                    <ul class="product-features">
+                                        <li>Vibration isolation for airframe protection</li>
+                                        <li>High-load capacity for turbofan engines</li>
+                                        <li>Maintenance-free elastomeric mounts</li>
+                                        <li>Integrated failure-safe mechanisms</li>
+                                        <li>Thermal expansion compensation</li>
+                                        <li>Lightweight design for fuel efficiency</li>
+                                        <li>Corrosion-resistant surface treatment</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> 7075-T6 aluminum, Viton seals</p>
+                                        <p><strong>Load Capacity:</strong> 50,000 lbs (3-axis)</p>
+                                        <p><strong>Vibration Reduction:</strong> 95%</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, EASA CS-33, FAR 33.36</p>
+                                        <p><strong>Applications:</strong> Turbofan engine installations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/engine-mount.jpg" alt="Aircraft Engine Mount Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Engine Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Aircraft Engine Mount Assembly</h4>
+                                            <p>Critical engine mounting system that isolates airframe from engine vibrations.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/flight-display.jpg" alt="Primary Flight Display Unit" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Avionics</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Primary Flight Display Unit</h4>
+                                            <p>Advanced glass cockpit display with synthetic vision and integrated flight management.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Primary Flight Display Unit</h3>
+                                    <p class="product-description">Advanced glass cockpit display with synthetic vision and integrated flight management. Features dual independent processing channels for fail-operational capability.</p>
+                                    <ul class="product-features">
+                                        <li>15.1" high-resolution color display</li>
+                                        <li>Synthetic vision with terrain overlay</li>
+                                        <li>Dual independent processing channels</li>
+                                        <li>Integrated flight director and autopilot</li>
+                                        <li>Enhanced vision system ready</li>
+                                        <li>Modular design for cost-effective upgrades</li>
+                                        <li>Designed to DO-178C DAL B standards</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Display:</strong> 15.1" LCD, 1280x1024 resolution</p>
+                                        <p><strong>Processing:</strong> Dual-Independent, ARINC 653</p>
+                                        <p><strong>Power:</strong> 115VAC, 400Hz, 75W</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, DO-178C, DO-254</p>
+                                        <p><strong>Applications:</strong> Primary flight displays in glass cockpits</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Turbine Engine Control System</h3>
+                                    <p class="product-description">Full Authority Digital Engine Control (FADEC) system for precision fuel and thrust management. Features redundant sensors and dual-channel processing architecture.</p>
+                                    <ul class="product-features">
+                                        <li>Full Authority Digital Engine Control (FADEC)</li>
+                                        <li>Dual-channel processing with cross-channel comparison</li>
+                                        <li>Real-time engine health monitoring</li>
+                                        <li>Thrust rating selection and management</li>
+                                        <li>Automatic start sequence control</li>
+                                        <li>Integrated diagnostics and maintenance features</li>
+                                        <li>Designed for DO-178C DAL A compliance</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Processing:</strong> Dual 32-bit processors</p>
+                                        <p><strong>Inputs:</strong> 40+ sensor channels</p>
+                                        <p><strong>Outputs:</strong> Fuel, VSV, VBV, LPTCC</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, DO-178C, DO-254</p>
+                                        <p><strong>Applications:</strong> Turbofan and turboprop engines</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/engine-control.jpg" alt="Turbine Engine Control System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Engine Control</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Turbine Engine Control System</h4>
+                                            <p>Full Authority Digital Engine Control (FADEC) system for precision fuel and thrust management.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section" id="cta">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-8 text-center">
+                        <h2>Need Custom Aircraft Components?</h2>
+                        <p>Our engineering team specializes in designing and manufacturing custom aircraft components</p>
+                        <a href="contact.html" class="btn btn-light pulse">Contact Engineering Team</a>
+                        <a href="services.html" class="btn btn-outline-light ms-3">Back to Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products-aircraft-components.html">Aircraft Components</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="products-aircraft-components.html">Aircraft Components</a></li>
+                    <li><a href="products-defense-missile.html">Defense & Missile</a></li>
+                    <li><a href="products-space-systems.html">Space Systems</a></li>
+                    <li><a href="products-healthcare.html">Healthcare Products</a></li>
+                    <li><a href="products-renewable-energy.html">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aerospace Engineers Pvt. Ltd. (The Salem Aeropark). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+
+    <!-- Animation Script -->
+    <script>
+        // Mobile navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations
+        const enhancedObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation classes based on element position
+                    if (entry.boundingClientRect.left < window.innerWidth / 2) {
+                        entry.target.classList.add('fade-in-right');
+                    } else {
+                        entry.target.classList.add('fade-in-left');
+                    }
+                }
+            });
+        }, enhancedObserverOptions);
+
+        // Apply enhanced animations to specific elements
+        document.querySelectorAll('.fade-in-up, .service-card-enhanced, .news-card, .card').forEach(el => {
+            enhancedObserver.observe(el);
+        });
+
+        // Add floating animation to hero elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add floating animation to hero elements
+            const heroElements = document.querySelectorAll('.product-hero-content > *');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.product-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.classList.add('hover-lift');
+                });
+
+                el.addEventListener('mouseleave', function() {
+                    this.classList.remove('hover-lift');
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.product-hero');
+            const speed = 0.5;
+
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        });
+    </script>
+
+</body>
+</html>

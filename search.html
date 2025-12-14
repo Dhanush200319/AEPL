@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search - The Salem Aeropark Aerospace Solutions">
+    <meta name="keywords" content="aerospace search, engineering solutions search, manufacturing search">
+    <meta name="author" content="Aerospace Engineers Pvt. Ltd.">
+    <title>Search - The Salem Aeropark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Zensar-inspired Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="videos/earth_space_background.mp4" as="video">
+    <link rel="preload" href="images/aerospace-overview.jpg" as="image">
+
+    <style>
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Aerospace Engineers Pvt. Ltd. Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="search.html" class="nav-link active">
+                        <span class="nav-link-content">Search</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- Video Background -->
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/earth_space_background.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="container">
+                <div class="hero-content text-center">
+                    <h1 class="hero-title">Search Our Site</h1>
+                    <p class="hero-subtitle">Find information about our aerospace engineering and manufacturing solutions</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Main Content -->
+        <section class="section bg-gradient-to-br from-gray-900 to-blue-900 text-white" id="search-main">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Search Our Knowledge Base</h2>
+                    <p class="section-subtitle">Find information about our aerospace engineering and manufacturing solutions</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="search-container position-relative">
+                            <div class="search-frame p-5 rounded-4 border-0 shadow-lg bg-gradient-to-br from-gray-800 to-blue-800 position-relative overflow-hidden">
+                                <div class="search-content position-relative z-index-2">
+                                    <form class="search-form">
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-text bg-gradient-to-r from-primary to-secondary text-white border-0 rounded-start-pill"><i class="fas fa-search"></i></span>
+                                            <input type="text" class="form-control form-control-lg border-0 bg-light text-dark rounded-0" id="searchInput" placeholder="What are you looking for today?">
+                                            <button class="btn btn-primary btn-lg px-5 border-0 rounded-end-pill" type="submit">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!-- Animated background elements -->
+                                <div class="search-bg-element" style="position: absolute; top: 20%; left: 10%; width: 30px; height: 30px; background: rgba(56, 128, 255, 0.1); border-radius: 50%; animation: float 8s infinite;"></div>
+                                <div class="search-bg-element" style="position: absolute; top: 60%; right: 15%; width: 40px; height: 40px; background: rgba(0, 102, 204, 0.1); border-radius: 50%; animation: float 10s infinite; animation-delay: 2s;"></div>
+                                <div class="search-bg-element" style="position: absolute; bottom: 20%; left: 20%; width: 25px; height: 25px; background: rgba(0, 150, 255, 0.1); border-radius: 50%; animation: float 12s infinite; animation-delay: 4s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Tips Section -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="text-center mb-4">Search Tips</h3>
+                        <div class="search-tips-grid d-flex justify-content-center gap-4 flex-wrap">
+                            <div class="search-tip-card bg-light bg-opacity-10 rounded-3 p-4 text-center" style="min-width: 180px;">
+                                <div class="search-tip-icon mb-2">
+                                    <i class="fas fa-keyboard fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="text-white">Use Keywords</h5>
+                                <p class="text-light small mb-0">Include specific terms like products, services, or capabilities</p>
+                            </div>
+
+                            <div class="search-tip-card bg-light bg-opacity-10 rounded-3 p-4 text-center" style="min-width: 180px;">
+                                <div class="search-tip-icon mb-2">
+                                    <i class="fas fa-filter fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="text-white">Filter Results</h5>
+                                <p class="text-light small mb-0">Narrow by category, date, or service area</p>
+                            </div>
+
+                            <div class="search-tip-card bg-light bg-opacity-10 rounded-3 p-4 text-center" style="min-width: 180px;">
+                                <div class="search-tip-icon mb-2">
+                                    <i class="fas fa-bolt fa-2x text-primary"></i>
+                                </div>
+                                <h5 class="text-white">Get Results</h5>
+                                <p class="text-light small mb-0">Find relevant information quickly</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="section-header text-center mb-5">
+                            <h2 class="section-title text-dark">Popular Searches</h2>
+                            <p class="section-subtitle text-muted">Find what you're looking for quickly</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 text-center fade-in-up interactive-element border-0 shadow-sm bg-light">
+                                    <div class="card-body">
+                                        <div class="service-icon mx-auto mb-3 text-primary">
+                                            <i class="fas fa-plane fa-2x"></i>
+                                        </div>
+                                        <h4 class="card-title">Aircraft Components</h4>
+                                        <p class="card-text">Details about our aircraft manufacturing services</p>
+                                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 text-center fade-in-up delay-1 interactive-element border-0 shadow-sm bg-light">
+                                    <div class="card-body">
+                                        <div class="service-icon mx-auto mb-3 text-primary">
+                                            <i class="fas fa-shield-alt fa-2x"></i>
+                                        </div>
+                                        <h4 class="card-title">Defense Systems</h4>
+                                        <p class="card-text">Information about our defense and missile solutions</p>
+                                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 text-center fade-in-up delay-2 interactive-element border-0 shadow-sm bg-light">
+                                    <div class="card-body">
+                                        <div class="service-icon mx-auto mb-3 text-primary">
+                                            <i class="fas fa-satellite fa-2x"></i>
+                                        </div>
+                                        <h4 class="card-title">Space Systems</h4>
+                                        <p class="card-text">Details about our space and satellite manufacturing</p>
+                                        <a href="services.html" class="btn btn-primary">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="section-header text-center mb-5">
+                            <h2 class="section-title text-white">Quick Links</h2>
+                            <p class="section-subtitle text-light">Navigate to specific sections</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3 mb-4">
+                                <a href="services.html" class="card text-decoration-none h-100 fade-in-up interactive-element border-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-cogs fa-2x text-primary mb-3"></i>
+                                        <h5 class="card-title">Our Services</h5>
+                                        <p class="card-text">Explore our product groups and capabilities</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3 mb-4">
+                                <a href="about.html" class="card text-decoration-none h-100 fade-in-up delay-1 interactive-element border-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-building fa-2x text-primary mb-3"></i>
+                                        <h5 class="card-title">About Us</h5>
+                                        <p class="card-text">Learn about our history and values</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3 mb-4">
+                                <a href="gallery.html" class="card text-decoration-none h-100 fade-in-up delay-2 interactive-element border-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-images fa-2x text-primary mb-3"></i>
+                                        <h5 class="card-title">Gallery</h5>
+                                        <p class="card-text">View our work and facilities</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-6 col-md-3 mb-4">
+                                <a href="contact.html" class="card text-decoration-none h-100 fade-in-up delay-3 interactive-element border-0 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                        <h5 class="card-title">Contact</h5>
+                                        <p class="card-text">Get in touch with our team</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="card p-4 fade-in-up border-0 shadow-sm bg-light">
+                            <h3 class="mb-4 text-dark">How to Use Our Search</h3>
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-keyboard fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-dark">Enter Keywords</h4>
+                                            <p class="text-muted">Type specific terms related to aerospace products, services, or capabilities</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-filter fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-dark">Use Filters</h4>
+                                            <p class="text-muted">Narrow results by category, service, or date to find exactly what you need</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="d-flex">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-bolt fa-2x"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-dark">Get Results</h4>
+                                            <p class="text-muted">Find relevant information quickly with our improved search technology</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results Preview -->
+        <section class="section bg-light" id="search-results-preview">
+            <div class="container">
+                <div class="section-header text-center mb-5 animate-on-scroll">
+                    <h2 class="section-title">Search Results Preview</h2>
+                    <p class="section-subtitle">See what you can discover on our site</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 animate-on-scroll">
+                        <div class="card h-100 search-result-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="search-result-icon bg-primary bg-opacity-10 text-primary rounded p-2 me-3">
+                                        <i class="fas fa-cogs fa-lg"></i>
+                                    </div>
+                                    <h4 class="mb-0">Services</h4>
+                                </div>
+                                <p class="text-muted">Explore our comprehensive aerospace engineering and manufacturing solutions across multiple industries.</p>
+                                <a href="services.html" class="btn btn-outline-primary btn-sm">View Services</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-1">
+                        <div class="card h-100 search-result-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="search-result-icon bg-success bg-opacity-10 text-success rounded p-2 me-3">
+                                        <i class="fas fa-briefcase fa-lg"></i>
+                                    </div>
+                                    <h4 class="mb-0">Careers</h4>
+                                </div>
+                                <p class="text-muted">Discover career opportunities with our industry-leading aerospace and defense solutions team.</p>
+                                <a href="careers.html" class="btn btn-outline-success btn-sm">View Careers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-2">
+                        <div class="card h-100 search-result-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="search-result-icon bg-info bg-opacity-10 text-info rounded p-2 me-3">
+                                        <i class="fas fa-images fa-lg"></i>
+                                    </div>
+                                    <h4 class="mb-0">Gallery</h4>
+                                </div>
+                                <p class="text-muted">Browse our facilities, products, and engineering projects showcasing our capabilities.</p>
+                                <a href="gallery.html" class="btn btn-outline-info btn-sm">View Gallery</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-1">
+                        <div class="card h-100 search-result-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="search-result-icon bg-warning bg-opacity-10 text-warning rounded p-2 me-3">
+                                        <i class="fas fa-newspaper fa-lg"></i>
+                                    </div>
+                                    <h4 class="mb-0">News</h4>
+                                </div>
+                                <p class="text-muted">Stay updated with the latest aerospace industry news and company announcements.</p>
+                                <a href="news.html" class="btn btn-outline-warning btn-sm">View News</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-2">
+                        <div class="card h-100 search-result-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="search-result-icon bg-danger bg-opacity-10 text-danger rounded p-2 me-3">
+                                        <i class="fas fa-info-circle fa-lg"></i>
+                                    </div>
+                                    <h4 class="mb-0">About</h4>
+                                </div>
+                                <p class="text-muted">Learn about our company history, values, and commitment to excellence in aerospace.</p>
+                                <a href="about.html" class="btn btn-outline-danger btn-sm">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-3">
+                        <div class="card h-100 search-result-card border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="search-result-icon bg-secondary bg-opacity-10 text-secondary rounded p-2 me-3">
+                                        <i class="fas fa-envelope fa-lg"></i>
+                                    </div>
+                                    <h4 class="mb-0">Contact</h4>
+                                </div>
+                                <p class="text-muted">Get in touch with our aerospace engineering and manufacturing experts.</p>
+                                <a href="contact.html" class="btn btn-outline-secondary btn-sm">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Search Features -->
+        <section class="section" id="advanced-search">
+            <div class="container">
+                <div class="section-header text-center mb-5 animate-on-scroll">
+                    <h2 class="section-title">Advanced Search Options</h2>
+                    <p class="section-subtitle">Refine your search with filters and categories</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="advanced-search-container bg-light p-4 rounded-3">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold">Category</label>
+                                    <select class="form-select">
+                                        <option>All Categories</option>
+                                        <option>Aircraft Components</option>
+                                        <option>Defense Systems</option>
+                                        <option>Space Systems</option>
+                                        <option>Manufacturing</option>
+                                        <option>Engineering</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold">Date Range</label>
+                                    <select class="form-select">
+                                        <option>Any Time</option>
+                                        <option>Last 7 Days</option>
+                                        <option>Last 30 Days</option>
+                                        <option>Last 6 Months</option>
+                                        <option>Last Year</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold">Content Type</label>
+                                    <select class="form-select">
+                                        <option>All Types</option>
+                                        <option>News</option>
+                                        <option>Services</option>
+                                        <option>Resources</option>
+                                        <option>Documentation</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label fw-bold">&nbsp;</label>
+                                    <button class="btn btn-primary w-100">Apply Filters</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="text-center mb-4">Frequently Asked Questions</h3>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                        What aerospace services do you provide?
+                                    </button>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        We provide comprehensive aerospace engineering and manufacturing solutions including aircraft components, defense systems, space systems, and advanced manufacturing for multiple industries.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        How can I contact your team?
+                                    </button>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You can contact us through our dedicated contact page, call us directly, or use the contact form on this website. Our aerospace experts are available to assist with your inquiries.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        Do you offer custom engineering solutions?
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes, we specialize in custom engineering solutions for aerospace, defense, and advanced manufacturing applications. Our team works closely with clients to develop tailored solutions that meet specific requirements.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Analytics -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="text-center mb-4">Search Insights</h3>
+                        <div class="search-analytics-container">
+                            <div class="row g-4">
+                                <div class="col-md-3 col-6">
+                                    <div class="card text-center p-3 h-100">
+                                        <div class="display-4 text-primary fw-bold">10K+</div>
+                                        <div class="text-muted">Monthly Searches</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="card text-center p-3 h-100">
+                                        <div class="display-4 text-success fw-bold">98%</div>
+                                        <div class="text-muted">Success Rate</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="card text-center p-3 h-100">
+                                        <div class="display-4 text-info fw-bold">150+</div>
+                                        <div class="text-muted">Search Categories</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-6">
+                                    <div class="card text-center p-3 h-100">
+                                        <div class="display-4 text-warning fw-bold">24/7</div>
+                                        <div class="text-muted">Support Available</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Search Tools -->
+        <section class="section bg-light" id="search-tools">
+            <div class="container">
+                <div class="section-header text-center mb-5 animate-on-scroll">
+                    <h2 class="section-title">Advanced Search Tools</h2>
+                    <p class="section-subtitle">Tools to help you find exactly what you need</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 animate-on-scroll">
+                        <div class="card h-100 search-tool-card">
+                            <div class="card-body text-center">
+                                <div class="search-tool-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-search-location fa-2x"></i>
+                                </div>
+                                <h4>Location Based Search</h4>
+                                <p class="text-muted">Find services and facilities near your location</p>
+                                <button class="btn btn-outline-primary">Try Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-1">
+                        <div class="card h-100 search-tool-card">
+                            <div class="card-body text-center">
+                                <div class="search-tool-icon bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-history fa-2x"></i>
+                                </div>
+                                <h4>Search History</h4>
+                                <p class="text-muted">Access your previous searches for quick reference</p>
+                                <button class="btn btn-outline-success">View History</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-2">
+                        <div class="card h-100 search-tool-card">
+                            <div class="card-body text-center">
+                                <div class="search-tool-icon bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-filter fa-2x"></i>
+                                </div>
+                                <h4>Smart Filters</h4>
+                                <p class="text-muted">Advanced filtering options to narrow down results</p>
+                                <button class="btn btn-outline-info">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-1">
+                        <div class="card h-100 search-tool-card">
+                            <div class="card-body text-center">
+                                <div class="search-tool-icon bg-warning bg-opacity-10 text-warning rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-star fa-2x"></i>
+                                </div>
+                                <h4>Popular Searches</h4>
+                                <p class="text-muted">Discover what others are searching for</p>
+                                <button class="btn btn-outline-warning">See Popular</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-2">
+                        <div class="card h-100 search-tool-card">
+                            <div class="card-body text-center">
+                                <div class="search-tool-icon bg-danger bg-opacity-10 text-danger rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-question-circle fa-2x"></i>
+                                </div>
+                                <h4>Ask an Expert</h4>
+                                <p class="text-muted">Connect with our aerospace experts for personalized help</p>
+                                <button class="btn btn-outline-danger">Ask Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 animate-on-scroll delay-3">
+                        <div class="card h-100 search-tool-card">
+                            <div class="card-body text-center">
+                                <div class="search-tool-icon bg-secondary bg-opacity-10 text-secondary rounded-circle d-flex align-items-center justify-content-center mx-auto mb-4" style="width: 60px; height: 60px;">
+                                    <i class="fas fa-mobile-alt fa-2x"></i>
+                                </div>
+                                <h4>Mobile Search</h4>
+                                <p class="text-muted">Optimized search experience for mobile devices</p>
+                                <button class="btn btn-outline-secondary">Download App</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section bg-gradient-to-br from-gray-900 to-blue-900 text-white cta-section" id="cta">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-lg-8 text-center">
+                        <h2 class="mb-4">Need More Information?</h2>
+                        <p class="mb-5">Connect with our aerospace engineering experts today for personalized assistance</p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="contact.html" class="btn btn-primary pulse">Contact Us</a>
+                            <a href="services.html" class="btn btn-outline-light">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="components-3d.html">3D Viewer</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="#">Aircraft Components</a></li>
+                    <li><a href="#">Defense & Missile</a></li>
+                    <li><a href="#">Space Systems</a></li>
+                    <li><a href="#">Healthcare Products</a></li>
+                    <li><a href="#">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aerospace Engineers Pvt. Ltd. (The Salem Aeropark). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+
+    <!-- Animation Script -->
+    <script>
+        // Mobile navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations
+        const enhancedObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation classes based on element position
+                    if (entry.boundingClientRect.left < window.innerWidth / 2) {
+                        entry.target.classList.add('fade-in-right');
+                    } else {
+                        entry.target.classList.add('fade-in-left');
+                    }
+                }
+            });
+        }, enhancedObserverOptions);
+
+        // Apply enhanced animations to specific elements
+        document.querySelectorAll('.fade-in-up, .service-card-enhanced, .news-card, .card').forEach(el => {
+            enhancedObserver.observe(el);
+        });
+
+        // Add floating animation to hero elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add floating animation to hero elements
+            const heroElements = document.querySelectorAll('.hero-content > *');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.interactive-element');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.classList.add('hover-lift');
+                });
+
+                el.addEventListener('mouseleave', function() {
+                    this.classList.remove('hover-lift');
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const speed = 0.5;
+
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        });
+
+        // Search form submission
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const searchQuery = document.getElementById('searchInput').value;
+
+            if(searchQuery.trim() === '') {
+                alert('Please enter a search term');
+                return;
+            }
+
+            // In a real application, this would search the site
+            alert('Search for: "' + searchQuery + '"\n\nThis is a placeholder. In a real implementation, this would show search results.');
+        });
+
+        // Search tool card hover effects
+        document.querySelectorAll('.search-tool-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+            });
+        });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Aerospace Engineers Pvt. Ltd.",
+        "alternateName": "The Salem Aeropark",
+        "url": "https://thesalemaeropark.com",
+        "logo": "https://thesalemaeropark.com/images/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-98765-43210",
+            "contactType": "customer service",
+            "areaServed": "IN",
+            "availableLanguage": "en"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Salem",
+            "addressRegion": "Tamil Nadu",
+            "addressCountry": "IN"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/aerospace-engineers-pvt-ltd",
+            "https://twitter.com/aerospaceengg",
+            "https://www.facebook.com/aerospaceengineers"
+        ]
+    }
+    </script>
+</body>
+</html>

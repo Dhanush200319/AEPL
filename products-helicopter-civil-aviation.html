@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Helicopter & Civil Aviation - Precision components for rotary-wing aircraft and commercial aviation">
+    <meta name="keywords" content="helicopter components, civil aviation, rotor systems, aviation parts">
+    <meta name="author" content="Aerospace Engineers Pvt. Ltd.">
+    <title>Helicopter & Civil Aviation - The Salem Aeropark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Zensar-inspired Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+
+    <!-- Custom Product Page Styles -->
+    <style>
+        .product-hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .product-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .product-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-hero p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 30px;
+            height: 100%;
+            border: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            color: #0066cc;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section {
+            background: #f8f9fa;
+            color: #000;
+        }
+
+        .section.bg-light {
+            background: #f8f9fa !important;
+            color: #000;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .product-features li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #0066cc;
+            font-weight: bold;
+        }
+
+        .product-specs {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .product-specs h5 {
+            color: #0066cc;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #0066cc;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #00aaff);
+            border-radius: 2px;
+        }
+
+        .alternating-layout .product-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-image {
+            order: 2;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-content {
+            order: 1;
+            text-align: right;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-features li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+            text-align: right;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-features li:before {
+            left: auto;
+            right: 0;
+        }
+
+        .heli-gradient {
+            background: linear-gradient(135deg, #003366, #004d99, #0066cc);
+        }
+
+        @media (max-width: 768px) {
+            .product-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .product-hero p {
+                font-size: 1.2rem;
+            }
+
+            .alternating-layout .product-card {
+                flex-direction: column !important;
+            }
+
+            .alternating-layout .product-card .product-image {
+                order: 0 !important;
+                height: 250px;
+            }
+
+            .alternating-layout .product-card .product-content {
+                order: 0 !important;
+                text-align: left !important;
+            }
+
+            .alternating-layout .product-card .product-features li {
+                padding-left: 1.5rem !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .alternating-layout .product-card .product-features li:before {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Aerospace Engineers Pvt. Ltd. Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="products-helicopter-civil-aviation.html" class="nav-link active">
+                        <span class="nav-link-content">Helicopter & Civil Aviation</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Product Hero Section -->
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <h1>Helicopter & Civil Aviation</h1>
+                    <p>Specialized components for rotary-wing aircraft and commercial aviation safety systems</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Helicopter & Civil Aviation Solutions</h2>
+                    <p class="lead">Helicopter and civil aviation components require unique engineering solutions that address the specific operational demands of rotary-wing aircraft and commercial aviation safety systems. Unlike fixed-wing aircraft, helicopters operate in complex aerodynamic environments requiring specialized components to handle dynamic loads, vibration, and operational stresses. Our helicopter and civil aviation portfolio incorporates advanced materials and innovative designs specifically engineered for these unique applications.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Listing Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Our Helicopter & Civil Aviation Components Portfolio</h2>
+                    <p>Over 30 specialized products engineered for rotary-wing and commercial aviation</p>
+                </div>
+
+                <div class="alternating-layout">
+                    <!-- Product 1 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/helicopter-rotor-hub.jpg" alt="Composite Rotor Hub Assembly with Swash Plate System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Rotor System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Composite Rotor Hub Assembly with Swash Plate System</h4>
+                                            <p>Advanced composite rotor hub with integrated swash plate controls for main rotor blade pitch management.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Composite Rotor Hub Assembly with Swash Plate System</h3>
+                                    <p class="product-description">Advanced composite rotor hub with integrated swash plate controls for main rotor blade pitch management. Features carbon fiber construction for vibration dampening and improved fatigue life.</p>
+                                    <ul class="product-features">
+                                        <li>Carbon fiber composite construction for vibration dampening</li>
+                                        <li>Integrated swash plate for collective and cyclic control</li>
+                                        <li>Ball bearing systems for low-friction operation</li>
+                                        <li>Integrated health monitoring sensors</li>
+                                        <li>Maintenance-free bearing systems for operational efficiency</li>
+                                        <li>Lightweight design for improved power-to-weight ratio</li>
+                                        <li>Compatibility with standard control linkages</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> High-modulus carbon fiber, 440C stainless steel bearings</p>
+                                        <p><strong>Operating Temperature:</strong> -54°C to +71°C</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-HDBK-17, CS-27 Compliance</p>
+                                        <p><strong>Applications:</strong> Civil helicopter operations, military rotary-wing aircraft, EMS, SAR</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Main Rotor Transmission Housing Assembly</h3>
+                                    <p class="product-description">Heavy-duty transmission housing for helicopter main rotor systems with integrated cooling and lubrication. Features forged aluminum construction for high-strength applications.</p>
+                                    <ul class="product-features">
+                                        <li>Forged aluminum alloy construction for high-strength applications</li>
+                                        <li>Integrated oil cooling and filtration systems</li>
+                                        <li>Multiple gear reduction stages for optimal speed matching</li>
+                                        <li>Built-in vibration isolation mechanisms</li>
+                                        <li>Sealed bearing systems for contamination protection</li>
+                                        <li>Integrated temperature and pressure monitoring</li>
+                                        <li>Quick-disconnect features for major inspections</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> 7075-T6 aluminum, 9310 steel gears</p>
+                                        <p><strong>Operating Pressure:</strong> 75 PSI</p>
+                                        <p><strong>Oil Flow:</strong> 15 GPM</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, FAA AC 20-48A, CS-27, RTCA DO-160G</p>
+                                        <p><strong>Applications:</strong> Utility helicopters, military aircraft, heavy-lift operations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/transmission-housing.jpg" alt="Main Rotor Transmission Housing Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Transmission</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Main Rotor Transmission Housing Assembly</h4>
+                                            <p>Heavy-duty transmission housing for helicopter main rotor systems with integrated cooling and lubrication.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/avionics-mount.jpg" alt="Civil Aviation Avionics Mounting Frame System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Avionics</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Civil Aviation Avionics Mounting Frame System</h4>
+                                            <p>Precision-machined mounting frame system for avionics equipment in commercial and general aviation aircraft.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Civil Aviation Avionics Mounting Frame System</h3>
+                                    <p class="product-description">Precision-machined mounting frame system for avionics equipment in commercial and general aviation aircraft. Features EMI/RFI shielding and quick-release mechanisms.</p>
+                                    <ul class="product-features">
+                                        <li>Universal mounting compatibility with standard avionics</li>
+                                        <li>EMI/RFI shielding for electronic protection</li>
+                                        <li>Quick-release mechanisms for maintenance efficiency</li>
+                                        <li>Integrated cable management and routing</li>
+                                        <li>Temperature-compensated mounting points</li>
+                                        <li>Vibration-dampening isolation systems</li>
+                                        <li>Modular design for system upgrades</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Anodized aluminum, Stainless steel fasteners</p>
+                                        <p><strong>Operating Shock:</strong> 20G</p>
+                                        <p><strong>Vibration Range:</strong> 10-2000 Hz</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, RTCA DO-160G, TSO-C83c, EASA Form 1</p>
+                                        <p><strong>Applications:</strong> Commercial aircraft avionics, general aviation upgrades</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Helicopter Main Rotor Blade Assembly</h3>
+                                    <p class="product-description">Composite main rotor blade with integrated spar and leading-edge protection. Features optimized airfoil design for efficiency and advanced materials for durability.</p>
+                                    <ul class="product-features">
+                                        <li>Composite spar construction with carbon fiber and epoxy</li>
+                                        <li>Optimized airfoil design for efficiency</li>
+                                        <li>Leading-edge protection against erosion</li>
+                                        <li>Integrated lightning strike protection</li>
+                                        <li>Advanced bonding techniques for reliability</li>
+                                        <li>Specialized root fitting for hub attachment</li>
+                                        <li>Weight-balanced design for vibration control</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Carbon fiber, Glass fiber, Epoxy matrix</p>
+                                        <p><strong>Length:</strong> 22 feet 6 inches</p>
+                                        <p><strong>Chord:</strong> 12 inches maximum</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, CS-27, FAA AC 27-2A</p>
+                                        <p><strong>Applications:</strong> Medium-lift helicopters, utility operations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/main-rotor-blade.jpg" alt="Helicopter Main Rotor Blade Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Rotor Blade</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Helicopter Main Rotor Blade Assembly</h4>
+                                            <p>Composite main rotor blade with integrated spar and leading-edge protection.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/tail-rotor.jpg" alt="Helicopter Tail Rotor Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Tail Rotor</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Helicopter Tail Rotor Assembly</h4>
+                                            <p>Complete tail rotor system with composite blades and variable pitch control.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Helicopter Tail Rotor Assembly</h3>
+                                    <p class="product-description">Complete tail rotor system with composite blades and variable pitch control. Features vibration isolation and crash-safe design for safety.</p>
+                                    <ul class="product-features">
+                                        <li>Composite tail rotor blades for lightweight operation</li>
+                                        <li>Variable pitch mechanism for yaw control</li>
+                                        <li>Integrated vibration isolation mounts</li>
+                                        <li>Crash-safe design for pilot protection</li>
+                                        <li>Redundant control linkages</li>
+                                        <li>Lightning strike protection systems</li>
+                                        <li>Temperature-compensated pitch control</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Blade Count:</strong> 4 composite blades</p>
+                                        <p><strong>Diameter:</strong> 5 feet 6 inches</p>
+                                        <p><strong>Operating RPM:</strong> 1,400</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, CS-27, MIL-PRF-9852</p>
+                                        <p><strong>Applications:</strong> Anti-torque systems, directional control</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Helicopter Cockpit Control System</h3>
+                                    <p class="product-description">Integrated flight control system with collective, cyclic, and anti-torque controls. Features tactile feedback and redundant safety systems for pilot safety.</p>
+                                    <ul class="product-features">
+                                        <li>Integrated cyclic stick with force sensing</li>
+                                        <li>Adjustable collective lever with dual inputs</li>
+                                        <li>Anti-torque pedals with differential response</li>
+                                        <li>Tactile feedback for pilot awareness</li>
+                                        <li>Emergency hydraulic cutoff controls</li>
+                                        <li>Backup control systems for redundancy</li>
+                                        <li>Ergonomic design for extended operations</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> 7075-T6 aluminum, Carbon fiber composites</p>
+                                        <p><strong>Force Sensitivity:</strong> 0.5 lbs/degree</p>
+                                        <p><strong>Adjustment Range:</strong> 8 inches fore/aft</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, CS-27, FAA AC 27-2A</p>
+                                        <p><strong>Applications:</strong> Pilot control interfaces, flight management</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/cockpit-controls.jpg" alt="Helicopter Cockpit Control System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Controls</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Helicopter Cockpit Control System</h4>
+                                            <p>Integrated flight control system with collective, cyclic, and anti-torque controls.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/landing-gear.jpg" alt="Helicopter Landing Gear Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Landing Gear</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Helicopter Landing Gear Assembly</h4>
+                                            <p>Shock-absorbing landing gear system with skid or wheel configuration.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Helicopter Landing Gear Assembly</h3>
+                                    <p class="product-description">Shock-absorbing landing gear system with skid or wheel configuration. Features crash-resistant design and ground handling capabilities.</p>
+                                    <ul class="product-features">
+                                        <li>Telescoping shock struts with hydraulic damping</li>
+                                        <li>Skid or wheel configuration options</li>
+                                        <li>Crash-resistant design for safety</li>
+                                        <li>Ground handling wheels for taxi operations</li>
+                                        <li>Retractable or fixed configuration</li>
+                                        <li>Corrosion-resistant coating for durability</li>
+                                        <li>Modular design for maintenance access</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> 4340 steel, 7075-T6 aluminum</p>
+                                        <p><strong>Load Capacity:</strong> 10,000 lbs per leg</p>
+                                        <p><strong>Compression Stroke:</strong> 12 inches</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, CS-27, MIL-PRF-85557</p>
+                                        <p><strong>Applications:</strong> Civil and military helicopter landing systems</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Helicopter Engine Mount System</h3>
+                                    <p class="product-description">Vibration-isolated engine mounting system with integral fire protection. Features fail-safe design and quick change for maintenance.</p>
+                                    <ul class="product-features">
+                                        <li>Vibration isolation for airframe protection</li>
+                                        <li>Integral fire protection barriers</li>
+                                        <li>Quick-change design for maintenance efficiency</li>
+                                        <li>Load path redundancy for safety</li>
+                                        <li>Thermal expansion accommodation</li>
+                                        <li>Lightweight construction for fuel efficiency</li>
+                                        <li>Corrosion-resistant surface treatment</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> 4340 steel, Elastomeric isolators</p>
+                                        <p><strong>Load Capacity:</strong> 2,500 lbs (3-axis)</p>
+                                        <p><strong>Vibration Reduction:</strong> 90%</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, CS-27, FAA AC 20-107A</p>
+                                        <p><strong>Applications:</strong> Turboshaft engine installation, powerplant mounting</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/engine-mount.jpg" alt="Helicopter Engine Mount System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Engine Mount</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Helicopter Engine Mount System</h4>
+                                            <p>Vibration-isolated engine mounting system with integral fire protection.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/autopilot.jpg" alt="Helicopter Automatic Flight Control System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Flight Control</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Helicopter Automatic Flight Control System</h4>
+                                            <p>Stability augmentation and automatic flight control system.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Helicopter Automatic Flight Control System</h3>
+                                    <p class="product-description">Stability augmentation and automatic flight control system. Features attitude hold, altitude hold, and coupled approach capabilities.</p>
+                                    <ul class="product-features">
+                                        <li>Attitude and heading reference system</li>
+                                        <li>Altitude and vertical speed hold</li>
+                                        <li>Approach and departure coupling</li>
+                                        <li>Trim control integration</li>
+                                        <li>Failure detection and isolation</li>
+                                        <li>Redundant processing channels</li>
+                                        <li>Weather radar integration capability</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Processing:</strong> Triple-redundant 32-bit processors</p>
+                                        <p><strong>Power:</strong> 28VDC, 15 Amps</p>
+                                        <p><strong>Response Time:</strong> <0.1 seconds</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, DO-178C Level A, CS-27</p>
+                                        <p><strong>Applications:</strong> IFR operations, commercial helicopters</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Civil Aviation Environmental Control System</h3>
+                                    <p class="product-description">Complete environmental control system for commercial aircraft with pressurization and thermal management. Features high reliability and passenger comfort.</p>
+                                    <ul class="product-features">
+                                        <li>Bleed air and electric ECS architecture</li>
+                                        <li>Pressurization and temperature control</li>
+                                        <li>Humidity and air quality management</li>
+                                        <li>Emergency oxygen integration</li>
+                                        <li>High-efficiency air filtration</li>
+                                        <li>Integrated fault detection and monitoring</li>
+                                        <li>Modular design for maintenance access</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Capacity:</strong> 150 passengers equivalent</p>
+                                        <p><strong>Operating Pressure:</strong> 8.6 PSI cabin altitude</p>
+                                        <p><strong>Temperature Range:</strong> 65°F to 85°F</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, CS-25, FAR 25.855, TSO-C86</p>
+                                        <p><strong>Applications:</strong> Commercial transports, regional aircraft</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/ecs-unit.jpg" alt="Civil Aviation Environmental Control System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">ECS System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Civil Aviation Environmental Control System</h4>
+                                            <p>Complete environmental control system for commercial aircraft with pressurization and thermal management.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section" id="cta">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-8 text-center">
+                        <h2>Need Custom Aviation Solutions?</h2>
+                        <p>Our engineering team specializes in designing and manufacturing custom aviation components</p>
+                        <a href="contact.html" class="btn btn-light pulse">Contact Engineering Team</a>
+                        <a href="services.html" class="btn btn-outline-light ms-3">Back to Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products-helicopter-civil-aviation.html">Helicopter & Civil Aviation</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="products-aircraft-components.html">Aircraft Components</a></li>
+                    <li><a href="products-defense-missile.html">Defense & Missile</a></li>
+                    <li><a href="products-helicopter-civil-aviation.html">Helicopter & Civil Aviation</a></li>
+                    <li><a href="products-space-systems.html">Space Systems</a></li>
+                    <li><a href="products-healthcare.html">Healthcare Products</a></li>
+                    <li><a href="products-renewable-energy.html">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aerospace Engineers Pvt. Ltd. (The Salem Aeropark). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+
+    <!-- Animation Script -->
+    <script>
+        // Mobile navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations
+        const enhancedObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation classes based on element position
+                    if (entry.boundingClientRect.left < window.innerWidth / 2) {
+                        entry.target.classList.add('fade-in-right');
+                    } else {
+                        entry.target.classList.add('fade-in-left');
+                    }
+                }
+            });
+        }, enhancedObserverOptions);
+
+        // Apply enhanced animations to specific elements
+        document.querySelectorAll('.fade-in-up, .service-card-enhanced, .news-card, .card').forEach(el => {
+            enhancedObserver.observe(el);
+        });
+
+        // Add floating animation to hero elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add floating animation to hero elements
+            const heroElements = document.querySelectorAll('.product-hero-content > *');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.product-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.classList.add('hover-lift');
+                });
+
+                el.addEventListener('mouseleave', function() {
+                    this.classList.remove('hover-lift');
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.product-hero');
+            const speed = 0.5;
+
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        });
+    </script>
+
+</body>
+</html>

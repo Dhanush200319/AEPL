@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Defense & Missile Systems - Advanced military hardware for national defense applications">
+    <meta name="keywords" content="defense systems, missile components, military hardware, aerospace defense">
+    <meta name="author" content="Aerospace Engineers Pvt. Ltd.">
+    <title>Defense & Missile Systems - The Salem Aeropark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Zensar-inspired Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+
+    <!-- Custom Product Page Styles -->
+    <style>
+        .product-hero {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .product-hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .product-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-hero p {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 30px;
+            height: 100%;
+            border: none;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            color: #8B0000;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section {
+            background: #f8f9fa;
+            color: #000;
+        }
+
+        .section.bg-light {
+            background: #f8f9fa !important;
+            color: #000;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+        }
+
+        .product-features li {
+            padding: 0.25rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .product-specs {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .product-specs h5 {
+            color: #8B0000;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #8B0000;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #8B0000, #ff4d4d);
+            border-radius: 2px;
+        }
+
+        .alternating-layout .product-card:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-image {
+            order: 2;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-content {
+            order: 1;
+            text-align: right;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-features li {
+            padding-left: 0;
+            padding-right: 1.5rem;
+            text-align: right;
+        }
+
+        .alternating-layout .product-card:nth-child(even) .product-features li:before {
+            left: auto;
+            right: 0;
+        }
+
+        @media (max-width: 768px) {
+            .product-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .product-hero p {
+                font-size: 1.2rem;
+            }
+
+            .alternating-layout .product-card {
+                flex-direction: column !important;
+            }
+
+            .alternating-layout .product-card .product-image {
+                order: 0 !important;
+                height: 250px;
+            }
+
+            .alternating-layout .product-card .product-content {
+                order: 0 !important;
+                text-align: left !important;
+            }
+
+            .alternating-layout .product-card .product-features li {
+                padding-left: 1.5rem !important;
+                padding-right: 0 !important;
+                text-align: left !important;
+            }
+
+            .alternating-layout .product-card .product-features li:before {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Aerospace Engineers Pvt. Ltd. Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="products-defense-missile.html" class="nav-link active">
+                        <span class="nav-link-content">Defense & Missile</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Product Hero Section -->
+        <section class="product-hero">
+            <div class="container">
+                <div class="product-hero-content">
+                    <h1>Defense & Missile Systems</h1>
+                    <p>Advanced military hardware engineered for mission-critical defense applications</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Defense & Missile Solutions</h2>
+                    <p class="lead">Our defense and missile systems represent the pinnacle of military engineering excellence, incorporating the most advanced materials, precision manufacturing techniques, and security protocols to deliver mission-critical components for national defense applications. Each component undergoes rigorous testing, security validation, and quality assurance protocols to ensure operational reliability in the most demanding combat scenarios.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Listing Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title">Our Defense & Missile Components Portfolio</h2>
+                    <p>Over 30 specialized products engineered for superior defense performance</p>
+                </div>
+
+                <div class="alternating-layout">
+                    <!-- Product 1 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/missile-nosecone.jpg" alt="Supersonic Missile Nose Cone Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Missile Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Supersonic Missile Nose Cone Assembly</h4>
+                                            <p>Advanced aerodynamic nose cone with integrated guidance and communication systems.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Supersonic Missile Nose Cone Assembly</h3>
+                                    <p class="product-description">Advanced aerodynamic nose cone with integrated guidance and communication systems for precision strike missiles. Features radome-transparent composite construction for guidance systems.</p>
+                                    <ul class="product-features">
+                                        <li>Radome-transparent composite construction for guidance systems</li>
+                                        <li>Supersonic flow optimization for minimal drag</li>
+                                        <li>Integrated shock mitigation systems</li>
+                                        <li>Embedded communication antennas for guidance updates</li>
+                                        <li>Heat-resistant materials for high-speed flight</li>
+                                        <li>Countermeasure compatibility for defensive operations</li>
+                                        <li>Precision alignment systems for warhead integration</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Advanced polymer composites, Kevlar reinforcement</p>
+                                        <p><strong>Operating Mach Range:</strong> 0.8-4.0</p>
+                                        <p><strong>Standards:</strong> MIL-STD-461, MIL-STD-810H, NAVAIR Technical Standards</p>
+                                        <p><strong>Applications:</strong> Cruise missiles, tactical strike weapons</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Electronic Warfare Processing Module</h3>
+                                    <p class="product-description">High-performance electronic countermeasure processor for military aircraft and missile defense systems. Features real-time threat identification and response capabilities.</p>
+                                    <ul class="product-features">
+                                        <li>Real-time threat identification and response</li>
+                                        <li>Broadband jamming capabilities across RF spectrum</li>
+                                        <li>Secure communication protocols for command integration</li>
+                                        <li>MIL-STD-1553B compatibility for aircraft integration</li>
+                                        <li>Ruggedized design for harsh military environments</li>
+                                        <li>Self-diagnostic systems for operational readiness</li>
+                                        <li>Low probability of intercept (LPI) technologies</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Processing:</strong> Military-grade PCBs, Shielded enclosures</p>
+                                        <p><strong>Temperature Range:</strong> -55°C to +85°C</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-461G, DO-178C Level A</p>
+                                        <p><strong>Applications:</strong> Airborne electronic attack systems, missile defense platforms</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/ew-module.jpg" alt="Electronic Warfare Processing Module" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">EW Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Electronic Warfare Processing Module</h4>
+                                            <p>High-performance electronic countermeasure processor for military aircraft and missile defense systems.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/radar-antenna.jpg" alt="Active Electronically Scanned Array Radar Module" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Radar Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Active Electronically Scanned Array Radar Module</h4>
+                                            <p>Advanced radar component utilizing AESA technology for superior detection and tracking capabilities.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Active Electronically Scanned Array Radar Module</h3>
+                                    <p class="product-description">Advanced radar component utilizing AESA technology for superior detection and tracking capabilities. Features phased array beam steering for rapid target acquisition.</p>
+                                    <ul class="product-features">
+                                        <li>Phased array beam steering for rapid target acquisition</li>
+                                        <li>Multi-mode operation for air and surface surveillance</li>
+                                        <li>Electronic counter-countermeasures (ECCM) capability</li>
+                                        <li>Low radar cross-section design for stealth compatibility</li>
+                                        <li>Integrated cooling systems for high-power operation</li>
+                                        <li>Redundant transmit/receive modules for reliability</li>
+                                        <li>Software-defined functionality for mission adaptation</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Technology:</strong> Gallium arsenide MMICs, Titanium housing</p>
+                                        <p><strong>Frequency Band:</strong> X-band with 2GHz bandwidth</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-461F, DO-178C Level B</p>
+                                        <p><strong>Applications:</strong> Fighter aircraft radar systems, military surveillance platforms</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Missile Guidance Control System</h3>
+                                    <p class="product-description">Precision guidance system with GPS/INS integration and terminal seeker for accurate target acquisition. Features autonomous navigation and midcourse corrections.</p>
+                                    <ul class="product-features">
+                                        <li>GPS/INS integrated navigation system</li>
+                                        <li>Active/passive radar seeker for terminal guidance</li>
+                                        <li>Midcourse guidance updates via data link</li>
+                                        <li>Autonomous target acquisition and tracking</li>
+                                        <li>Anti-jamming capabilities for electronic warfare</li>
+                                        <li>Insensitive munitions compliance for safety</li>
+                                        <li>Modular architecture for platform integration</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Guidance:</strong> GPS/INS + Active Radar Seeker</p>
+                                        <p><strong>Accuracy:</strong> <1 meter CEP</p>
+                                        <p><strong>Temperature Range:</strong> -40°C to +70°C</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-810G, RTCA DO-178C</p>
+                                        <p><strong>Applications:</strong> Precision-guided munitions, cruise missiles</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/guidance-system.jpg" alt="Missile Guidance Control System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Guidance System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Missile Guidance Control System</h4>
+                                            <p>Precision guidance system with GPS/INS integration and terminal seeker for accurate target acquisition.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/missile-warhead.jpg" alt="Advanced Warhead Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Warhead Component</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Advanced Warhead Assembly</h4>
+                                            <p>Multi-mode warhead with programmable fuzing and shaped charge technology.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Advanced Warhead Assembly</h3>
+                                    <p class="product-description">Multi-mode warhead with programmable fuzing and shaped charge technology. Features insensitive munitions design and multiple target engagement profiles.</p>
+                                    <ul class="product-features">
+                                        <li>Shaped charge fragmentation for anti-personnel effects</li>
+                                        <li>Continuous rod warhead for anti-aircraft applications</li>
+                                        <li>Programmable fuzing with multiple modes</li>
+                                        <li>Insensitive munitions compliant explosive fill</li>
+                                        <li>Multi-point initiation for consistent performance</li>
+                                        <li>Safe and arm device with redundant safety features</li>
+                                        <li>Modular design for various platform requirements</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Fill Weight:</strong> 15kg RDX-based explosive</p>
+                                        <p><strong>Fragments:</strong> 30,000+ at 2000 m/s</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-1901, NATO STANAG 4439</p>
+                                        <p><strong>Applications:</strong> Air-to-air missiles, surface-to-air missiles</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Solid Rocket Motor Assembly</h3>
+                                    <p class="product-description">High-performance solid rocket motor with throttling capability. Features composite propellant and carbon fiber case for maximum thrust-to-weight ratio.</p>
+                                    <ul class="product-features">
+                                        <li>Composite propellant for high performance</li>
+                                        <li>Carbon fiber motor case for lightweight design</li>
+                                        <li>Variable thrust vector control</li>
+                                        <li>Multi-segment propellant grain configuration</li>
+                                        <li>Insulation and liner for case protection</li>
+                                        <li>Ignition system with redundant squibs</li>
+                                        <li>Thrust vector control for flight path adjustment</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Thrust:</strong> 50,000 lbs max</p>
+                                        <p><strong>Duration:</strong> 60 seconds typical</p>
+                                        <p><strong>Propellant:</strong> HTPB composite</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, NASA-STD-5008, ITAR Registration</p>
+                                        <p><strong>Applications:</strong> Surface-to-air missiles, air-to-surface weapons</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/rocket-motor.jpg" alt="Solid Rocket Motor Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Rocket Motor</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Solid Rocket Motor Assembly</h4>
+                                            <p>High-performance solid rocket motor with throttling capability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/missile-fin.jpg" alt="All-Moving Control Fin Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Control Surface</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>All-Moving Control Fin Assembly</h4>
+                                            <p>Aerodynamic control surface with integrated actuation for high-speed maneuverability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">All-Moving Control Fin Assembly</h3>
+                                    <p class="product-description">Aerodynamic control surface with integrated actuation for high-speed maneuverability. Features lightweight construction and high-efficiency design.</p>
+                                    <ul class="product-features">
+                                        <li>Carbon fiber composite structure</li>
+                                        <li>Integrated hydraulic or electric actuation</li>
+                                        <li>Honeycomb core for optimal stiffness-to-weight</li>
+                                        <li>Leading edge sweep for supersonic performance</li>
+                                        <li>Heated surfaces for ice protection</li>
+                                        <li>Low-drag profile for minimal signature</li>
+                                        <li>High deflection capability for maneuverability</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Carbon fiber composite, Titanium hinges</p>
+                                        <p><strong>Deflection Angle:</strong> ±30 degrees</p>
+                                        <p><strong>Max Speed:</strong> Mach 4 capability</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-1798, RTCA DO-160</p>
+                                        <p><strong>Applications:</strong> High-speed missiles, air defense systems</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Infrared Seeker Assembly</h3>
+                                    <p class="product-description">Advanced infrared homing system with cryogenic cooling and tracking algorithms. Provides reliable target acquisition in adverse weather conditions.</p>
+                                    <ul class="product-features">
+                                        <li>Cryogenic cooling for IR sensitivity</li>
+                                        <li>Staring focal plane array for tracking</li>
+                                        <li>Automatic target recognition algorithms</li>
+                                        <li>Counter-countermeasure resistant</li>
+                                        <li>Background rejection capabilities</li>
+                                        <li>Track-before-detect functionality</li>
+                                        <li>Extended wavelength sensitivity for cooled targets</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Wavelength:</strong> 3-5 μm (MWIR) and 8-12 μm (LWIR)</p>
+                                        <p><strong>Temperature:</strong> 77K cooling via stored solid nitrogen</p>
+                                        <p><strong>FOV:</strong> 2.5° x 2.5°</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-810H, DO-178C</p>
+                                        <p><strong>Applications:</strong> Air-to-air missiles, air defense systems</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/ir-seeker.jpg" alt="Infrared Seeker Assembly" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">IR Seeker</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Infrared Seeker Assembly</h4>
+                                            <p>Advanced infrared homing system with cryogenic cooling and tracking algorithms.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/launch-system.jpg" alt="Missile Launch Canister System" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">Launch System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Missile Launch Canister System</h4>
+                                            <p>Hermetically sealed launch container with ejection system for safe missile deployment.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Missile Launch Canister System</h3>
+                                    <p class="product-description">Hermetically sealed launch container with ejection system for safe missile deployment. Features zero-length launch capability and environmental protection.</p>
+                                    <ul class="product-features">
+                                        <li>Hermetically sealed for environmental protection</li>
+                                        <li>Pyrotechnic ejection system for deployment</li>
+                                        <li>Zero-length launch capability</li>
+                                        <li>Corrosion-resistant coating for harsh environments</li>
+                                        <li>Integrated heating/cooling for temperature control</li>
+                                        <li>Pressure monitoring and venting systems</li>
+                                        <li>Reusable design for cost-effective operations</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Material:</strong> Aluminum alloy with protective coating</p>
+                                        <p><strong>Dimensions:</strong> 15 ft length x 18 inch diameter</p>
+                                        <p><strong>Pressure Rating:</strong> 15 PSIG positive</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-810H, NATO STANAG 4409</p>
+                                        <p><strong>Applications:</strong> Surface-to-air missiles, ship-based systems</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-content">
+                                    <h3 class="product-title">Electronic Countermeasures Dispenser</h3>
+                                    <p class="product-description">Programmable chaff and flare dispensing system for platform protection. Features threat-adaptive release patterns and multi-spectral countermeasures.</p>
+                                    <ul class="product-features">
+                                        <li>Threat-adaptive release algorithms</li>
+                                        <li>Multi-spectral chaff and flare cartridges</li>
+                                        <li>Programmable salvo and sequential patterns</li>
+                                        <li>GPS and INS navigation for intelligent dispensing</li>
+                                        <li>Low-detection deployment mechanisms</li>
+                                        <li>Automated inventory and configuration management</li>
+                                        <li>High-capacity magazine system</li>
+                                    </ul>
+                                    <div class="product-specs">
+                                        <h5>Specifications</h5>
+                                        <p><strong>Capacity:</strong> 120 chaff/flare cartridges</p>
+                                        <p><strong>Dispense Rate:</strong> 60 cartridges/second</p>
+                                        <p><strong>Operational Speed:</strong> 0-500 knots</p>
+                                        <p><strong>Standards:</strong> AS9100:2016, MIL-STD-1901, DO-178C</p>
+                                        <p><strong>Applications:</strong> Military aircraft, naval vessels</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-card">
+                                <div class="product-image-container">
+                                    <div class="product-image-frame">
+                                        <img src="images/ecm-dispenser.jpg" alt="Electronic Countermeasures Dispenser" class="img-fluid">
+                                        <div class="product-image-overlay"></div>
+                                        <div class="product-image-badge">ECM System</div>
+                                        <div class="product-image-hover-info">
+                                            <h4>Electronic Countermeasures Dispenser</h4>
+                                            <p>Programmable chaff and flare dispensing system for platform protection.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section" id="cta">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-8 text-center">
+                        <h2>Need Custom Defense Solutions?</h2>
+                        <p>Our engineering team specializes in designing and manufacturing custom defense components</p>
+                        <a href="contact.html" class="btn btn-light pulse">Contact Engineering Team</a>
+                        <a href="services.html" class="btn btn-outline-light ms-3">Back to Services</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="products-defense-missile.html">Defense & Missile</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="products-aircraft-components.html">Aircraft Components</a></li>
+                    <li><a href="products-defense-missile.html">Defense & Missile</a></li>
+                    <li><a href="products-space-systems.html">Space Systems</a></li>
+                    <li><a href="products-healthcare.html">Healthcare Products</a></li>
+                    <li><a href="products-renewable-energy.html">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aerospace Engineers Pvt. Ltd. (The Salem Aeropark). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+
+    <!-- Animation Script -->
+    <script>
+        // Mobile navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll animations
+        const enhancedObserverOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const enhancedObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add animation classes based on element position
+                    if (entry.boundingClientRect.left < window.innerWidth / 2) {
+                        entry.target.classList.add('fade-in-right');
+                    } else {
+                        entry.target.classList.add('fade-in-left');
+                    }
+                }
+            });
+        }, enhancedObserverOptions);
+
+        // Apply enhanced animations to specific elements
+        document.querySelectorAll('.fade-in-up, .service-card-enhanced, .news-card, .card').forEach(el => {
+            enhancedObserver.observe(el);
+        });
+
+        // Add floating animation to hero elements
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add floating animation to hero elements
+            const heroElements = document.querySelectorAll('.product-hero-content > *');
+            heroElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+
+            // Add hover effects to interactive elements
+            const interactiveElements = document.querySelectorAll('.product-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.classList.add('hover-lift');
+                });
+
+                el.addEventListener('mouseleave', function() {
+                    this.classList.remove('hover-lift');
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.product-hero');
+            const speed = 0.5;
+
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        });
+    </script>
+
+</body>
+</html>

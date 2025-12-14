@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test - The Salem Aeropark</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border: 2px solid #fff;
+        }
+        .message {
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <video id="heroVideo" autoplay muted loop>
+            <source src="videos/hero-loop.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="message">
+            <p>This is where the hero video would appear with appropriate aerospace/defense footage</p>
+            <p>Video dimensions: 1920x1080 recommended</p>
+        </div>
+    </div>
+
+    <script>
+        // Video error handling
+        document.getElementById('heroVideo').addEventListener('error', function() {
+            console.log('Video failed to load');
+            // In a real implementation, you would show a fallback image
+            document.querySelector('.message').innerHTML = '<p>Video placeholder: In production, this would contain aerospace/defense content</p>';
+        });
+    </script>
+</body>
+</html>

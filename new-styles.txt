@@ -1,0 +1,228 @@
+/* Enhanced Aircraft Components Product Image Frames */
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  border: 2px solid var(--aero-silver);
+  background: linear-gradient(135deg, rgba(0, 51, 160, 0.02), rgba(0, 166, 210, 0.02));
+}
+
+.product-image-container:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--zensar-primary);
+  z-index: 2;
+}
+
+.product-image-frame {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  border-radius: calc(var(--radius-lg) - 2px); /* Slightly smaller to fit within border */
+}
+
+.product-image-container:hover .product-image-frame img {
+  transform: scale(1.1);
+  filter: brightness(1.05) saturate(1.05);
+}
+
+/* Enhanced overlay for product images */
+.product-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    rgba(0, 51, 160, 0.1) 0%, 
+    rgba(0, 166, 210, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.product-image-container:hover .product-image-overlay {
+  opacity: 1;
+}
+
+/* Product image badge */
+.product-image-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--zensar-dark);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-image-container:hover .product-image-badge {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image hover effect with zoom and info */
+.product-image-hover-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  color: white;
+  padding: var(--spacing-md);
+  backdrop-filter: blur(5px);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+}
+
+.product-image-container:hover .product-image-hover-info {
+  transform: translateY(0);
+}
+
+.product-image-hover-info h4 {
+  color: white;
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.product-image-hover-info p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Special frame styles for featured products */
+.product-image-container.featured {
+  border: 3px solid var(--zensar-primary);
+  transform: scale(1.03);
+}
+
+.product-image-container.featured::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 51, 160, 0.05), rgba(0, 166, 210, 0.05));
+  z-index: -1;
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.product-image-container.featured:hover::after {
+  opacity: 1;
+}
+
+/* Alternative border styles for product images */
+.product-image-container.accent-border {
+  border-top: 5px solid var(--zensar-primary);
+}
+
+.product-image-container.corner-accent {
+  position: relative;
+}
+
+.product-image-container.corner-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  background: var(--zensar-primary);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  z-index: 2;
+}
+
+.product-image-container.corner-accent::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  z-index: 2;
+}
+
+/* Polaroid-style frame for product images */
+.polaroid-frame {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-md);
+  margin: 20px 0;
+}
+
+.polaroid-frame img {
+  width: 100%;
+  border-radius: calc(var(--radius-md) - 5px);
+}
+
+.polaroid-caption {
+  text-align: center;
+  padding-top: 10px;
+  font-style: italic;
+  color: var(--zensar-gray);
+  font-size: 0.9rem;
+}
+
+/* Animated border frame */
+.animated-border-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.animated-border-frame::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--zensar-primary), var(--zensar-secondary), var(--zensar-accent), var(--zensar-primary));
+  background-size: 400% 400%;
+  border-radius: var(--radius-lg);
+  z-index: -1;
+  animation: borderAnimation 4s ease infinite;
+}
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

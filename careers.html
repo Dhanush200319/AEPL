@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Careers at The Salem Aeropark - Join our aerospace team and build your future in aviation, defense, and advanced manufacturing">
+    <meta name="keywords" content="careers, jobs, aerospace jobs, defense jobs, manufacturing jobs, Salem Aeropark, aviation jobs, engineering jobs">
+    <meta name="author" content="The Salem Aeropark">
+    <title>Careers - The Salem Aeropark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Zensar-inspired Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="videos/earth_space_back ground_7.mp4" as="video">
+
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(-15px) translateX(-5px); }
+            75% { transform: translateY(-5px) translateX(10px); }
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) translateX(50px) rotate(360deg); opacity: 0; }
+        }
+
+        .category-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 122, 0, 0.3);
+        }
+
+        .category-item:hover .highlight-bar {
+            width: 100%;
+        }
+
+        .job-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 122, 0, 0.3) !important;
+        }
+
+        .feature-card:hover .highlight-bar {
+            width: 100%;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.05);
+            border: 2px solid #FF7A00;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
+        }
+
+        /* Custom column class for 6 equal columns */
+        .col-lg-1-5 {
+            flex: 0 0 auto;
+            width: calc(100% / 6);
+        }
+
+        @media (max-width: 992px) {
+            .col-lg-1-5 {
+                width: calc(100% / 3);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .col-lg-1-5 {
+                width: calc(100% / 2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Aerospace Engineers Pvt. Ltd. Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link active" aria-current="page">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="search.html" class="nav-link">
+                        <span class="nav-link-content">Search</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- Video Background -->
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/earth_space_back ground_7.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Dark Overlay for Text Readability -->
+            <div class="hero-overlay"></div>
+
+            <div class="container">
+                <div class="hero-content text-center">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Work With Us -->
+        <section class="section bg-dark text-white" id="why-work-with-us">
+            <div class="container">
+                <div class="section-header animate-on-scroll mb-5">
+                    <h2 class="section-title">Why Work With Us</h2>
+                    <p class="section-subtitle">Discover the benefits and culture that make Salem Aeropark a great place to work</p>
+                </div>
+
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="card bg-black text-white p-5 h-100 border border-secondary">
+                            <h3 class="mb-4"><i class="fas fa-users text-primary me-3"></i>Work Culture</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Supportive, friendly team environment</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Growth-focused leadership</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Hands-on learning with real aviation experiences</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Respect, teamwork, and equal opportunities</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card bg-black text-white p-5 h-100 border border-secondary">
+                            <h3 class="mb-4"><i class="fas fa-briefcase text-primary me-3"></i>Employee Benefits</h3>
+                            <ul class="list-unstyled">
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Competitive salary</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Training & skill development</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Health & safety-focused workplace</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Flexible work schedules (for some roles)</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Performance bonuses</li>
+                                <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Employee recognition programs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We're Looking For -->
+        <section class="section" id="who-we-are-looking-for" style="background-color: #f8f9fa;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <div class="section-header animate-on-scroll mb-5">
+                            <h2 class="section-title">Who We Are Looking For</h2>
+                            <p class="section-subtitle">We are looking for energetic, hardworking, customer-focused individuals who love aviation, education, technology, or hospitality. Whether you're a beginner or experienced professional, we welcome passion, creativity, and responsibility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Categories -->
+        <section class="section bg-dark text-white" id="job-categories">
+            <div class="container">
+                <div class="section-header animate-on-scroll mb-5">
+                    <h2 class="section-title">Job Categories</h2>
+                    <p class="section-subtitle">Explore different areas where you can contribute to our mission</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4 animate-on-scroll">
+                        <div class="card bg-black text-white h-100 job-category-card p-4 text-center border border-secondary">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-plane fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">✈ Operations</h4>
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Park Operations Staff</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Ticketing & Front Desk</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Simulator Operator</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Aircraft Display Assistant</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 animate-on-scroll delay-1">
+                        <div class="card bg-black text-white h-100 job-category-card p-4 text-center border border-secondary">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-graduation-cap fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">👨‍🏫 Education & Experience</h4>
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Aviation Trainer</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Tour Guide</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>School Program Coordinator</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 animate-on-scroll delay-2">
+                        <div class="card bg-black text-white h-100 job-category-card p-4 text-center border border-secondary">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-tools fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">🛠 Technical & Maintenance</h4>
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Aircraft Maintenance Assistant</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Electrical / Mechanical Technician</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 animate-on-scroll delay-3">
+                        <div class="card bg-black text-white h-100 job-category-card p-4 text-center border border-secondary">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-camera fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">🎥 Media & Design</h4>
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Photographer / Videographer</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Social Media Manager</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Graphic Designer</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 animate-on-scroll delay-4">
+                        <div class="card bg-black text-white h-100 job-category-card p-4 text-center border border-secondary">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-broom fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">🧹 Support Staff</h4>
+                            <ul class="list-unstyled text-start">
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Housekeeping</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Security</li>
+                                <li class="mb-2"><i class="fas fa-chevron-right me-2 text-primary"></i>Ground Staff</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Openings -->
+        <section class="section" id="openings" style="background: linear-gradient(to bottom, #ffffff, #fffaf0); position: relative; overflow: hidden;">
+            <!-- Background pattern -->
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><circle cx=\"50\" cy=\"50\" r=\"1\" fill=\"%23FF7A00\" opacity=\"0.1\"/></svg>'); opacity: 0.2; z-index: 0;"></div>
+
+            <!-- Section Header -->
+            <div class="container position-relative" style="z-index: 1;">
+                <div class="text-center mb-5 animate-on-scroll" data-aos="fade-down" data-aos-duration="800">
+                    <h2 class="section-title" style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 700; color: #1A1A1A; margin-bottom: 1rem; position: relative; display: inline-block;">
+                        Current Openings
+                        <span style="position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: 120px; height: 4px; background: linear-gradient(90deg, #FF7A00, #FF5100); border-radius: 2px; box-shadow: 0 4px 10px rgba(255, 122, 0, 0.3);"></span>
+                    </h2>
+                    <p class="section-subtitle" style="font-family: 'Inter', sans-serif; font-size: 1.2rem; color: #1A1A1A; margin-top: 1.5rem;">Join our team and grow your career with limitless opportunities.</p>
+
+                    <!-- Floating icons -->
+                    <div class="floating-icons position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="pointer-events: none; z-index: -1;">
+                        <i class="fas fa-plane" style="position: absolute; top: 20%; left: 10%; font-size: 1.5rem; color: rgba(255, 122, 0, 0.3); animation: float 6s ease-in-out infinite;"></i>
+                        <i class="fas fa-briefcase" style="position: absolute; top: 60%; left: 85%; font-size: 1.5rem; color: rgba(255, 122, 0, 0.3); animation: float 7s ease-in-out infinite 1s;"></i>
+                        <i class="fas fa-users" style="position: absolute; top: 40%; left: 25%; font-size: 1.5rem; color: rgba(255, 122, 0, 0.3); animation: float 5s ease-in-out infinite 0.5s;"></i>
+                        <i class="fas fa-chart-line" style="position: absolute; top: 70%; left: 15%; font-size: 1.5rem; color: rgba(255, 122, 0, 0.3); animation: float 8s ease-in-out infinite 1.5s;"></i>
+                    </div>
+                </div>
+
+                <!-- Job Categories -->
+                <div class="row mb-5 g-3">
+                    <div class="col-md-2 col-6 col-lg-1-5 animate-on-scroll" data-aos="slide-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="category-item text-center p-3 rounded-3" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); transition: all 0.4s ease; cursor: pointer; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <i class="fas fa-microchip fa-2x mb-2" style="color: #FF7A00;"></i>
+                            <span style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #1A1A1A; font-weight: 500;">AI & Technology</span>
+                            <div class="highlight-bar" style="height: 2px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 0; margin-top: 5px; transition: all 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 col-lg-1-5 animate-on-scroll" data-aos="slide-up" data-aos-duration="600" data-aos-delay="200">
+                        <div class="category-item text-center p-3 rounded-3" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); transition: all 0.4s ease; cursor: pointer; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <i class="fas fa-cogs fa-2x mb-2" style="color: #FF7A00;"></i>
+                            <span style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #1A1A1A; font-weight: 500;">Engineering</span>
+                            <div class="highlight-bar" style="height: 2px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 0; margin-top: 5px; transition: all 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 col-lg-1-5 animate-on-scroll" data-aos="slide-up" data-aos-duration="600" data-aos-delay="300">
+                        <div class="category-item text-center p-3 rounded-3" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); transition: all 0.4s ease; cursor: pointer; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <i class="fas fa-chart-line fa-2x mb-2" style="color: #FF7A00;"></i>
+                            <span style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #1A1A1A; font-weight: 500;">Marketing & Sales</span>
+                            <div class="highlight-bar" style="height: 2px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 0; margin-top: 5px; transition: all 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 col-lg-1-5 animate-on-scroll" data-aos="slide-up" data-aos-duration="600" data-aos-delay="400">
+                        <div class="category-item text-center p-3 rounded-3" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); transition: all 0.4s ease; cursor: pointer; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <i class="fas fa-headset fa-2x mb-2" style="color: #FF7A00;"></i>
+                            <span style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #1A1A1A; font-weight: 500;">Customer Support</span>
+                            <div class="highlight-bar" style="height: 2px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 0; margin-top: 5px; transition: all 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 col-lg-1-5 animate-on-scroll" data-aos="slide-up" data-aos-duration="600" data-aos-delay="500">
+                        <div class="category-item text-center p-3 rounded-3" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); transition: all 0.4s ease; cursor: pointer; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <i class="fas fa-cog fa-2x mb-2" style="color: #FF7A00;"></i>
+                            <span style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #1A1A1A; font-weight: 500;">Operations</span>
+                            <div class="highlight-bar" style="height: 2px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 0; margin-top: 5px; transition: all 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 col-lg-1-5 animate-on-scroll" data-aos="slide-up" data-aos-duration="600" data-aos-delay="600">
+                        <div class="category-item text-center p-3 rounded-3" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); transition: all 0.4s ease; cursor: pointer; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                            <i class="fas fa-briefcase fa-2x mb-2" style="color: #FF7A00;"></i>
+                            <span style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #1A1A1A; font-weight: 500;">Management</span>
+                            <div class="highlight-bar" style="height: 2px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 0; margin-top: 5px; transition: all 0.4s ease;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Openings Grid -->
+                <div class="row g-4 mb-5" id="job-openings-grid">
+                    <!-- Job Card 1 -->
+                    <div class="col-md-6 col-lg-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="job-card h-100 p-4 rounded-4" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); border-radius: 20px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3" style="color: #FF7A00; font-size: 1.5rem;">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 class="job-title mb-2" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 600;">Senior Software Engineer</h4>
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-light text-dark me-2" style="background: rgba(255, 122, 0, 0.1) !important; color: #1A1A1A !important; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;">AI & Technology</span>
+                                <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-1" style="color: #FF7A00;"></i> Salem</span>
+                            </div>
+                            <p class="job-summary mb-3" style="font-family: 'Inter', sans-serif; color: #555; font-size: 0.95rem;">Lead development of advanced aerospace systems using cutting-edge technologies. Collaborate with cross-functional teams to deliver innovative solutions that push the boundaries of aviation technology.</p>
+                            <a href="#" class="btn btn-primary" style="background: linear-gradient(90deg, #FF7A00, #FF5100); border: none; border-radius: 50px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 2 -->
+                    <div class="col-md-6 col-lg-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        <div class="job-card h-100 p-4 rounded-4" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); border-radius: 20px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3" style="color: #FF7A00; font-size: 1.5rem;">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4 class="job-title mb-2" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 600;">Aerospace Engineer</h4>
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-light text-dark me-2" style="background: rgba(255, 122, 0, 0.1) !important; color: #1A1A1A !important; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;">Engineering</span>
+                                <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-1" style="color: #FF7A00;"></i> Salem</span>
+                            </div>
+                            <p class="job-summary mb-3" style="font-family: 'Inter', sans-serif; color: #555; font-size: 0.95rem;">Design and develop innovative aerospace components and systems. Work on cutting-edge projects that contribute to the future of aviation and space exploration.</p>
+                            <a href="#" class="btn btn-primary" style="background: linear-gradient(90deg, #FF7A00, #FF5100); border: none; border-radius: 50px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 3 -->
+                    <div class="col-md-6 col-lg-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                        <div class="job-card h-100 p-4 rounded-4" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); border-radius: 20px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3" style="color: #FF7A00; font-size: 1.5rem;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h4 class="job-title mb-2" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 600;">Sales Manager</h4>
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-light text-dark me-2" style="background: rgba(255, 122, 0, 0.1) !important; color: #1A1A1A !important; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;">Marketing & Sales</span>
+                                <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-1" style="color: #FF7A00;"></i> Salem</span>
+                            </div>
+                            <p class="job-summary mb-3" style="font-family: 'Inter', sans-serif; color: #555; font-size: 0.95rem;">Drive revenue growth by developing strategic partnerships and building relationships with key aerospace industry clients. Lead a high-performing sales team.</p>
+                            <a href="#" class="btn btn-primary" style="background: linear-gradient(90deg, #FF7A00, #FF5100); border: none; border-radius: 50px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 4 -->
+                    <div class="col-md-6 col-lg-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                        <div class="job-card h-100 p-4 rounded-4" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); border-radius: 20px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3" style="color: #FF7A00; font-size: 1.5rem;">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4 class="job-title mb-2" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 600;">Customer Success Manager</h4>
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-light text-dark me-2" style="background: rgba(255, 122, 0, 0.1) !important; color: #1A1A1A !important; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;">Customer Support</span>
+                                <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-1" style="color: #FF7A00;"></i> Salem</span>
+                            </div>
+                            <p class="job-summary mb-3" style="font-family: 'Inter', sans-serif; color: #555; font-size: 0.95rem;">Ensure exceptional customer experiences by managing key accounts and driving satisfaction. Build long-term relationships with our aerospace industry partners.</p>
+                            <a href="#" class="btn btn-primary" style="background: linear-gradient(90deg, #FF7A00, #FF5100); border: none; border-radius: 50px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 5 -->
+                    <div class="col-md-6 col-lg-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
+                        <div class="job-card h-100 p-4 rounded-4" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); border-radius: 20px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3" style="color: #FF7A00; font-size: 1.5rem;">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <h4 class="job-title mb-2" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 600;">Operations Manager</h4>
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-light text-dark me-2" style="background: rgba(255, 122, 0, 0.1) !important; color: #1A1A1A !important; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;">Operations</span>
+                                <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-1" style="color: #FF7A00;"></i> Salem</span>
+                            </div>
+                            <p class="job-summary mb-3" style="font-family: 'Inter', sans-serif; color: #555; font-size: 0.95rem;">Optimize operational efficiency across all departments. Implement process improvements and ensure quality standards in our advanced manufacturing facilities.</p>
+                            <a href="#" class="btn btn-primary" style="background: linear-gradient(90deg, #FF7A00, #FF5100); border: none; border-radius: 50px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 6 -->
+                    <div class="col-md-6 col-lg-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
+                        <div class="job-card h-100 p-4 rounded-4" style="background: #fff; border: 1px solid rgba(255, 122, 0, 0.2); border-radius: 20px !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="job-icon position-absolute top-0 end-0 mt-3 me-3" style="color: #FF7A00; font-size: 1.5rem;">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h4 class="job-title mb-2" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 600;">Project Manager</h4>
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-light text-dark me-2" style="background: rgba(255, 122, 0, 0.1) !important; color: #1A1A1A !important; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 20px; padding: 5px 12px; font-size: 0.8rem;">Management</span>
+                                <span class="text-muted" style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-1" style="color: #FF7A00;"></i> Salem</span>
+                            </div>
+                            <p class="job-summary mb-3" style="font-family: 'Inter', sans-serif; color: #555; font-size: 0.95rem;">Lead cross-functional teams to deliver aerospace projects on time and within budget. Drive innovation and quality across all operational aspects.</p>
+                            <a href="#" class="btn btn-primary" style="background: linear-gradient(90deg, #FF7A00, #FF5100); border: none; border-radius: 50px; padding: 8px 20px; font-family: 'Inter', sans-serif; font-weight: 500; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Life at Our Company -->
+                <div class="row align-items-center mb-5" style="background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(255, 122, 0, 0.1);">
+                    <div class="col-lg-7 mb-4 mb-lg-0 animate-on-scroll" data-aos="fade-right" data-aos-duration="600">
+                        <h3 class="mb-3" style="font-family: 'Montserrat', sans-serif; color: #1A1A1A; font-weight: 700;">Life at Our Company</h3>
+                        <p class="mb-4" style="font-family: 'Inter', sans-serif; color: #555; line-height: 1.7;">Experience an environment where innovation meets excellence. At Salem Aeropark, we foster a culture of continuous learning, collaboration, and growth. Our workplace combines cutting-edge technology with a supportive atmosphere where every individual can thrive and contribute to the future of aerospace.</p>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="highlight-point p-3" style="border-left: 3px solid #FF7A00; background: rgba(255, 122, 0, 0.05); border-radius: 8px;">
+                                    <h5 class="mb-2" style="font-family: 'Montserrat', sans-serif; color: #FF7A00; font-weight: 600;">Growth-focused culture</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="highlight-point p-3" style="border-left: 3px solid #FF7A00; background: rgba(255, 122, 0, 0.05); border-radius: 8px;">
+                                    <h5 class="mb-2" style="font-family: 'Montserrat', sans-serif; color: #FF7A00; font-weight: 600;">Work-life balance</h5>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="highlight-point p-3" style="border-left: 3px solid #FF7A00; background: rgba(255, 122, 0, 0.05); border-radius: 8px;">
+                                    <h5 class="mb-2" style="font-family: 'Montserrat', sans-serif; color: #FF7A00; font-weight: 600;">Innovation-driven workspace</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 animate-on-scroll" data-aos="fade-left" data-aos-duration="600">
+                        <div class="image-placeholder d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); border-radius: 15px; height: 300px; border: 2px dashed rgba(255, 122, 0, 0.3); transition: all 0.4s ease;">
+                            <div class="text-center">
+                                <i class="fas fa-image fa-3x mb-3" style="color: rgba(255, 122, 0, 0.3);"></i>
+                                <p class="mb-0" style="color: rgba(26, 26, 26, 0.6); font-family: 'Inter', sans-serif; font-weight: 500;">Workplace Environment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Work With Us -->
+                <div class="row mb-5" style="background-color: #000; padding: 30px; border-radius: 15px;">
+                    <div class="col-12">
+                        <h3 class="mb-4 text-center text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 700;">Why Work With Us</h3>
+                        <p class="text-center mb-5 text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; line-height: 1.7; max-width: 800px; margin: 0 auto;">We offer an exceptional work environment where your skills and passion can flourish. Join a team that values innovation, collaboration, and professional growth.</p>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+                        <div class="feature-card p-4 rounded-3" style="background: #222; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 15px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="icon-container mb-3" style="width: 50px; height: 50px; background: rgba(255, 122, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user-tie fa-lg" style="color: #FF7A00;"></i>
+                            </div>
+                            <h5 class="mb-2 text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 600;">Expert leadership</h5>
+                            <p class="text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; font-size: 0.95rem;">Learn from industry leaders and seasoned professionals who are committed to your success.</p>
+                            <div class="highlight-bar" style="height: 3px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 50px; margin-top: 10px; transition: width 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
+                        <div class="feature-card p-4 rounded-3" style="background: #222; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 15px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="icon-container mb-3" style="width: 50px; height: 50px; background: rgba(255, 122, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-globe-americas fa-lg" style="color: #FF7A00;"></i>
+                            </div>
+                            <h5 class="mb-2 text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 600;">Global exposure</h5>
+                            <p class="text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; font-size: 0.95rem;">Work on international projects and collaborate with teams across different regions.</p>
+                            <div class="highlight-bar" style="height: 3px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 50px; margin-top: 10px; transition: width 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+                        <div class="feature-card p-4 rounded-3" style="background: #222; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 15px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="icon-container mb-3" style="width: 50px; height: 50px; background: rgba(255, 122, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-heart fa-lg" style="color: #FF7A00;"></i>
+                            </div>
+                            <h5 class="mb-2 text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 600;">Employee-first policy</h5>
+                            <p class="text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; font-size: 0.95rem;">Your well-being and growth are our top priorities in everything we do.</p>
+                            <div class="highlight-bar" style="height: 3px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 50px; margin-top: 10px; transition: width 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="400">
+                        <div class="feature-card p-4 rounded-3" style="background: #222; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 15px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="icon-container mb-3" style="width: 50px; height: 50px; background: rgba(255, 122, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-university fa-lg" style="color: #FF7A00;"></i>
+                            </div>
+                            <h5 class="mb-2 text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 600;">Professional learning</h5>
+                            <p class="text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; font-size: 0.95rem;">Access to continuous education, workshops, and certification programs.</p>
+                            <div class="highlight-bar" style="height: 3px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 50px; margin-top: 10px; transition: width 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="500">
+                        <div class="feature-card p-4 rounded-3" style="background: #222; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 15px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="icon-container mb-3" style="width: 50px; height: 50px; background: rgba(255, 122, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-tachometer-alt fa-lg" style="color: #FF7A00;"></i>
+                            </div>
+                            <h5 class="mb-2 text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 600;">High-performance environment</h5>
+                            <p class="text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; font-size: 0.95rem;">Work in a dynamic environment that encourages excellence and recognition.</p>
+                            <div class="highlight-bar" style="height: 3px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 50px; margin-top: 10px; transition: width 0.4s ease;"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 animate-on-scroll" data-aos="fade-up" data-aos-duration="600" data-aos-delay="600">
+                        <div class="feature-card p-4 rounded-3" style="background: #222; border: 1px solid rgba(255, 122, 0, 0.3); border-radius: 15px !important; box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: all 0.4s ease; position: relative; overflow: hidden;">
+                            <div class="icon-container mb-3" style="width: 50px; height: 50px; background: rgba(255, 122, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-laptop-code fa-lg" style="color: #FF7A00;"></i>
+                            </div>
+                            <h5 class="mb-2 text-white" style="font-family: 'Montserrat', sans-serif; color: #fff !important; font-weight: 600;">Modern workspace</h5>
+                            <p class="text-white-50" style="font-family: 'Inter', sans-serif; color: #aaa !important; font-size: 0.95rem;">Collaborate in state-of-the-art facilities equipped with the latest technology.</p>
+                            <div class="highlight-bar" style="height: 3px; background: linear-gradient(90deg, #FF7A00, #FF5100); width: 50px; margin-top: 10px; transition: width 0.4s ease;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section" id="careers-cta" style="background: linear-gradient(135deg, #002244, #005eb8);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mb-4">Don't See Your Role?</h2>
+                        <p class="text-light mb-4">We're always looking for passionate individuals. Send us your resume and tell us how you'd like to contribute to our mission.</p>
+                        <a href="contact.html" class="btn btn-light">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="#">Aircraft Components</a></li>
+                    <li><a href="#">Defense & Missile</a></li>
+                    <li><a href="#">Space Systems</a></li>
+                    <li><a href="#">Healthcare Products</a></li>
+                    <li><a href="#">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 The Salem Aeropark. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+
+    <script>
+        // Animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add hover effects to category items
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.boxShadow = '0 10px 25px rgba(255, 122, 0, 0.3)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+                this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.05)';
+            });
+        });
+
+        // Add hover effects to job cards
+        document.querySelectorAll('.job-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-12px) scale(1.02)';
+                this.style.boxShadow = '0 15px 35px rgba(255, 122, 0, 0.3)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.08)';
+            });
+        });
+
+        // Add hover effects to feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 12px 25px rgba(0,0,0,0.1)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 8px 20px rgba(0,0,0,0.06)';
+            });
+        });
+
+        // Add click functionality to category items
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.category-item').forEach(i => {
+                    i.style.borderColor = 'rgba(255, 122, 0, 0.2)';
+                });
+
+                this.style.borderColor = '#FF7A00';
+                this.querySelector('.highlight-bar').style.width = '100%';
+
+                // Reset other bars after a delay
+                setTimeout(() => {
+                    document.querySelectorAll('.category-item:not(:hover) .highlight-bar').forEach(bar => {
+                        bar.style.width = '0';
+                    });
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

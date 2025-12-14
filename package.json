@@ -1,0 +1,27 @@
+{
+  "name": "salem-aeropark-website",
+  "version": "1.0.0",
+  "description": "Official website for Salem Aeropark - Aerospace & Defense Solutions",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aerospace",
+    "defense",
+    "manufacturing",
+    "salem-aeropark",
+    "website"
+  ],
+  "author": "Salem Aeropark",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.2"
+  }
+}

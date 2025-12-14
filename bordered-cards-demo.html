@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bordered Cards Demo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Zensar-inspired Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+    <style>
+        .demo-container {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .demo-section {
+            margin: 3rem 0;
+        }
+        
+        .demo-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--zensar-dark);
+        }
+        
+        .demo-subtitle {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--zensar-gray);
+        }
+        
+        .card-demo {
+            margin-bottom: 2rem;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="Aerospace Engineers Pvt. Ltd. Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="search.html" class="nav-link">
+                        <span class="nav-link-content">Search</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="demo-container">
+        <div class="container">
+            <div class="demo-section">
+                <h1 class="demo-title">Bordered Cards Demo</h1>
+                <p class="demo-subtitle">Examples of various card styles with custom border colors</p>
+                
+                <!-- Basic Bordered Card -->
+                <h2 class="section-title">Basic Bordered Cards</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-gem fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Basic Bordered Card</h3>
+                            </div>
+                            <p>This is a basic card with a default silver border. The border color is subtle and professional.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card primary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-star fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Primary Border</h3>
+                            </div>
+                            <p>This card has a primary color border - a deep blue that matches the Zensar-inspired theme.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card primary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card secondary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-crown fa-2x text-info me-3"></i>
+                                <h3 class="mb-0">Secondary Border</h3>
+                            </div>
+                            <p>This card has a secondary color border - a teal color that complements the primary color.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card secondary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accent Color Borders -->
+            <div class="demo-section">
+                <h2 class="section-title">Accent Color Borders</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card accent-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-palette fa-2x text-info me-3"></i>
+                                <h3 class="mb-0">Accent Border</h3>
+                            </div>
+                            <p>This card has an accent color border - a light blue that adds visual interest.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card accent-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card dark-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-moon fa-2x text-dark me-3"></i>
+                                <h3 class="mb-0">Dark Border</h3>
+                            </div>
+                            <p>This card has a dark border - a deep blue that adds a sophisticated look.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card dark-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card metallic-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-industry fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Metallic Border</h3>
+                            </div>
+                            <p>This card has a metallic color border - a blue-purple that evokes industrial strength.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card metallic-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Border Variations -->
+            <div class="demo-section">
+                <h2 class="section-title">Border Variations</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card thick-border primary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-bold fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Thick Border</h3>
+                            </div>
+                            <p>This card has a thicker 4px border that makes it stand out more prominently.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card thick-border primary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card dashed-border secondary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-ellipsis-h fa-2x text-info me-3"></i>
+                                <h3 class="mb-0">Dashed Border</h3>
+                            </div>
+                            <p>This card has a dashed border style that gives it a unique, modern look.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card dashed-border secondary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card dotted-border accent-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-circle-notch fa-2x text-info me-3"></i>
+                                <h3 class="mb-0">Dotted Border</h3>
+                            </div>
+                            <p>This card has a dotted border style, perfect for highlighting special content.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card dotted-border accent-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accent Borders -->
+            <div class="demo-section">
+                <h2 class="section-title">Accent Borders</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card top-accent primary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-arrow-up fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Top Accent</h3>
+                            </div>
+                            <p>This card has a colored top border accent, ideal for highlighting important content.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card top-accent primary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card left-accent secondary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-arrow-left fa-2x text-info me-3"></i>
+                                <h3 class="mb-0">Left Accent</h3>
+                            </div>
+                            <p>This card has a colored left border accent, perfect for feature lists or steps.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card left-accent secondary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card rounded-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-circle fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Rounded Border</h3>
+                            </div>
+                            <p>This card has a fully rounded border, giving it an extremely modern appearance.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card rounded-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gradient Border -->
+            <div class="demo-section">
+                <h2 class="section-title">Special Border Effects</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card gradient-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-fill-drip fa-2x gradient me-3"></i>
+                                <h3 class="mb-0">Gradient Border</h3>
+                            </div>
+                            <p>This card has a gradient border that transitions through multiple colors.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card gradient-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card animated-border primary-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-sync-alt fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Animated Border</h3>
+                            </div>
+                            <p>This card has a border that pulses colors on hover for attention.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card animated-border primary-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4 card-demo">
+                        <div class="bordered-card multi-border p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-cubes fa-2x text-primary me-3"></i>
+                                <h3 class="mb-0">Multi Border</h3>
+                            </div>
+                            <p>This card has a multi-color border effect for a unique visual style.</p>
+                            <div class="code-block">
+                                &lt;div class="bordered-card multi-border"&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="components-3d.html">3D Viewer</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="#">Aircraft Components</a></li>
+                    <li><a href="#">Defense & Missile</a></li>
+                    <li><a href="#">Space Systems</a></li>
+                    <li><a href="#">Healthcare Products</a></li>
+                    <li><a href="#">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Aerospace Engineers Pvt. Ltd. (The Salem Aeropark). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+    
+    <script>
+        // Mobile navigation functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

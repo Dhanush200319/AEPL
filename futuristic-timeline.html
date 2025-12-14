@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Futuristic 3D Timeline - Aerospace Engineers Pvt. Ltd. - Sci-fi inspired timeline with holographic effects">
+    <meta name="keywords" content="aerospace timeline, 3d timeline, sci-fi timeline, holographic timeline, futuristic design">
+    <meta name="author" content="Aerospace Engineers Pvt. Ltd.">
+    <title>Futuristic 3D Timeline - The Salem Aeropark</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Theme Switching */
+        :root {
+            --primary: #002244;
+            --secondary: #005EB8;
+            --accent: #00ffea;
+            --neon-blue: #00ffff;
+            --neon-orange: #ff6b35;
+            --neon-purple: #8a2be2;
+            --dark-bg: #0a0f1c;
+            --surface-dark: rgba(25, 30, 45, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --gradient-start: #0f172a;
+            --gradient-mid: #1e293b;
+            --gradient-end: #334155;
+        }
+        
+        .theme-bright {
+            --primary: #002244;
+            --secondary: #005EB8;
+            --accent: #00aaff;
+            --neon-blue: #0088ff;
+            --neon-orange: #ff6b35;
+            --neon-purple: #8a2be2;
+            --dark-bg: linear-gradient(135deg, #0f1b32, #1a2945);
+            --surface-dark: rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-primary: white;
+            --text-secondary: #cbd5e0;
+        }
+        
+        .theme-mixed {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --neon-blue: #e94560;
+            --neon-orange: #f27121;
+            --neon-purple: #7209b7;
+            --dark-bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            --surface-dark: rgba(40, 44, 62, 0.85);
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-primary: white;
+            --text-secondary: #a0aec0;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Particle Background */
+        .particle-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+            opacity: 0.7;
+        }
+        
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+        
+        /* Main Content */
+        .timeline-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Futuristic Timeline */
+        .futuristic-timeline {
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Timeline Bar */
+        .timeline-bar {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--primary),
+                var(--secondary),
+                var(--primary),
+                transparent
+            );
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            box-shadow: 0 0 20px rgba(0, 94, 184, 0.6);
+            animation: barGlow 3s infinite alternate;
+        }
+        
+        @keyframes barGlow {
+            0% { box-shadow: 0 0 10px rgba(0, 94, 184, 0.3); }
+            100% { box-shadow: 0 0 30px rgba(0, 255, 234, 0.8); }
+        }
+        
+        /* Milestone Items */
+        .milestone {
+            position: relative;
+            display: flex;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s forwards;
+        }
+        
+        /* Individual milestone timing */
+        .milestone:nth-child(1) { animation-delay: 0.5s; }
+        .milestone:nth-child(2) { animation-delay: 1s; }
+        .milestone:nth-child(3) { animation-delay: 1.5s; }
+        .milestone:nth-child(4) { animation-delay: 2s; }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Milestone Circle */
+        .milestone-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, var(--primary), var(--secondary));
+            box-shadow: 
+                0 0 30px var(--neon-blue),
+                0 0 60px var(--neon-blue),
+                inset 0 0 20px rgba(0, 255, 234, 0.3);
+            border: 2px solid var(--neon-blue);
+            animation: circlePulse 2s infinite alternate;
+            z-index: 10;
+        }
+        
+        @keyframes circlePulse {
+            0% { 
+                box-shadow: 
+                    0 0 20px var(--neon-blue),
+                    0 0 40px var(--neon-blue),
+                    inset 0 0 15px rgba(0, 255, 234, 0.2);
+            }
+            100% { 
+                box-shadow: 
+                    0 0 40px var(--neon-blue),
+                    0 0 80px var(--neon-blue),
+                    inset 0 0 25px rgba(0, 255, 234, 0.4);
+            }
+        }
+        
+        /* Different colors for each milestone */
+        .milestone:nth-child(1) .milestone-circle { border-color: var(--neon-blue); }
+        .milestone:nth-child(2) .milestone-circle { border-color: var(--neon-orange); 
+            box-shadow: 0 0 30px var(--neon-orange),
+                        0 0 60px var(--neon-orange),
+                        inset 0 0 20px rgba(255, 107, 53, 0.3);
+            animation: pulseOrange 2s infinite alternate;
+        }
+        @keyframes pulseOrange {
+            0% { box-shadow: 0 0 20px var(--neon-orange), 0 0 40px var(--neon-orange), inset 0 0 15px rgba(255, 107, 53, 0.2); }
+            100% { box-shadow: 0 0 40px var(--neon-orange), 0 0 80px var(--neon-orange), inset 0 0 25px rgba(255, 107, 53, 0.4); }
+        }
+        
+        .milestone:nth-child(3) .milestone-circle { border-color: var(--neon-purple); 
+            box-shadow: 0 0 30px var(--neon-purple),
+                        0 0 60px var(--neon-purple),
+                        inset 0 0 20px rgba(138, 43, 226, 0.3);
+            animation: pulsePurple 2s infinite alternate;
+        }
+        @keyframes pulsePurple {
+            0% { box-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-purple), inset 0 0 15px rgba(138, 43, 226, 0.2); }
+            100% { box-shadow: 0 0 40px var(--neon-purple), 0 0 80px var(--neon-purple), inset 0 0 25px rgba(138, 43, 226, 0.4); }
+        }
+        
+        .milestone:nth-child(4) .milestone-circle { border-color: var(--accent); 
+            box-shadow: 0 0 30px var(--accent),
+                        0 0 60px var(--accent),
+                        inset 0 0 20px rgba(0, 255, 234, 0.3);
+            animation: pulseCyan 2s infinite alternate;
+        }
+        @keyframes pulseCyan {
+            0% { box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent), inset 0 0 15px rgba(0, 255, 234, 0.2); }
+            100% { box-shadow: 0 0 40px var(--accent), 0 0 80px var(--accent), inset 0 0 25px rgba(0, 255, 234, 0.4); }
+        }
+        
+        /* Inner Circle with Year */
+        .circle-inner {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 34, 68, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+            animation: innerGlow 1s infinite alternate;
+        }
+        
+        @keyframes innerGlow {
+            0% { text-shadow: 0 0 5px var(--accent); }
+            100% { text-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent); }
+        }
+        
+        /* Connecting Line from Circle to Timeline */
+        .connector {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--neon-blue), transparent);
+            z-index: 1;
+        }
+        
+        .milestone:nth-child(2n) .connector {
+            height: calc(50% - 100px);
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .milestone:nth-child(2n+1) .connector {
+            height: calc(50% - 100px);
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Milestone Content */
+        .milestone-content {
+            text-align: center;
+            margin-top: 1rem;
+            max-width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .milestone-year {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .milestone-event {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--surface-dark);
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .milestone-event::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 20px;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+            transition: all 0.6s;
+        }
+        
+        .milestone-event:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 255, 234, 0.3);
+        }
+        
+        .milestone-event:hover::before {
+            left: 120%;
+        }
+        
+        /* Holographic Rings */
+        .hologram-ring {
+            position: absolute;
+            border: 1px solid rgba(0, 255, 234, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: ringRotate 8s infinite linear;
+        }
+        
+        .ring-1 { width: 100px; height: 100px; top: -10px; left: -10px; }
+        .ring-2 { width: 120px; height: 120px; top: -20px; left: -20px; opacity: 0.6; animation-duration: 12s; }
+        .ring-3 { width: 140px; height: 140px; top: -30px; left: -30px; opacity: 0.3; animation-duration: 16s; }
+        
+        @keyframes ringRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Header */
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .timeline-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            text-shadow: 0 0 20px var(--accent);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--neon-blue), var(--accent), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timeline-subtitle {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-btn {
+            background: var(--surface-dark);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-btn:hover {
+            background: var(--glass-bg);
+            box-shadow: 0 0 15px var(--accent);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline-title {
+                font-size: 2rem;
+            }
+            
+            .milestone-circle {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .circle-inner {
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
+            }
+            
+            .milestone-event {
+                font-size: 1.1rem;
+                padding: 0.8rem;
+            }
+            
+            .milestone {
+                margin-bottom: 3rem;
+            }
+        }
+        
+        /* Holographic Effect Class */
+        .holographic {
+            position: relative;
+        }
+        
+        .holographic::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-orange), var(--neon-purple), var(--neon-blue));
+            border-radius: inherit;
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.7;
+            animation: holographicGlow 3s infinite alternate;
+        }
+        
+        @keyframes holographicGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particle-background" id="particles"></div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button class="theme-btn" onclick="switchTheme('dark')">Dark Mode</button>
+        <button class="theme-btn" onclick="switchTheme('bright')">Bright Mode</button>
+        <button class="theme-btn" onclick="switchTheme('mixed')">Mixed Mode</button>
+    </div>
+    
+    <div class="timeline-container">
+        <div class="futuristic-timeline">
+            <div class="timeline-header animated-element">
+                <h1 class="timeline-title">AEROSPACE TIMELINE</h1>
+                <p class="timeline-subtitle">A Journey Through Innovation and Excellence</p>
+            </div>
+            
+            <div class="timeline-bar"></div>
+            
+            <!-- Milestone 1: 1998 - Foundation -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">1998</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">FOUNDATION</div>
+                    <div class="milestone-event">Aerospace Engineers Pvt. Ltd. founded in Salem, focusing on rubber compounds and engineered components for aviation industry.</div>
+                </div>
+            </div>
+
+            <!-- Milestone 2: 2003 - Expansion -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">2003</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">EXPANSION</div>
+                    <div class="milestone-event">First major contract with defense sector, expanding product range to include missile components and military-grade materials.</div>
+                </div>
+            </div>
+
+            <!-- Milestone 3: 2008 - International Growth -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">2008</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">INTERNATIONAL GROWTH</div>
+                    <div class="milestone-event">Establishment of international partnerships, exporting products to 10+ countries across Asia, Europe, and North America.</div>
+                </div>
+            </div>
+
+            <!-- Milestone 4: 2012 - Technology Advancement -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">2012</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">TECHNOLOGY ADVANCEMENT</div>
+                    <div class="milestone-event">Investment in advanced manufacturing technologies including automation, robotics, and AI-powered quality control systems.</div>
+                </div>
+            </div>
+
+            <!-- Milestone 5: 2016 - Space Systems Division -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">2016</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">SPACE SYSTEMS DIVISION</div>
+                    <div class="milestone-event">Launch of space systems division, entering satellite and space exploration markets with specialized components.</div>
+                </div>
+            </div>
+
+            <!-- Milestone 6: 2020 - Healthcare Innovation -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">2020</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">HEALTHCARE INNOVATION</div>
+                    <div class="milestone-event">Expansion into healthcare sector with medical-grade rubber components and COVID-19 protective equipment manufacturing.</div>
+                </div>
+            </div>
+
+            <!-- Milestone 7: 2023 - Boeing Partnership -->
+            <div class="milestone">
+                <div class="milestone-circle holographic">
+                    <div class="circle-inner">2023</div>
+                    <div class="hologram-ring ring-1"></div>
+                    <div class="hologram-ring ring-2"></div>
+                    <div class="hologram-ring ring-3"></div>
+                </div>
+                <div class="connector"></div>
+                <div class="milestone-content">
+                    <div class="milestone-year">BOEING PARTNERSHIP</div>
+                    <div class="milestone-event">Significant milestone: MoU with Boeing for manufacturing certain aerospace components, validating our global capabilities.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Theme switching functionality
+        function switchTheme(theme) {
+            document.body.className = theme === 'dark' ? '' : theme;
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Add hover effects to milestone events
+            const milestoneEvents = document.querySelectorAll('.milestone-event');
+            milestoneEvents.forEach(event => {
+                event.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.05)';
+                    this.style.boxShadow = '0 15px 50px rgba(0, 255, 234, 0.5)';
+                });
+                
+                event.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
+                });
+            });
+        });
+        
+        // Add scrolling effects
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rates = {
+                particle: 0.5,
+                timeline: 0.3
+            };
+            
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                const speed = parseFloat(particle.style.animationDuration) * 1000;
+                particle.style.transform = `translateY(${scrolled * rates.particle}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

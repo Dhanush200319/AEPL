@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications & Compliance Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            padding: 20px;
+        }
+
+        .certifications-section {
+            padding: 80px 0;
+            background-color: #0d0d0d;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff8c00, #ffd166);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .certification-card {
+            background: rgba(30, 30, 30, 0.8);
+            border: 1px solid rgba(255, 140, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            border: 1px solid transparent;
+            box-shadow: inset 0 0 15px rgba(255, 140, 0, 0.1);
+            pointer-events: none;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(255, 140, 0, 0.2);
+            border-color: rgba(255, 140, 0, 0.5);
+        }
+
+        .certification-card:hover::before {
+            box-shadow: inset 0 0 20px rgba(255, 140, 0, 0.2), 0 0 25px rgba(255, 140, 0, 0.3);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: #ff8c00;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.5));
+        }
+
+        .cert-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .cert-description {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Animation classes */
+        .animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
+            }
+            
+            .certifications-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="certifications-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Certifications & Compliance</h2>
+                <p class="section-description">Our unwavering commitment to quality, safety, and excellence in aerospace manufacturing and engineering</p>
+            </div>
+
+            <div class="certifications-grid">
+                <div class="certification-card" data-delay="0.1">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="cert-title">ISO 9001:2015</h3>
+                    <p class="cert-description">International standard for quality management systems ensuring consistent quality and customer satisfaction in all processes.</p>
+                </div>
+
+                <div class="certification-card" data-delay="0.2">
+                    <div class="cert-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="cert-title">DGCA Approved</h3>
+                    <p class="cert-description">Approved by the Directorate General of Civil Aviation for aircraft maintenance, repair, and overhaul services.</p>
+                </div>
+
+                <div class="certification-card" data-delay="0.3">
+                    <div class="cert-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="cert-title">Aerospace Quality</h3>
+                    <p class="cert-description">Specialized quality management system designed specifically for the aerospace and defense industry requirements.</p>
+                </div>
+
+                <div class="certification-card" data-delay="0.4">
+                    <div class="cert-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="cert-title">Safety & Compliance</h3>
+                    <p class="cert-description">Adherence to international safety standards and regulatory compliance for aerospace operations and manufacturing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Certification card animations with GSAP
+            const certificationCards = document.querySelectorAll('.certification-card');
+            
+            certificationCards.forEach((card, index) => {
+                const delay = parseFloat(card.getAttribute('data-delay'));
+                
+                gsap.fromTo(card, 
+                    { opacity: 0, y: 30, scale: 0.9 },
+                    { 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                        duration: 1,
+                        delay: delay,
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                );
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Product Groups - Video Backgrounds</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Modern Industrial Theme */
+        :root {
+            --dark-bg: #0d0d0d;
+            --card-bg: rgba(26, 26, 26, 0.8);
+            --card-border: #333;
+            --orange-accent: #ff8c00;
+            --orange-glow: rgba(255, 140, 0, 0.5);
+            --text-light: #f0f0f0;
+            --text-medium: #ccc;
+            --text-dark: #666;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Product Slider Section */
+        .product-slider-section {
+            padding: 80px 0;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+        }
+
+        .slider-btn {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 140, 0, 0.1);
+            border: 2px solid var(--orange-accent);
+            color: var(--orange-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .slider-btn:hover {
+            background: var(--orange-accent);
+            color: white;
+            box-shadow: 0 0 20px var(--orange-glow);
+        }
+
+        .slider-btn-prev {
+            left: 0;
+        }
+
+        .slider-btn-next {
+            right: 0;
+        }
+
+        .product-slider {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 30px;
+        }
+
+        /* Product Cards with Video Background */
+        .product-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            width: calc((100% - 60px) / 3); /* Show exactly 3 cards with gaps */
+            min-width: calc((100% - 60px) / 3); /* Ensure cards don't shrink */
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            overflow: hidden; /* Important for video positioning */
+        }
+
+        /* Video Background Container */
+        .card-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+        }
+
+        /* Video Element */
+        .card-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.8; /* Slight transparency to allow content visibility */
+        }
+
+        /* Dark Overlay for Better Text Readability */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+            border-radius: var(--border-radius);
+        }
+
+        /* Content Layer - Above Video and Overlay */
+        .product-card-content {
+            position: relative;
+            z-index: 3;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: var(--border-radius);
+            border: 1px solid transparent;
+            pointer-events: none;
+            transition: var(--transition);
+            z-index: 4;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-card:hover::before {
+            border: 1px solid var(--orange-accent);
+            box-shadow: 0 0 20px var(--orange-glow);
+        }
+
+        .product-badge {
+            background: rgba(255, 140, 0, 0.15);
+            color: var(--orange-accent);
+            border: 1px solid var(--orange-accent);
+            border-radius: var(--border-radius);
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            align-self: flex-start;
+            margin-bottom: 15px;
+            z-index: 4;
+        }
+
+        .product-category {
+            color: var(--orange-accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            z-index: 4;
+        }
+
+        .product-title {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            z-index: 4;
+        }
+
+        .product-description {
+            color: var(--text-medium);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            z-index: 4;
+        }
+
+        .product-features {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            z-index: 4;
+        }
+
+        .product-features li {
+            color: var(--text-medium);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .product-features li::before {
+            content: "•";
+            color: var(--orange-accent);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Animation for cards entering viewport */
+        .product-card {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .product-card {
+                width: calc((100% - 30px) / 2); /* 2 cards on medium screens */
+                min-width: calc((100% - 30px) / 2);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .slider-container {
+                padding: 0 40px;
+            }
+            
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-card {
+                width: 100%; /* 1 card on small screens */
+                min-width: 100%;
+                height: auto;
+                margin-bottom: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .slider-container {
+                display: block;
+                padding: 0 20px;
+            }
+            
+            .slider-btn {
+                position: static;
+                width: 40px;
+                height: 40px;
+                margin: 10px auto;
+                display: flex;
+            }
+            
+            .slider-btn-prev {
+                left: auto;
+                right: auto;
+            }
+            
+            .slider-btn-next {
+                left: auto;
+                right: auto;
+            }
+            
+            .product-slider {
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="product-slider-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Product Groups</h2>
+                <p class="section-subtitle">Specialized expertise across multiple industries</p>
+            </div>
+
+            <div class="slider-container">
+                <button class="slider-btn slider-btn-prev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="product-slider">
+                    <div class="slider-track">
+                        <!-- Product Card 1 - AEROSPACE with Video Background -->
+                        <div class="product-card" data-video="AH-64.mp4">
+                            <div class="card-video-container">
+                                <video class="card-video" preload="none" playsinline muted loop>
+                                    <source data-src="videos/AH-64.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="product-card-content">
+                                <div class="product-badge">Quality Certified</div>
+                                <div class="product-category">AEROSPACE</div>
+                                <h3 class="product-title">Aircraft Components</h3>
+                                <p class="product-description">Manufacturing airframe components, seals, O-rings and specialized parts for civil and military aircraft.</p>
+                                <ul class="product-features">
+                                    <li>Airframe assembly components</li>
+                                    <li>Hydraulic system parts</li>
+                                    <li>Fuel system components</li>
+                                    <li>Environmental control systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 2 - DEFENSE with Video Background -->
+                        <div class="product-card" data-video="AH-64.mp4">
+                            <div class="card-video-container">
+                                <video class="card-video" preload="none" playsinline muted loop>
+                                    <source data-src="videos/AH-64.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="product-card-content">
+                                <div class="product-badge">Military ISO 9001</div>
+                                <div class="product-category">DEFENSE</div>
+                                <h3 class="product-title">Defense & Missile</h3>
+                                <p class="product-description">Advanced engineering solutions for defense systems and missile applications.</p>
+                                <ul class="product-features">
+                                    <li>Missile components manufacturing</li>
+                                    <li>Defense electronics</li>
+                                    <li>Security systems</li>
+                                    <li>Electronic warfare components</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 3 - AVIATION with Video Background -->
+                        <div class="product-card" data-video="AH-64.mp4">
+                            <div class="card-video-container">
+                                <video class="card-video" preload="none" playsinline muted loop>
+                                    <source data-src="videos/AH-64.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="product-card-content">
+                                <div class="product-badge">FAA • EASA</div>
+                                <div class="product-category">AVIATION</div>
+                                <h3 class="product-title">Helicopter & Civil Aviation</h3>
+                                <p class="product-description">Parts and maintenance support for aviation and helicopter industries.</p>
+                                <ul class="product-features">
+                                    <li>Rotor blade components</li>
+                                    <li>Transmission systems</li>
+                                    <li>Avionics integration</li>
+                                    <li>Maintenance services</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 4 - SPACE with Video Background -->
+                        <div class="product-card" data-video="AH-64.mp4">
+                            <div class="card-video-container">
+                                <video class="card-video" preload="none" playsinline muted loop>
+                                    <source data-src="videos/AH-64.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="product-card-content">
+                                <div class="product-badge">NASA • ISRO</div>
+                                <div class="product-category">SPACE</div>
+                                <h3 class="product-title">Space Systems</h3>
+                                <p class="product-description">Satellite & payload integration with launch-support hardware.</p>
+                                <ul class="product-features">
+                                    <li>Satellite manufacturing</li>
+                                    <li>Launch vehicle components</li>
+                                    <li>Space mission hardware</li>
+                                    <li>Ground systems integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 5 - HEALTHCARE with Video Background -->
+                        <div class="product-card" data-video="AH-64.mp4">
+                            <div class="card-video-container">
+                                <video class="card-video" preload="none" playsinline muted loop>
+                                    <source data-src="videos/AH-64.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="product-card-content">
+                                <div class="product-badge">FDA • ISO 13485</div>
+                                <div class="product-category">HEALTHCARE</div>
+                                <h3 class="product-title">Healthcare Products</h3>
+                                <p class="product-description">Medical-grade rubber components for healthcare.</p>
+                                <ul class="product-features">
+                                    <li>Medical device components</li>
+                                    <li>Biocompatible materials</li>
+                                    <li>Sterile manufacturing</li>
+                                    <li>Quality assurance</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 6 - RENEWABLE with Video Background -->
+                        <div class="product-card" data-video="AH-64.mp4">
+                            <div class="card-video-container">
+                                <video class="card-video" preload="none" playsinline muted loop>
+                                    <source data-src="videos/AH-64.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="card-overlay"></div>
+                            </div>
+                            <div class="product-card-content">
+                                <div class="product-badge">LEED • ISO 14001</div>
+                                <div class="product-category">RENEWABLE</div>
+                                <h3 class="product-title">Renewable Energy</h3>
+                                <p class="product-description">Components for solar, wind, and energy storage systems.</p>
+                                <ul class="product-features">
+                                    <li>Solar panel components</li>
+                                    <li>Wind turbine parts</li>
+                                    <li>Energy storage systems</li>
+                                    <li>Sustainable solutions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="slider-btn slider-btn-next" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Slider variables
+            const sliderTrack = document.querySelector('.slider-track');
+            const sliderBtnPrev = document.querySelector('.slider-btn-prev');
+            const sliderBtnNext = document.querySelector('.slider-btn-next');
+            const productCards = document.querySelectorAll('.product-card');
+            const cardCount = productCards.length;
+            
+            let currentSlide = 0;
+            let autoSlideInterval;
+
+            // Function to get current cards per page based on screen size
+            function getCardsPerPage() {
+                if (window.innerWidth < 768) return 1;
+                if (window.innerWidth < 1200) return 2;
+                return 3; // Desktop: 3 cards per page
+            }
+
+            // Function to update slider position
+            function updateSliderPosition() {
+                const cardsPerPage = getCardsPerPage();
+                const totalSlides = Math.ceil(cardCount / cardsPerPage);
+                
+                if (currentSlide >= totalSlides) {
+                    currentSlide = 0; // Reset if current slide exceeds available slides
+                }
+                
+                const cardWidth = productCards[0].offsetWidth;
+                const gap = 30; // gap between cards
+                const slidePosition = -(currentSlide * (cardWidth * cardsPerPage + gap * (cardsPerPage - 1)));
+                
+                sliderTrack.style.transform = `translateX(${slidePosition}px)`;
+            }
+
+            // Next button click handler
+            function nextSlide() {
+                const cardsPerPage = getCardsPerPage();
+                const totalSlides = Math.ceil(cardCount / cardsPerPage);
+                
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                } else {
+                    currentSlide = 0; // Loop back to start
+                }
+                updateSliderPosition();
+            }
+
+            // Previous button click handler
+            function prevSlide() {
+                const cardsPerPage = getCardsPerPage();
+                const totalSlides = Math.ceil(cardCount / cardsPerPage);
+                
+                if (currentSlide > 0) {
+                    currentSlide--;
+                } else {
+                    currentSlide = totalSlides - 1; // Loop to end
+                }
+                updateSliderPosition();
+            }
+
+            // Set up button event listeners
+            sliderBtnNext.addEventListener('click', nextSlide);
+            sliderBtnPrev.addEventListener('click', prevSlide);
+
+            // Auto-slide functionality
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    nextSlide();
+                }, 5000); // Auto-slide every 5 seconds
+            }
+
+            // Pause auto-slide when hovering over the slider
+            const sliderContainer = document.querySelector('.product-slider');
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+
+            sliderContainer.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+
+            // Initialize the slider
+            updateSliderPosition();
+            startAutoSlide();
+
+            // Handle window resize to recalculate positions and adjust for responsive layout
+            function handleResize() {
+                // Check if we're on mobile view (1 card per "page")
+                if (window.innerWidth < 768) {
+                    // On mobile, show 1 card per view
+                    const cardWidth = productCards[0].offsetWidth;
+                    const slidePosition = -currentSlide * cardWidth;
+                    sliderTrack.style.transform = `translateX(${slidePosition}px)`;
+                } else {
+                    // On desktop, show 3 cards per view
+                    updateSliderPosition();
+                }
+            }
+            
+            window.addEventListener('resize', () => {
+                // Small delay to ensure DOM has updated
+                setTimeout(handleResize, 100);
+            });
+
+            // Add hover animations to cards with orange glow effect
+            productCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = `0 0 25px var(--orange-glow)`;
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = `0 15px 30px rgba(0, 0, 0, 0.5)`;
+                });
+            });
+
+            // Intersection Observer for lazy video loading
+            const videoObserverOptions = {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            };
+
+            const videoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const video = card.querySelector('.card-video');
+                        const source = video.querySelector('source');
+                        
+                        // Set the actual video source
+                        const videoSrc = source.getAttribute('data-src');
+                        source.src = videoSrc;
+                        
+                        // Load the video
+                        video.load();
+                        
+                        // Start playing the video
+                        video.play().catch(e => {
+                            console.log('Autoplay prevented:', e);
+                        });
+                        
+                        // Stop observing this element
+                        observer.unobserve(card);
+                    }
+                });
+            }, videoObserverOptions);
+
+            // Observe all product cards for video loading
+            productCards.forEach(card => {
+                videoObserver.observe(card);
+            });
+
+            // Fallback to load videos immediately if Intersection Observer is not supported
+            if (!window.IntersectionObserver) {
+                productCards.forEach(card => {
+                    const video = card.querySelector('.card-video');
+                    const source = video.querySelector('source');
+                    const videoSrc = source.getAttribute('data-src');
+                    source.src = videoSrc;
+                    video.load();
+                    video.play().catch(e => {
+                        console.log('Autoplay prevented:', e);
+                    });
+                });
+            }
+
+            // Additional performance optimization: pause videos when not in viewport
+            const handleVisibilityChange = () => {
+                // Pause all videos if the page becomes hidden
+                if (document.hidden) {
+                    document.querySelectorAll('.card-video').forEach(video => {
+                        video.pause();
+                    });
+                }
+            };
+
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+        });
+    </script>
+</body>
+</html>

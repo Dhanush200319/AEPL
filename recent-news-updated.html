@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recent News & Achievements - Updated</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        /* CSS Variables for Modern Theme */
+        :root {
+            --primary-color: #0033a0;
+            --secondary-color: #00a6d2;
+            --accent-color: #ff8c00;
+            --text-color: #000000; /* Changed to black */
+            --light-text: #f8f9fa;
+            --background-color: #f5f7fa;
+            --card-background: #ffffff;
+            --border-radius: 16px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        .news-achievements-section {
+            padding: 80px 0;
+            background-color: #0d0d0d;
+            color: var(--light-text);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Slider Container */
+        .news-slider-container {
+            position: relative;
+            overflow: hidden;
+            padding: 0 30px;
+        }
+
+        .news-slider {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Card Styles */
+        .news-slide {
+            flex: 0 0 calc((100% - 90px) / 4); /* Show 4 cards at a time with gaps */
+            display: flex;
+            justify-content: center;
+        }
+
+        .news-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: var(--border-radius);
+            border: 2px solid transparent;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-card:hover::before {
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 25px rgba(255, 140, 0, 0.5); /* Orange neon glow */
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #000000; /* Black text */
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            color: #000000; /* Black text */
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Animation for cards entering viewport */
+        .news-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .news-slide:nth-child(1) .news-card { animation: cardEntry 0.8s forwards 0.1s; }
+        .news-slide:nth-child(2) .news-card { animation: cardEntry 0.8s forwards 0.2s; }
+        .news-slide:nth-child(3) .news-card { animation: cardEntry 0.8s forwards 0.3s; }
+        .news-slide:nth-child(4) .news-card { animation: cardEntry 0.8s forwards 0.4s; }
+        .news-slide:nth-child(5) .news-card { animation: cardEntry 0.8s forwards 0.1s; } /* First duplicate */
+        .news-slide:nth-child(6) .news-card { animation: cardEntry 0.8s forwards 0.2s; }
+        .news-slide:nth-child(7) .news-card { animation: cardEntry 0.8s forwards 0.3s; }
+        .news-slide:nth-child(8) .news-card { animation: cardEntry 0.8s forwards 0.4s; }
+
+        @keyframes cardEntry {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .news-slide {
+                flex: 0 0 calc((100% - 60px) / 3); /* Show 3 cards on medium screens */
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-slide {
+                flex: 0 0 calc((100% - 30px) / 2); /* Show 2 cards on small screens */
+            }
+            
+            .news-slider-container {
+                padding: 0 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .news-slide {
+                flex: 0 0 100%; /* Show 1 card on mobile */
+            }
+            
+            .card-content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="news-achievements-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Recent News & Achievements</h2>
+                <p class="section-subtitle">Latest updates and milestones from our journey</p>
+            </div>
+
+            <div class="news-slider-container">
+                <div class="news-slider">
+                    <div class="slider-track">
+                        <!-- News Cards - Original Set -->
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/0033a0/ffffff?text=Aerospace+Innovation" alt="Excellence in Manufacturing 2024" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-warning text-dark">AWARD</div>
+                                    <h3 class="card-title">Winner: Manufacturing Excellence 2024</h3>
+                                    <p class="card-text">Recognized for innovation in aerospace components and sustainable manufacturing practices.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/00a6d2/ffffff?text=NADCAP+Accreditation" alt="NADCAP Accreditation 2022" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-success text-white">NADCAP</div>
+                                    <h3 class="card-title">NADCAP Accreditation</h3>
+                                    <p class="card-text">Achieved specialized accreditation for quality management systems and aerospace welding processes.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/ff8c00/ffffff?text=100+Clients+Milestone" alt="First 100 Clients 2019" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-info text-white">MILESTONE</div>
+                                    <h3 class="card-title">First 100 Clients</h3>
+                                    <p class="card-text">Landmark achievement demonstrating market trust and sustained growth trajectory.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/d2527f/ffffff?text=R&D+Innovation" alt="Research and Development" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-danger text-white">INNOVATION</div>
+                                    <h3 class="card-title">Advanced R&D Initiative</h3>
+                                    <p class="card-text">Leading edge research in aerospace materials and manufacturing processes.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Cards for Continuous Loop -->
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/0033a0/ffffff?text=Aerospace+Innovation" alt="Excellence in Manufacturing 2024" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-warning text-dark">AWARD</div>
+                                    <h3 class="card-title">Winner: Manufacturing Excellence 2024</h3>
+                                    <p class="card-text">Recognized for innovation in aerospace components and sustainable manufacturing practices.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/00a6d2/ffffff?text=NADCAP+Accreditation" alt="NADCAP Accreditation 2022" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-success text-white">NADCAP</div>
+                                    <h3 class="card-title">NADCAP Accreditation</h3>
+                                    <p class="card-text">Achieved specialized accreditation for quality management systems and aerospace welding processes.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/ff8c00/ffffff?text=100+Clients+Milestone" alt="First 100 Clients 2019" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-info text-white">MILESTONE</div>
+                                    <h3 class="card-title">First 100 Clients</h3>
+                                    <p class="card-text">Landmark achievement demonstrating market trust and sustained growth trajectory.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="news-slide">
+                            <div class="news-card">
+                                <img src="https://placehold.co/400x250/d2527f/ffffff?text=R&D+Innovation" alt="Research and Development" class="card-img-top">
+                                <div class="card-content">
+                                    <div class="news-badge badge bg-danger text-white">INNOVATION</div>
+                                    <h3 class="card-title">Advanced R&D Initiative</h3>
+                                    <p class="card-text">Leading edge research in aerospace materials and manufacturing processes.</p>
+                                    <a href="news.html" class="btn btn-outline">See More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select elements
+            const sliderTrack = document.querySelector('.slider-track');
+            const newsSlides = document.querySelectorAll('.news-slide');
+            const originalSlides = 4; // We have 4 original slides
+            const duplicateSlides = 4; // We have 4 duplicate slides
+
+            // Calculate width for each slide including gap
+            const slideWidth = newsSlides[0].offsetWidth;
+            const gap = 30; // From CSS
+
+            // Create seamless infinite loop using the duplicated slides
+            // First, position the slider at the start of the duplicate slides
+            gsap.set(sliderTrack, {
+                x: -(slideWidth + gap) * originalSlides
+            });
+
+            // GSAP Timeline for the infinite scroll with seamless looping
+            const tl = gsap.timeline({
+                repeat: -1,
+                paused: false,
+                defaults: { ease: "power2.inOut" },
+                onRepeat: function() {
+                    // When timeline reaches the end of the duplicated slides,
+                    // instantly jump back to the start of the original slides
+                    gsap.set(sliderTrack, {
+                        x: -(slideWidth + gap) * originalSlides
+                    });
+                }
+            });
+
+            // Calculate the distance to move to reach the end of the duplicate slides
+            const totalDistance = (slideWidth + gap) * (originalSlides + duplicateSlides);
+
+            // Animate the slider to move all the way to the end of duplicate slides
+            tl.to(sliderTrack, {
+                x: -totalDistance,
+                duration: 3, // Significantly increased speed - reduced from 8 to 3 seconds (fastest speed)
+                ease: "power1.inOut"
+            });
+
+            // Pause animation on hover
+            const newsSlider = document.querySelector('.news-slider');
+            newsSlider.addEventListener('mouseenter', () => {
+                tl.pause();
+            });
+
+            newsSlider.addEventListener('mouseleave', () => {
+                tl.resume();
+            });
+
+            // Additional card hover effects using GSAP
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {
+                        y: -10,
+                        scale: 1.02,
+                        duration: 0.3,
+                        boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
+                        ease: "power2.out"
+                    });
+
+                    // Add neon glow effect
+                    gsap.to(card, {
+                        boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2), 0 0 25px rgba(255, 140, 0, 0.5)",
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        y: 0,
+                        scale: 1,
+                        duration: 0.3,
+                        boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)",
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Update slider position on window resize for responsiveness
+            window.addEventListener('resize', () => {
+                // Reset the slider position after resize to maintain correct alignment
+                gsap.set(sliderTrack, {
+                    x: -(slideWidth + gap) * originalSlides
+                });
+            });
+        });
+    </script>
+</body>
+</html>

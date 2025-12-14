@@ -1,0 +1,2838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEPL Products - Aircraft Components & More</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            transform: scale(1.02);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .categories {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .category {
+            background: white;
+            margin-bottom: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-header i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .category-image {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .category-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 2rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '🏭';
+            font-size: 3rem;
+            animation: rotate 4s linear infinite;
+        }
+
+        .product-number {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #e53e3e;
+            color: white;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #718096;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .product-specs {
+            background: #f7fafc;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: #4a5568;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: #718096;
+            font-size: 1.2rem;
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .stagger-animation {
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        @media (max-width: 992px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .category-image img {
+                height: 180px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .search-container {
+                padding: 0 15px;
+            }
+
+            .category-image img {
+                height: 160px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                padding: 1rem;
+                gap: 15px;
+            }
+
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .category-header i {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .categories {
+                padding: 0 10px;
+            }
+
+            .product-card {
+                padding: 1.2rem;
+            }
+
+            .product-name {
+                font-size: 1rem;
+            }
+
+            .product-description {
+                font-size: 0.8rem;
+            }
+
+            .product-specs {
+                font-size: 0.75rem;
+                padding: 0.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 1.5rem 0;
+            }
+
+            .header h1 {
+                font-size: 1.7rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .search-container {
+                padding: 0 10px;
+            }
+
+            .search-box {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .category-image img {
+                height: 140px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 0.8rem;
+                gap: 12px;
+            }
+
+            .category-header {
+                padding: 0.8rem;
+            }
+
+            .category-title {
+                font-size: 1.3rem;
+            }
+
+            .product-card {
+                padding: 1rem;
+            }
+
+            .product-image {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 0.8rem;
+            }
+
+            .product-image::before {
+                font-size: 2rem;
+            }
+
+            .product-number {
+                width: 16px;
+                height: 16px;
+                font-size: 0.6rem;
+            }
+
+            .product-name {
+                font-size: 1rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .product-description {
+                font-size: 0.75rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .product-specs {
+                font-size: 0.7rem;
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .category-image img {
+                height: 120px;
+            }
+
+            .product-name {
+                font-size: 0.95rem;
+            }
+
+            .products-grid {
+                padding: 0.5rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2c5282;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><i class="fas fa-industry"></i> AEPL Products</h1>
+        <p>Precision-engineered components for Aerospace, Defense, and Beyond</p>
+
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchInput" placeholder="🔍 Search products...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+    </div>
+
+    <div class="categories" id="categoriesContainer">
+        <!-- Categories will be populated by JavaScript -->
+    </div>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                category: "AIRCRAFT COMPONENTS",
+                emoji: "🛩️",
+                icon: "fa-jet-fighter",
+                products: [
+                    {
+                        name: "Titanium Engine Mount Bracket",
+                        description: "High-strength titanium bracket used for aero-engine mounting.",
+                        features: "Lightweight, corrosion-resistant, fatigue-proof, precision machined.",
+                        specifications: "Ti-6Al-4V alloy, CNC-milled, ±0.02 mm tolerance.",
+                        useCase: "Commercial & defense aircraft engines.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232c5282'/%3E%3Cpath d='M20,30 L80,30 L85,50 L15,50 Z' fill='%23cbd5e0'/%3E%3Ccircle cx='50' cy='70' r='15' fill='%234299e1'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Composite Wing Panel",
+                        description: "Advanced composite material wing panel for enhanced aerodynamics.",
+                        features: "Lightweight, high strength-to-weight ratio, fatigue resistant.",
+                        specifications: "Carbon fiber reinforced polymer, autoclave cured.",
+                        useCase: "Commercial and military aircraft wings.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M10,50 Q50,20 90,50 Q50,80 10,50' fill='%23cbd5e0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Flight Control Linkage Rod",
+                        description: "Critical flight control system component ensuring precise movement transmission.",
+                        features: "Precision engineered, high reliability, wear resistant.",
+                        specifications: "Aero-grade steel, surface treated, custom lengths available.",
+                        useCase: "Primary flight control systems in aircraft.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cline x1='20' y1='50' x2='80' y2='50' stroke='%23cbd5e0' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='50' r='8' fill='%23e2e8f0'/%3E%3Ccircle cx='80' cy='50' r='8' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Hydraulic System Valve Body",
+                        description: "Hydraulic valve body for controlling fluid flow in aircraft systems.",
+                        features: "Leak-proof design, pressure rated, temperature stable.",
+                        specifications: "Stainless steel construction, 3000 PSI rating.",
+                        useCase: "Landing gear, flight controls, and utility systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='25' y='30' width='50' height='40' rx='5' fill='%23e2e8f0'/%3E%3Ccircle cx='20' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='80' cy='50' r='5' fill='%23718096'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Fuel Pump Housing",
+                        description: "Robust fuel pump housing for reliable fuel delivery systems.",
+                        features: "Sealed design, anti-corrosive coating, vibration resistant.",
+                        specifications: "Aluminum alloy, IP67 rated, custom configurations.",
+                        useCase: "Aircraft fuel systems and pumps.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23cbd5e0'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Landing Gear Bush",
+                        description: "High-performance bushings for landing gear applications.",
+                        features: "Self-lubricating, wear resistant, shock absorbing.",
+                        specifications: "Bronze-graphite composite, custom bore sizes.",
+                        useCase: "Aircraft landing gear assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%232d3748'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Airframe Fastener Set",
+                        description: "Complete set of high-grade fasteners for airframe assembly.",
+                        features: "Pre-tensioned, corrosion resistant, torque-specified.",
+                        specifications: "A286, Ti-6Al-4V, Inconel materials, various sizes.",
+                        useCase: "Structural fastening in aircraft assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='40' y='20' width='20' height='60' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='15' r='8' fill='%23a0aec0'/%3E%3Ccircle cx='50' cy='85' r='8' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Engine Casing Seal",
+                        description: "Critical seal for engine casing assemblies ensuring safety.",
+                        features: "High temperature resistant, leak-proof, durable.",
+                        specifications: "Nickel-based superalloy, dual-seal design.",
+                        useCase: "Turbofan and turboprop engine casings.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23e2e8f0' stroke-width='8'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23a0aec0' stroke-width='5'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Cabin Pressure Regulator Part",
+                        description: "Component for maintaining optimal cabin pressure control.",
+                        features: "Precision controlled, fail-safe, calibrated.",
+                        specifications: "Pressure range: 0-15 psi, accuracy ±0.1 psi.",
+                        useCase: "Environmental control systems in pressurized cabins.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='30' y='40' width='40' height='20' fill='%23e2e8f0' rx='3'/%3E%3Crect x='20' y='45' width='10' height='10' fill='%23a0aec0' rx='2'/%3E%3Crect x='70' y='45' width='10' height='10' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "ECS Duct Component",
+                        description: "Environmental Control System ducting for air circulation.",
+                        features: "Corrosion resistant, smooth flow path, lightweight.",
+                        specifications: "Aluminum or composite materials, custom diameters.",
+                        useCase: "Aircraft climate control and life support systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M20,30 L80,30 L80,70 L20,70 Z' fill='none' stroke='%23e2e8f0' stroke-width='8'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Avionics Mounting Tray",
+                        description: "Secure mounting platform for avionics equipment.",
+                        features: "Shock isolated, EMI shielded, tool-less removal.",
+                        specifications: "Aluminum honeycomb construction, 28V compatible.",
+                        useCase: "Cockpit and avionics bay installations.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='15' y='30' width='70' height='40' fill='%23e2e8f0' rx='3'/%3E%3Crect x='20' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='40' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='60' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Sensor Housing",
+                        description: "Protective housing for critical aircraft sensors.",
+                        features: "Weatherproof, temperature stable, EMI protected.",
+                        specifications: "Aluminum with protective coatings, IP68 rated.",
+                        useCase: "Various sensor installations on aircraft.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Turbine Blade Spacer",
+                        description: "Precision spacers for turbine blade assemblies.",
+                        features: "Dimensionally stable, temperature resistant, balanced.",
+                        specifications: "Superalloy material, tight tolerance ±0.01mm.",
+                        useCase: "Jet engine turbine section maintenance.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='30' y='40' width='40' height='20' fill='%23e2e8f0' rx='10'/%3E%3Ccircle cx='40' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='60' cy='50' r='5' fill='%23718096'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Anti-Vibration Rubber Damper",
+                        description: "Reduces vibration and noise in aircraft structures.",
+                        features: "High damping coefficient, temperature stable, long-life.",
+                        specifications: "Nitrile rubber compound, -55°C to +125°C.",
+                        useCase: "Engine mounts, equipment isolation.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M20,50 Q30,30 40,50 Q50,70 60,50 Q70,30 80,50' fill='none' stroke='%23e2e8f0' stroke-width='6'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Brake System Piston",
+                        description: "High-pressure piston for aircraft brake systems.",
+                        features: "Hard anodized, sealed, pressure rated.",
+                        specifications: "Aluminum alloy, 3000 psi capability.",
+                        useCase: "Aircraft wheel brake actuation systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23e2e8f0' rx='20'/%3E%3Crect x='45' y='15' width='10' height='20' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Nose Landing Gear Sleeve",
+                        description: "Aerodynamic sleeve for nose landing gear fairing.",
+                        features: "Streamlined shape, weather resistant, easy installation.",
+                        specifications: "Composite material, UV stabilized.",
+                        useCase: "Nose landing gear environmental protection.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M20,50 C30,30 70,30 80,50 C70,70 30,70 20,50' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Electrical Connector Shield",
+                        description: "EMI/RFI shielding for electrical connectors.",
+                        features: "Conductive coating, lightweight, corrosion resistant.",
+                        specifications: "Aluminum with conductive paint, Mil-Spec compliant.",
+                        useCase: "Avionics and electrical system connections.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='25' y='35' width='50' height='30' fill='%23e2e8f0' rx='5'/%3E%3Crect x='20' y='40' width='10' height='20' fill='%23a0aec0'/%3E%3Crect x='70' y='40' width='10' height='20' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Pitot Tube Support Frame",
+                        description: "Support frame for pitot-static tube installations.",
+                        features: "Rigid mounting, vibration isolated, weatherproof.",
+                        specifications: "Stainless steel, custom mounting patterns.",
+                        useCase: "Airspeed measurement system installations.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='30' r='8' fill='%23e2e8f0'/%3E%3Cline x1='50' y1='38' x2='50' y2='70' stroke='%23e2e8f0' stroke-width='4'/%3E%3Crect x='40' y='70' width='20' height='10' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Engine Oil Seal",
+                        description: "Critical oil containment seal for aircraft engines.",
+                        features: "High temperature, pressure rated, long-life.",
+                        specifications: "Fluorocarbon elastomer, 200°C continuous duty.",
+                        useCase: "Engine oil systems and compartments.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%232d3748'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aero Bearing Retainer",
+                        description: "Precision retainer for aerospace bearing assemblies.",
+                        features: "Low friction, wear resistant, temperature stable.",
+                        specifications: "Phenolic resin or carbon steel with coatings.",
+                        useCase: "Control surface and rotating equipment.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%232d3748'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Fuel Line Coupler",
+                        description: "Quick-disconnect coupler for aircraft fuel systems.",
+                        features: "Leak-proof, self-sealing, pressure tested.",
+                        specifications: "Stainless steel, 3000 PSI rated, Teflon seals.",
+                        useCase: "Fuel system maintenance and service.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='40' width='25' height='20' fill='%23e2e8f0' rx='3'/%3E%3Crect x='55' y='40' width='25' height='20' fill='%23e2e8f0' rx='3'/%3E%3Crect x='45' y='45' width='10' height='10' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Composite Tail Section Panel",
+                        description: "Advanced composite panel for aircraft tail sections.",
+                        features: "Lightweight, structural integrity, fatigue resistant.",
+                        specifications: "Carbon fiber with epoxy matrix, lightning strike protection.",
+                        useCase: "Horizontal and vertical stabilizer applications.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M80,20 L90,50 L80,80 L20,65 L10,50 L20,35 Z' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aero-Grade Spacer Ring",
+                        description: "Precision spacer ring for aerospace assemblies.",
+                        features: "Dimensionally accurate, wear resistant, corrosion proof.",
+                        specifications: "Stainless steel, titanium, or Inconel options.",
+                        useCase: "Various structural and mechanical assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%232d3748'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Cockpit Control Knob Assembly",
+                        description: "Ergonomic control knobs for cockpit instrumentation.",
+                        features: "Tactile feedback, illuminated options, wear resistant.",
+                        specifications: "Anodized aluminum, various detent configurations.",
+                        useCase: "Cockpit control panels and switches.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23a0aec0'/%3E%3Cline x1='50' y1='20' x2='50' y2='35' stroke='%23718096' stroke-width='3'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Jet Intake Rubber Seal",
+                        description: "Flexible sealing system for jet engine intakes.",
+                        features: "Temperature resistant, flexible, vibration dampening.",
+                        specifications: "Silicone rubber, -65°C to +200°C range.",
+                        useCase: "Engine intake and environmental barriers.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M15,50 Q30,30 50,30 Q70,30 85,50 Q70,70 50,70 Q30,70 15,50' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Structural Support Bracket",
+                        description: "Heavy-duty bracket for structural support applications.",
+                        features: "High load capacity, fatigue resistant, corrosion protected.",
+                        specifications: "Aero-grade steel or aluminum, custom configurations.",
+                        useCase: "Various structural mounting applications.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M20,20 L80,20 L80,80 L60,80 L60,40 L20,40 Z' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Wing Rib Reinforcement",
+                        description: "Reinforcement for wing rib structures enhancing strength.",
+                        features: "Weight optimized, strength enhanced, fatigue improved.",
+                        specifications: "Aluminum alloy, custom geometries available.",
+                        useCase: "Wing structural reinforcement and repair.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M20,80 L20,20 L80,30 L80,90 Z' fill='%23e2e8f0'/%3E%3Cline x1='20' y1='20' x2='80' y2='30' stroke='%23a0aec0' stroke-width='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Bleed-Air System Fitting",
+                        description: "Fittings for aircraft bleed-air distribution systems.",
+                        features: "Pressure rated, temperature tolerant, leak-free.",
+                        specifications: "Stainless steel, 1500 PSI, 450°F rated.",
+                        useCase: "Environmental control and pneumatic systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='30' y='40' width='40' height='20' fill='%23e2e8f0' rx='3'/%3E%3Ccircle cx='30' cy='50' r='5' fill='%23a0aec0'/%3E%3Ccircle cx='70' cy='50' r='5' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Cabin Air Vent Frame",
+                        description: "Structured frame for cabin air ventilation systems.",
+                        features: "Corrosion resistant, flame retardant, aerodynamic.",
+                        specifications: "Aluminum construction, custom aperture patterns.",
+                        useCase: "Cabin environmental comfort systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='20' width='60' height='60' fill='none' stroke='%23e2e8f0' stroke-width='5'/%3E%3Cline x1='20' y1='40' x2='80' y2='40' stroke='%23a0aec0' stroke-width='2'/%3E%3Cline x1='20' y1='60' x2='80' y2='60' stroke='%23a0aec0' stroke-width='2'/%3E%3Cline x1='40' y1='20' x2='40' y2='80' stroke='%23a0aec0' stroke-width='2'/%3E%3Cline x1='60' y1='20' x2='60' y2='80' stroke='%23a0aec0' stroke-width='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Rotor Structural Insert",
+                        description: "Critical insert for rotor system structural integrity.",
+                        features: "High strength, fatigue resistant, precision fit.",
+                        specifications: "Titanium alloy, aerospace grade, non-magnetic.",
+                        useCase: "Helicopter and rotorcraft applications.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='25' y='40' width='50' height='20' fill='%23e2e8f0' rx='3'/%3E%3Ccircle cx='35' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='65' cy='50' r='5' fill='%23718096'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Avionics Mounting Trays",
+                        description: "Additional mounting platforms for avionics systems.",
+                        features: "EMI-shielded, shock-absorbed, temperature controlled.",
+                        specifications: "Aluminum honeycomb with conductive coating.",
+                        useCase: "Advanced avionics installations.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='15' y='25' width='70' height='50' fill='%23e2e8f0' rx='3'/%3E%3Crect x='20' y='30' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='40' y='30' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='60' y='30' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='20' y='45' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='40' y='45' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='60' y='45' width='15' height='10' fill='%23718096' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Engine Mounting Hardware",
+                        description: "Complete hardware kit for engine mounting systems.",
+                        features: "Pre-tensioned, vibration isolated, maintenance friendly.",
+                        specifications: "Aerospace-grade fasteners and washers.",
+                        useCase: "Engine installation and overhaul.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='30' r='12' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='70' r='12' fill='%23e2e8f0'/%3E%3Crect x='45' y='42' width='10' height='16' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Flight Control Actuators",
+                        description: "Precision actuators for flight control surfaces.",
+                        features: "Electro-hydraulic, digital control, fault tolerant.",
+                        specifications: "±0.1° accuracy, 10 million cycle life.",
+                        useCase: "Primary flight control systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='40' width='60' height='20' fill='%23e2e8f0' rx='3'/%3E%3Ccircle cx='25' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='75' cy='50' r='5' fill='%23718096'/%3E%3Crect x='40' y='30' width='20' height='10' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Lighting Components",
+                        description: "LED lighting systems for aircraft navigation and interior.",
+                        features: "Energy efficient, long-life, dimmable.",
+                        specifications: "DO-160 certified, 50,000 hour life.",
+                        useCase: "Position lights, strobes, and cabin lighting.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M50,20 L60,40 L80,40 L65,55 L80,70 L60,70 L50,90 L40,70 L20,70 L35,55 L20,40 L40,40 Z' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='55' r='8' fill='%23ffd700'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Hydraulic Reservoir Assemblies",
+                        description: "Complete reservoir systems for aircraft hydraulics.",
+                        features: "Level sensing, air pressurization, self-sealing.",
+                        specifications: "10-gallon capacity, 3000 PSI rated.",
+                        useCase: "Primary and backup hydraulic systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='25' y='25' width='50' height='50' fill='%23e2e8f0' rx='5'/%3E%3Crect x='40' y='15' width='20' height='10' fill='%23a0aec0' rx='3'/%3E%3Ccircle cx='35' cy='40' r='5' fill='%23718096'/%3E%3Ccircle cx='65' cy='40' r='5' fill='%23718096'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Environmental Control Valves",
+                        description: "Precision valves for cabin environmental systems.",
+                        features: "Proportional control, PID algorithm, smart diagnostics.",
+                        specifications: "Stainless steel, 0-100% modulation.",
+                        useCase: "Cabin pressurization and air conditioning.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='25' y='35' width='50' height='30' fill='%23e2e8f0' rx='5'/%3E%3Ccircle cx='20' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='80' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='50' cy='30' r='5' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Landing Gear Position Sensors",
+                        description: "Sensors to monitor landing gear position.",
+                        features: "Fail-safe, redundancy, EMI immune.",
+                        specifications: "Dual output, 10 million operations.",
+                        useCase: "Gear position indication and safety systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='30' y='40' width='40' height='20' fill='%23e2e8f0' rx='3'/%3E%3Ccircle cx='35' cy='50' r='5' fill='%234299e1'/%3E%3Ccircle cx='65' cy='50' r='5' fill='%234299e1'/%3E%3Crect x='45' y='25' width='10' height='15' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Fuel Quantity Indication Systems",
+                        description: "Complete fuel quantity indication systems.",
+                        features: "Digital display, fuel calculation, warning systems.",
+                        specifications: "±1% accuracy, multiple tank support.",
+                        useCase: "Fuel management and indication.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='30' width='60' height='40' fill='%23e2e8f0' rx='3'/%3E%3Crect x='25' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='60' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='25' y='50' width='50' height='5' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Tire Pressure Monitors",
+                        description: "Wireless tire pressure monitoring systems.",
+                        features: "Real-time monitoring, wireless transmission, battery powered.",
+                        specifications: "0-150 PSI, 5-year battery life.",
+                        useCase: "Landing gear tire monitoring.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='25' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%23a0aec0'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%234299e1'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Engine Vibration Monitoring Systems",
+                        description: "Complete engine vibration monitoring package.",
+                        features: "Multi-axis, spectral analysis, predictive maintenance.",
+                        specifications: "0.01g resolution, 10kHz bandwidth.",
+                        useCase: "Engine health monitoring.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%23e2e8f0' rx='3'/%3E%3Cpath d='M30,50 Q40,40 50,50 Q60,60 70,50' fill='none' stroke='%23718096' stroke-width='2'/%3E%3Crect x='40' y='35' width='20' height='5' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Cargo Tie-Downs",
+                        description: "High-strength tie-downs for cargo securing.",
+                        features: "Load rated, corrosion resistant, quick release.",
+                        specifications: "5000 lb capacity, stainless steel hardware.",
+                        useCase: "Freight aircraft cargo securing.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='45' width='60' height='10' fill='%23e2e8f0' rx='2'/%3E%3Ccircle cx='25' cy='50' r='5' fill='%23718096'/%3E%3Ccircle cx='75' cy='50' r='5' fill='%23718096'/%3E%3Cline x1='40' y1='35' x2='40' y2='65' stroke='%23a0aec0' stroke-width='3'/%3E%3Cline x1='60' y1='35' x2='60' y2='65' stroke='%23a0aec0' stroke-width='3'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Emergency Oxygen Generators",
+                        description: "Chemical oxygen generators for emergency systems.",
+                        features: "Automatic deployment, 20-minute supply, safe disposal.",
+                        specifications: "100% oxygen purity, 1500+ liters output.",
+                        useCase: "Emergency oxygen systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='30' y='30' width='40' height='40' fill='%23e2e8f0' rx='5'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%2348bb78'/%3E%3Cpath d='M45,45 L55,45 L55,55 L45,55 Z' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Interior Panels",
+                        description: "Customizable interior panels for cabin aesthetics.",
+                        features: "Fire resistant, acoustic, easy maintenance.",
+                        specifications: "Class A burn resistance, lightweight composite.",
+                        useCase: "Passenger cabin interior.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='15' y='15' width='70' height='70' fill='%23e2e8f0' rx='3'/%3E%3Crect x='25' y='25' width='20' height='20' fill='%23a0aec0' rx='2'/%3E%3Crect x='55' y='25' width='20' height='20' fill='%23a0aec0' rx='2'/%3E%3Crect x='25' y='55' width='45' height='20' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Flight Data Recorder Components",
+                        description: "Components for flight data recording systems.",
+                        features: "Crash survive, fire resistant, impact protected.",
+                        specifications: "25-hour recording, underwater locator beacon.",
+                        useCase: "Flight data and cockpit voice recorders.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='30' width='60' height='40' fill='%23e53e3e' rx='5'/%3E%3Crect x='25' y='35' width='50' height='5' fill='%23ffffff' rx='2'/%3E%3Crect x='25' y='45' width='50' height='5' fill='%23ffffff' rx='2'/%3E%3Crect x='25' y='55' width='50' height='5' fill='%23ffffff' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Ice Protection Elements",
+                        description: "Electro-thermal elements for ice protection.",
+                        features: "Self-regulating, energy efficient, long-life.",
+                        specifications: "200°C surface temperature, 50,000 hour life.",
+                        useCase: "Wing and tail ice protection.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Cpath d='M20,50 Q30,30 50,30 Q70,30 80,50 Q70,70 50,70 Q30,70 20,50' fill='%23e2e8f0'/%3E%3Cpath d='M30,50 Q40,40 50,40 Q60,40 70,50 Q60,60 50,60 Q40,60 30,50' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Accessory Gearboxes",
+                        description: "Gearboxes for driving aircraft accessories.",
+                        features: "High reduction ratio, oil lubricated, maintenance free.",
+                        specifications: "100 HP input, 2500 RPM output.",
+                        useCase: "Generator, pump and compressor drives.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='25' y='30' width='50' height='40' fill='%23e2e8f0' rx='5'/%3E%3Ccircle cx='30' cy='40' r='5' fill='%23718096'/%3E%3Ccircle cx='70' cy='40' r='5' fill='%23718096'/%3E%3Ccircle cx='50' cy='60' r='8' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Wheel Bearing Assemblies",
+                        description: "High-performance bearing assemblies for aircraft wheels.",
+                        features: "Sealed, lubricated-for-life, contamination resistant.",
+                        specifications: "300 mph rated, 20,000 hour life.",
+                        useCase: "Main and nose landing gear wheels.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%23718096'/%3E%3Ccircle cx='50' cy='50' r='5' fill='%232d3748'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Brake Control Units",
+                        description: "Electronic brake control units for aircraft systems.",
+                        features: "Anti-skid, automatic braking, wheel speed monitoring.",
+                        specifications: "3-channel, MIL-STD-704 power input.",
+                        useCase: "Aircraft brake systems control.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Crect x='20' y='30' width='60' height='40' fill='%23e2e8f0' rx='3'/%3E%3Crect x='25' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3Crect x='60' y='35' width='15' height='10' fill='%23718096' rx='2'/%3E%3Ccircle cx='40' cy='55' r='5' fill='%23a0aec0'/%3E%3Ccircle cx='60' cy='55' r='5' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Aircraft Weather Radar Components",
+                        description: "Components for aircraft weather radar systems.",
+                        features: "Storm detection, windshear warning, turbulence mapping.",
+                        specifications: "X-band, 300 nm range, color display.",
+                        useCase: "Weather avoidance and navigation.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%234299e1'/%3E%3Ccircle cx='50' cy='50' r='25' fill='none' stroke='%23e2e8f0' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='15' fill='none' stroke='%23e2e8f0' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='5' fill='none' stroke='%23e2e8f0' stroke-width='1'/%3E%3Cline x1='50' y1='25' x2='50' y2='15' stroke='%234299e1' stroke-width='2'/%3E%3C/svg%3E"
+                    }
+                ]
+            },
+            {
+                category: "DEFENSE & MISSILE SYSTEMS",
+                emoji: "🛡️",
+                icon: "fa-bolt",
+                products: [
+                    {
+                        name: "Missile Nose Cone Shell",
+                        description: "Aerodynamically designed nose cone for missile applications.",
+                        features: "Radar transparent, high-speed stability, impact resistant.",
+                        specifications: "Composite materials, Mach 4 capability.",
+                        useCase: "Strategic and tactical missile systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M50,10 L80,40 L80,90 L20,90 L20,40 Z' fill='%23f56565'/%3E%3Ccircle cx='50' cy='30' r='8' fill='%232d3748'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Radar Antenna Housing",
+                        description: "Protective housing for radar antenna systems.",
+                        features: "EMI/RFI shielding, weatherproof, lightweight.",
+                        specifications: "Carbon fiber with conductive coating, IP67 rated.",
+                        useCase: "Military radar and surveillance systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23f56565'/%3E%3Cpath d='M30,50 Q40,30 50,30 Q60,30 70,50 Q60,70 50,70 Q40,70 30,50' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Guidance System Frame",
+                        description: "Mounting frame for precision guidance systems.",
+                        features: "Shock isolated, thermally stable, EMI protected.",
+                        specifications: "Titanium construction, temperature compensated.",
+                        useCase: "Missile guidance and navigation systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%23f56565' rx='5'/%3E%3Crect x='30' y='35' width='15' height='10' fill='%232d3748' rx='2'/%3E%3Crect x='55' y='35' width='15' height='10' fill='%232d3748' rx='2'/%3E%3Crect x='30' y='55' width='40' height='10' fill='%232d3748' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Seeker Sensor Mount",
+                        description: "Precision mount for infrared and radar seekers.",
+                        features: "Gimbal stabilized, vibration isolated, servo controlled.",
+                        specifications: "High precision bearings, ±0.1° accuracy.",
+                        useCase: "Missile seeker head assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23f56565'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%23e2e8f0'/%3E%3Cline x1='50' y1='30' x2='50' y2='70' stroke='%232d3748' stroke-width='2'/%3E%3Cline x1='30' y1='50' x2='70' y2='50' stroke='%232d3748' stroke-width='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Launcher Interface Bracket",
+                        description: "Interface bracket for missile launching systems.",
+                        features: "Quick release, electromagnetic compatibility, robust.",
+                        specifications: "Steel alloy, Mil-Spec, shock tested.",
+                        useCase: "Ground and shipboard missile launchers.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M20,30 L80,30 L80,70 L60,70 L60,50 L40,50 L40,70 L20,70 Z' fill='%23f56565'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Thermal Barrier Plate",
+                        description: "Thermal protection for sensitive electronic systems.",
+                        features: "High temperature resistance, low thermal conductivity.",
+                        specifications: "Ceramic composites, 1000°C capability.",
+                        useCase: "Engine nacelles and hot section protection.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='15' y='25' width='70' height='50' fill='%23f56565' rx='3'/%3E%3Crect x='25' y='30' width='15' height='5' fill='%23e2e8f0' rx='2'/%3E%3Crect x='60' y='30' width='15' height='5' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='45' width='50' height='5' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='60' width='30' height='5' fill='%23e2e8f0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Warhead Casing Insert",
+                        description: "Precision insert for warhead casing applications.",
+                        features: "Explosive safe, fragmentation controlled, secure fitting.",
+                        specifications: "Aramid fiber, Kevlar reinforced.",
+                        useCase: "Safety and arming devices for warheads.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='30' y='40' width='40' height='20' fill='%23f56565' rx='10'/%3E%3Ccircle cx='40' cy='50' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='60' cy='50' r='5' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Shock-Absorbing Seal",
+                        description: "High-dampening seal for shock protection.",
+                        features: "High energy absorption, vibration isolation, long-life.",
+                        specifications: "Polyurethane elastomer, 100J/cm² impact resistance.",
+                        useCase: "Sensitive instrument and electronic protection.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M20,50 Q30,30 40,50 Q50,70 60,50 Q70,30 80,50' fill='none' stroke='%23f56565' stroke-width='8'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Electronic Warfare Box Housing",
+                        description: "EMI-shielded housing for EW systems.",
+                        features: "Faraday cage effect, EMI gaskets, grounding provisions.",
+                        specifications: "Aluminum with nickel coating, 40dB attenuation.",
+                        useCase: "Electronic countermeasures and jamming systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%23f56565' rx='3'/%3E%3Crect x='25' y='30' width='15' height='10' fill='%23e2e8f0' rx='2'/%3E%3Crect x='60' y='30' width='15' height='10' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='45' width='50' height='10' fill='%23e2e8f0' rx='2'/%3E%3Crect x='40' y='60' width='20' height='8' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Composite Missile Fin",
+                        description: "Aerodynamic fin for missile stability and control.",
+                        features: "Low drag, high strength, radar reflective signature.",
+                        specifications: "Carbon fiber with ablative coating.",
+                        useCase: "Surface-to-air and air-to-air missiles.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M80,50 L20,30 L20,70 Z' fill='%23f56565'/%3E%3Cpath d='M60,50 L20,40 L20,60 Z' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Control Actuator Body",
+                        description: "Housing for missile control surface actuators.",
+                        features: "High bandwidth, precise positioning, rapid response.",
+                        specifications: "Titanium alloy, 200Hz bandwidth, ±0.05° resolution.",
+                        useCase: "Flight control actuator assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='30' y='35' width='40' height='30' fill='%23f56565' rx='5'/%3E%3Ccircle cx='25' cy='50' r='8' fill='%23e2e8f0'/%3E%3Ccircle cx='75' cy='50' r='8' fill='%23e2e8f0'/%3E%3Crect x='40' y='25' width='20' height='10' fill='%23a0aec0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Propellant Valve Assembly",
+                        description: "Precision valve for propellant flow control.",
+                        features: "Fast acting, leak-proof, propellant compatible.",
+                        specifications: "Stainless steel, 5000 PSI, cryogenic capable.",
+                        useCase: "Solid and liquid rocket motor systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='25' y='35' width='50' height='30' fill='%23f56565' rx='5'/%3E%3Ccircle cx='20' cy='50' r='8' fill='%23e2e8f0'/%3E%3Ccircle cx='80' cy='50' r='8' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='30' r='8' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Military Connector Seal",
+                        description: "Environmental sealing for military connectors.",
+                        features: "Pressure sealing, chemical resistant, vibration proof.",
+                        specifications: "Viton O-ring, IP68 rated, -55°C to 200°C.",
+                        useCase: "Harsh environment military connections.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='25' y='40' width='50' height='20' fill='%23f56565' rx='3'/%3E%3Ccircle cx='30' cy='50' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='70' cy='50' r='5' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Inertial Navigation Frame",
+                        description: "Stable platform for inertial navigation systems.",
+                        features: "Thermally stable, vibration isolated, precision mounted.",
+                        specifications: "Invar alloy, low expansion coefficient.",
+                        useCase: "INS and IMU mounting platforms.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%23f56565' rx='5'/%3E%3Ccircle cx='40' cy='40' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='60' cy='40' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='40' cy='60' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='60' cy='60' r='5' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Payload Bay Cover",
+                        description: "Secure cover for missile payload bays.",
+                        features: "Pyrotechnic separation, environmental seal, lightweight.",
+                        specifications: "Composite materials, explosive bolt interface.",
+                        useCase: "Missile payload bay access panels.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='15' y='30' width='70' height='40' fill='%23f56565' rx='5'/%3E%3Crect x='20' y='35' width='60' height='8' fill='%23e2e8f0' rx='2'/%3E%3Ccircle cx='30' cy='50' r='4' fill='%23a0aec0'/%3E%3Ccircle cx='70' cy='50' r='4' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "RF Shielding Plate",
+                        description: "Radio frequency shielding for sensitive systems.",
+                        features: "EMI suppression, ground plane, thermal management.",
+                        specifications: "Copper-clad aluminum, 60dB RF attenuation.",
+                        useCase: "Secure communications and electronics.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%23f56565' rx='3'/%3E%3Crect x='25' y='30' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='45' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='60' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Thermal Expansion Ring",
+                        description: "Compensates for thermal expansion in assemblies.",
+                        features: "Variable stiffness, temperature adaptive, wear resistant.",
+                        specifications: "Shape memory alloy, 20-30% strain recovery.",
+                        useCase: "High-temperature aerospace assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Ccircle cx='50' cy='50' r='35' fill='%23f56565'/%3E%3Ccircle cx='50' cy='50' r='25' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='50' r='15' fill='%23a0aec0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Ballistic Pressure Plug",
+                        description: "Seals for ballistic and high-pressure applications.",
+                        features: "Explosive-proof, pressure-rated, quick installation.",
+                        specifications: "Aramid composite, 10,000 PSI rating.",
+                        useCase: "Cannon and mortar systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='35' y='40' width='30' height='20' fill='%23f56565' rx='3'/%3E%3Ccircle cx='50' cy='35' r='8' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='65' r='8' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Missile Aft Section Seal",
+                        description: "Sealing system for rear missile sections.",
+                        features: "Aerothermal protection, flexible mounting, long-life.",
+                        specifications: "Silicone rubber, 400°C continuous duty.",
+                        useCase: "Motor nozzle and exhaust interfaces.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M20,50 Q30,30 50,30 Q70,30 80,50 Q70,70 50,70 Q30,70 20,50' fill='%23f56565'/%3E%3Cpath d='M30,50 Q40,40 50,40 Q60,40 70,50 Q60,60 50,60 Q40,60 30,50' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "High-Temperature Rubber Sleeve",
+                        description: "Flexible coupling for high-temperature systems.",
+                        features: "Heat resistant, vibration damping, chemically stable.",
+                        specifications: "Fluorosilicone rubber, 300°C capability.",
+                        useCase: "Engine exhaust and hot gas systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='25' y='40' width='50' height='20' fill='none' stroke='%23f56565' stroke-width='8' rx='10'/%3E%3Ccircle cx='30' cy='50' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='70' cy='50' r='5' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Navigation System Spacer",
+                        description: "Precision spacers for navigation system assemblies.",
+                        features: "Non-magnetic, dimensionally stable, EMI neutral.",
+                        specifications: "Titanium or ceramic materials, tight tolerances.",
+                        useCase: "INS, GPS, and navigation sensor assemblies.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='30' y='45' width='40' height='10' fill='%23f56565' rx='2'/%3E%3Ccircle cx='40' cy='50' r='4' fill='%23e2e8f0'/%3E%3Ccircle cx='60' cy='50' r='4' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Combat System Bracket",
+                        description: "Mounting solutions for combat mission systems.",
+                        features: "Rugged construction, shock tested, vibration proof.",
+                        specifications: "Steel alloy, Mil-Spec compliance, 15g shock rated.",
+                        useCase: "Mission computer and display mounting.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M20,25 L80,25 L80,75 L60,75 L60,45 L40,45 L40,75 L20,75 Z' fill='%23f56565'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Defense-Grade Bolt Set",
+                        description: "High-strength fasteners for defense applications.",
+                        features: "Aerospace grade, thread locking, corrosion proof.",
+                        specifications: "A286 or MP353 alloys, 200 ksi tensile strength.",
+                        useCase: "Critical structural fastening in military hardware.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='45' y='20' width='10' height='60' fill='%23f56565'/%3E%3Ccircle cx='50' cy='18' r='8' fill='%23e2e8f0'/%3E%3Ccircle cx='50' cy='82' r='8' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Launcher Rail Guide",
+                        description: "Precise guidance for missile launch rails.",
+                        features: "Low friction, wear resistant, temperature stable.",
+                        specifications: "Hardened steel with Teflon coating, custom profiles.",
+                        useCase: "Ground vehicle and shipboard launch systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='15' y='45' width='70' height='10' fill='%23f56565' rx='2'/%3E%3Ccircle cx='25' cy='50' r='5' fill='%23e2e8f0'/%3E%3Ccircle cx='75' cy='50' r='5' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Composite Tail Fin",
+                        description: "Advanced composite tail fins for projectiles.",
+                        features: "Aerodynamic efficiency, lightweight, structural integrity.",
+                        specifications: "Carbon fiber with phenolic resin, supersonic capable.",
+                        useCase: "Artillery shells and rocket projectiles.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cpath d='M20,50 L80,30 L80,70 Z' fill='%23f56565'/%3E%3Cpath d='M40,50 L80,40 L80,60 Z' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Missile Casing Reinforcement",
+                        description: "Structural enhancement for missile casings.",
+                        features: "Burst pressure increase, fatigue improvement, weight optimized.",
+                        specifications: "Composite wrap, 2x burst pressure improvement.",
+                        useCase: "Solid rocket motor and warhead casings.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='20' y='30' width='60' height='40' fill='%23f56565' rx='3'/%3E%3Crect x='25' y='35' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='47' width='50' height='6' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='57' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Actuator Arm Support",
+                        description: "Support structure for high-force actuators.",
+                        features: "High load capacity, precision pivot points, wear compensation.",
+                        specifications: "Stainless steel, spherical bearings, 5000 lb load.",
+                        useCase: "Aerodynamic control surface actuators.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Cline x1='20' y1='50' x2='80' y2='50' stroke='%23f56565' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='20' cy='50' r='10' fill='%23e2e8f0'/%3E%3Ccircle cx='80' cy='50' r='10' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "High-Temperature O-Ring",
+                        description: "Sealing rings for extreme temperature environments.",
+                        features: "Chemical resistance, wide temperature range, long-life.",
+                        specifications: "Perfluoroelastomer, -200°C to 327°C range.",
+                        useCase: "Rocket engines and high-temperature systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23f56565'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23e2e8f0'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Shock-Load Absorber",
+                        description: "Energy management for high-impact loads.",
+                        features: "Tunable stiffness, energy dissipation, reset capability.",
+                        specifications: "Hydraulic damper with shear pins, 100kN peak force.",
+                        useCase: "Parachute deployment and crash landing systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='40' y='20' width='20' height='60' fill='%23f56565' rx='3'/%3E%3Crect x='35' y='30' width='30' height='10' fill='%23e2e8f0' rx='2'/%3E%3Crect x='35' y='60' width='30' height='10' fill='%23e2e8f0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Ballistic Shield Plate",
+                        description: "Lightweight armor for personnel and equipment protection.",
+                        features: "Multi-hit capability, backface signature reduction, modular.",
+                        specifications: "Ceramic composite with aramid backing, Level III+ rated.",
+                        useCase: "Personal armor and vehicle protection systems.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23e53e3e'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%23f56565' rx='20'/%3E%3Crect x='25' y='35' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='47' width='50' height='6' fill='%23e2e8f0' rx='2'/%3E%3Crect x='25' y='57' width='50' height='8' fill='%23e2e8f0' rx='2'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Missile Guidance Computer Housing",
+                        description: "Rugged housing for missile guidance computers.",
+                        features: "Shock mounted, temperature controlled, EMI shielded.",
+                        specifications: "Aluminum with thermal interface, 10,000g shock rated.",
+                        useCase: "Guidance and navigation computer protection."
+                    },
+                    {
+                        name: "Ballistic Target Simulation Systems",
+                        description: "Target simulation systems for ballistic testing.",
+                        features: "Radar signature, flight profile simulation, telemetry.",
+                        specifications: "Subsonic to hypersonic speed range, 500 kg mass.",
+                        useCase: "Missile system testing and evaluation."
+                    },
+                    {
+                        name: "Military Vehicle Armor Components",
+                        description: "Integrated armor components for military vehicles.",
+                        features: "Multilayer protection, blast resistant, lightweight.",
+                        specifications: "Ceramic tiles with UHMWPE backing, STANAG 4569 rated.",
+                        useCase: "MRAP and combat vehicle protection."
+                    },
+                    {
+                        name: "Explosive Ordnance Disposal Tools",
+                        description: "Robotic systems for EOD operations.",
+                        features: "Remote operation, high precision, explosive safe.",
+                        specifications: "100kg payload, 2m reach, 5-degree manipulator.",
+                        useCase: "Bomb disposal and ordnance handling."
+                    },
+                    {
+                        name: "Military Communication System Components",
+                        description: "Secure communication system components for military use.",
+                        features: "Encryption, anti-jamming, frequency hopping.",
+                        specifications: "HF/VHF/UHF bands, AES-256 encryption, 100W power.",
+                        useCase: "Secure military communications."
+                    },
+                    {
+                        name: "Night Vision Goggle Components",
+                        description: "Components for night vision goggle systems.",
+                        features: "Image intensification, IR illumination, lightweight.",
+                        specifications: "Gen 3 image tubes, 40° FOV, 1000-hour life.",
+                        useCase: "Individual night vision systems."
+                    },
+                    {
+                        name: "Laser Weapon System Components",
+                        description: "Components for directed energy weapons.",
+                        features: "Beam combining, thermal management, precision pointing.",
+                        specifications: "100kW laser modules, 10km range, tracking system.",
+                        useCase: "Counter-drone and missile defense systems."
+                    },
+                    {
+                        name: "Military GPS Receivers",
+                        description: "Military-grade GPS receivers for navigation.",
+                        features: "Anti-spoofing, selective availability, jam-resistant.",
+                        specifications: "M-code capable, 1m accuracy, P(Y) coded.",
+                        useCase: "Military navigation and weapon system guidance."
+                    },
+                    {
+                        name: "Battlefield Surveillance Systems",
+                        description: "Surveillance systems for battlefield awareness.",
+                        features: "Long-range detection, 24/7 operation, autonomous tracking.",
+                        specifications: "Radar and EO sensors, 50km range, AI recognition.",
+                        useCase: "Base perimeter and area surveillance."
+                    },
+                    {
+                        name: "Tactical Radio Components",
+                        description: "Components for portable tactical radios.",
+                        features: "Software-defined radio, multiple waveforms, crypto.",
+                        specifications: "30-512 MHz, 25W power, 1000-channel capacity.",
+                        useCase: "Squad level communication systems."
+                    },
+                    {
+                        name: "Explosive Detection Systems",
+                        description: "Systems for detecting explosives and hazardous materials.",
+                        features: "Trace detection, standoff detection, automated alerts.",
+                        specifications: "Ion mobility spectrometry, 99% detection rate.",
+                        useCase: "Airport, military base, and port security."
+                    },
+                    {
+                        name: "Military Sensor Arrays",
+                        description: "Multi-modal sensor arrays for situational awareness.",
+                        features: "Radar, IR, acoustic fusion, AI processing.",
+                        specifications: "360° coverage, 10km range, 0.1° accuracy.",
+                        useCase: "Base security and threat detection."
+                    },
+                    {
+                        name: "Tactical Vehicle Components",
+                        description: "Specialized components for military vehicles.",
+                        features: "Blast protection, run-flat capability, EMI hardening.",
+                        specifications: "6x6 or 8x8 drive, 10-ton payload, CBRN protection.",
+                        useCase: "Transport and logistics in combat zones."
+                    },
+                    {
+                        name: "Unmanned Combat Vehicle Systems",
+                        description: "Components for unmanned ground vehicles.",
+                        features: "Remote operation, autonomous navigation, weaponized.",
+                        specifications: "4-wheel drive, 200kg payload, 12-hour autonomy.",
+                        useCase: "Urban warfare and reconnaissance missions."
+                    },
+                    {
+                        name: "Electronic Countermeasure Systems",
+                        description: "Systems for jamming enemy radars and communications.",
+                        features: "Broadband jamming, directional beams, rapid deployment.",
+                        specifications: "1-18 GHz coverage, 1kW power, 50km range.",
+                        useCase: "Electronic warfare and air defense suppression."
+                    },
+                    {
+                        name: "Cyber Security Hardware for Military",
+                        description: "Hardware security modules for military networks.",
+                        features: "Quantum-safe algorithms, physical security, tamper-proof.",
+                        specifications: "AES-512 encryption, HSM FIPS 140-3 level 4.",
+                        useCase: "Secure military communication networks."
+                    },
+                    {
+                        name: "Chemical/Biological Detection Systems",
+                        description: "Detection systems for CBRN threats.",
+                        features: "Real-time detection, automated alerts, networked.",
+                        specifications: "Gas chromatography, 99% accuracy, 24-hour autonomy.",
+                        useCase: "Base defense and threat detection."
+                    },
+                    {
+                        name: "Counter-UAV Systems",
+                        description: "Systems for drone detection and neutralization.",
+                        features: "Radar detection, radio jamming, kinetic interceptors.",
+                        specifications: "2-18 GHz jamming, 5km range, 95% success rate.",
+                        useCase: "Airport and facility protection from drones."
+                    },
+                    {
+                        name: "Military Power Systems",
+                        description: "Power generation and distribution for military bases.",
+                        features: "Portable, efficient, fuel-flexible, silent operation.",
+                        specifications: "10-100kW output, JP-8 fuel compatible, 400V AC.",
+                        useCase: "Forward operating base power supply."
+                    },
+                    {
+                        name: "Tactical Data Link Components",
+                        description: "Components for Link 16 and similar data links.",
+                        features: "Secure data transmission, real-time updates, anti-jamming.",
+                        specifications: "1Mbit/sec, 500-node network, 500km range.",
+                        useCase: "Joint military operations and situational awareness."
+                    }
+                ]
+            },
+            {
+                category: "HELICOPTER & CIVIL AVIATION",
+                emoji: "🚁",
+                icon: "fa-helicopter",
+                products: [
+                    {
+                        name: "Rotor Blade Edge Seal",
+                        description: "Leading edge protection and sealing for rotor blades.",
+                        features: "Erosion resistant, flexible, aerodynamic.",
+                        specifications: "Polyurethane with metal mesh, rain erosion tested.",
+                        useCase: "Helicopter main and tail rotor blade protection.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2338a169'/%3E%3Cpath d='M10,50 Q30,30 70,30 Q90,30 90,50 Q90,70 70,70 Q30,70 10,50' fill='%2368d391'/%3E%3Cpath d='M20,50 Q35,40 65,40 Q80,40 80,50 Q80,60 65,60 Q35,60 20,50' fill='%2348bb78'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Tail Rotor Hub Spacer",
+                        description: "Precision spacer for tail rotor hub assemblies.",
+                        features: "Dimensionally stable, wear resistant, balanced.",
+                        specifications: "Titanium alloy, ±0.01mm tolerance, dynamic balance.",
+                        useCase: "Helicopter tail rotor hub maintenance.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2338a169'/%3E%3Crect x='30' y='45' width='40' height='10' fill='%2368d391' rx='2'/%3E%3Ccircle cx='40' cy='50' r='4' fill='%2348bb78'/%3E%3Ccircle cx='60' cy='50' r='4' fill='%2348bb78'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Transmission Cover Plate",
+                        description: "Protective cover plate for helicopter transmissions.",
+                        features: "Oil tight, pressure relief, inspection window.",
+                        specifications: "Aluminum alloy, magnetic drain plug, sight gauge.",
+                        useCase: "Main and tail rotor transmission protection.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2338a169'/%3E%3Crect x='20' y='25' width='60' height='50' fill='%2368d391' rx='5'/%3E%3Ccircle cx='30' cy='40' r='5' fill='%2348bb78'/%3E%3Ccircle cx='70' cy='40' r='5' fill='%2348bb78'/%3E%3Ccircle cx='50' cy='65' r='6' fill='%234299e1'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Vibration Control Damper",
+                        description: "Reduces helicopter vibration levels for passenger comfort.",
+                        features: "Frequency tuned, adaptive stiffness, long-life.",
+                        specifications: "Tuned mass damper, 1-100 Hz range, 50% reduction.",
+                        useCase: "Cockpit, cabin, and equipment vibration control.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2338a169'/%3E%3Cpath d='M20,50 Q30,30 40,50 Q50,70 60,50 Q70,30 80,50' fill='none' stroke='%2368d391' stroke-width='8'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Cabin Pressure Valve",
+                        description: "Regulates cabin pressure in helicopters and civil aircraft.",
+                        features: "Automatic regulation, failsafe, altitude compensated.",
+                        specifications: "14.7 to 11.0 psia range, ±0.1 psi accuracy.",
+                        useCase: "Pressurization systems in helicopters.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2338a169'/%3E%3Crect x='25' y='35' width='50' height='30' fill='%2368d391' rx='5'/%3E%3Ccircle cx='20' cy='50' r='8' fill='%2348bb78'/%3E%3Ccircle cx='80' cy='50' r='8' fill='%2348bb78'/%3E%3Ccircle cx='50' cy='30' r='8' fill='%234299e1'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Avionics Cooling Duct",
+                        description: "Cooling system for helicopter avionics equipment.",
+                        features: "Efficient heat transfer, lightweight, EMI safe.",
+                        specifications: "Composite material, 200°F rated, flame resistant.",
+                        useCase: "Avionics bay cooling in helicopters.",
+                        image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2338a169'/%3E%3Crect x='15' y='40' width='70' height='20' fill='%2368d391' rx='3'/%3E%3Ccircle cx='20' cy='50' r='5' fill='%2348bb78'/%3E%3Ccircle cx='80' cy='50' r='5' fill='%2348bb78'/%3E%3C/svg%3E"
+                    },
+                    {
+                        name: "Helicopter Fuel Filter Cover",
+                        description: "Protective cover for fuel filter assemblies.",
+                        features: "Weatherproof, drain provision, inspection access.",
+                        specifications: "Stainless steel, quick release, integral heating.",
+                        useCase: "Helicopter fuel filtration systems."
+                    },
+                    {
+                        name: "Composite Door Frame",
+                        description: "Lightweight door frame structure for helicopters.",
+                        features: "Crashworthy, corrosion resistant, easy maintenance.",
+                        specifications: "Carbon fiber composite with aluminum fittings.",
+                        useCase: "Helicopter cabin door assemblies."
+                    },
+                    {
+                        name: "Anti-Corrosion Bracket",
+                        description: "Corrosion-resistant brackets for harsh environments.",
+                        features: "Salt spray resistant, galvanic protection, long-life.",
+                        specifications: "316SS or composite with protective coating.",
+                        useCase: "Marine and offshore helicopter installations."
+                    },
+                    {
+                        name: "Civil Aviation Safety Seal",
+                        description: "Safety-critical seals for civil aviation components.",
+                        features: "FAA certified, traceable materials, long-life.",
+                        specifications: "Nitrile or Viton, temperature and pressure rated.",
+                        useCase: "General aviation safety systems."
+                    },
+                    {
+                        name: "Control Pedal Link Rod",
+                        description: "Mechanical link for helicopter flight control pedals.",
+                        features: "Low friction, wear indicator, adjustable length.",
+                        specifications: "Aero-grade steel, ball joints, spring return assist.",
+                        useCase: "Helicopter cyclic and collective control systems."
+                    },
+                    {
+                        name: "Tail Boom Reinforcement",
+                        description: "Structural reinforcement for helicopter tail booms.",
+                        features: "Strength enhancement, fatigue improvement, minimal weight.",
+                        specifications: "Composite wrap or metallic reinforcement plates.",
+                        useCase: "Helicopter tail boom structural upgrades."
+                    },
+                    {
+                        name: "Pilot Seat Mount Frame",
+                        description: "Adjustable mounting frame for pilot seats.",
+                        features: "Impact absorbing, ergonomic adjustment, crashworthy.",
+                        specifications: "Steel tubular frame, 6-point adjustment, 16g rating.",
+                        useCase: "Helicopter pilot seat installations."
+                    },
+                    {
+                        name: "Emergency Exit Handle Part",
+                        description: "Critical component for emergency exit activation.",
+                        features: "Positive engagement, clear identification, corrosion proof.",
+                        specifications: "Anodized aluminum, fluorescent marking, 200 lb pull.",
+                        useCase: "Helicopter emergency exit systems."
+                    },
+                    {
+                        name: "Rotor Pitch Control Housing",
+                        description: "Housing for rotor blade pitch change mechanisms.",
+                        features: "High load capability, sealed, wear monitored.",
+                        specifications: "Titanium alloy, spherical bearings, load sensing.",
+                        useCase: "Main rotor swashplate and blade control systems."
+                    },
+                    {
+                        name: "Gearbox Rubber Seal",
+                        description: "Sealing system for helicopter gearbox assemblies.",
+                        features: "Oil retention, pressure containment, temperature stable.",
+                        specifications: "Synthetic rubber, 200°C capability, shaft compatible.",
+                        useCase: "Main and tail rotor gearbox sealing."
+                    },
+                    {
+                        name: "Engine Air Inlet Screen",
+                        description: "Protective screen for helicopter engine intakes.",
+                        features: "Bird strike protection, minimal flow restriction, washable.",
+                        specifications: "Stainless steel mesh, 0.25 inch opening, FAA approved.",
+                        useCase: "Helicopter engine inlet protection."
+                    },
+                    {
+                        name: "Hydraulic Reservoir Cap",
+                        description: "Pressurized cap for hydraulic reservoir systems.",
+                        features: "Pressure relief, contamination prevention, venting.",
+                        specifications: "Aluminum with Viton seal, 15 psi relief, sight glass.",
+                        useCase: "Helicopter hydraulic system maintenance."
+                    },
+                    {
+                        name: "Landing Skid Connector",
+                        description: "Connection hardware for helicopter skid landing gear.",
+                        features: "Fatigue resistant, wear pads, crash energy management.",
+                        specifications: "High-strength steel, polyurethane wear pads.",
+                        useCase: "Helicopter landing gear assemblies."
+                    },
+                    {
+                        name: "Electrical System Cover",
+                        description: "Protection for helicopter electrical components.",
+                        features: "EMI shielding, environmental protection, tool-less access.",
+                        specifications: "Conductive aluminum, gasket sealed, quick disconnect.",
+                        useCase: "Electrical control panels and junction boxes."
+                    },
+                    {
+                        name: "Air Vent Assembly",
+                        description: "Pressurization and ventilation system for cabins.",
+                        features: "Filtered airflow, pressure regulation, ice prevention.",
+                        specifications: "Composite material, electric heating, controllable.",
+                        useCase: "Helicopter cabin environmental control."
+                    },
+                    {
+                        name: "Cabin Trim Panel",
+                        description: "Interior trim panels for helicopter cabins.",
+                        features: "Aesthetic finish, acoustically treated, fire retardant.",
+                        specifications: "Composite with vinyl covering, sound absorption.",
+                        useCase: "Helicopter interior finishing."
+                    },
+                    {
+                        name: "Helipad Landing Gear Pad",
+                        description: "Impact-absorbing pad for helicopter landing gear.",
+                        features: "Shock absorbing, non-marking, weather resistant.",
+                        specifications: "Specialty rubber compound, 100 Shore A hardness.",
+                        useCase: "Helicopter landing gear protection."
+                    },
+                    {
+                        name: "Helicopter Stabilizer Plate",
+                        description: "Aerodynamic stabilizer for helicopter fuselage.",
+                        features: "Drag reduction, stability enhancement, lightweight.",
+                        specifications: "Composite material, aerodynamically shaped.",
+                        useCase: "Helicopter vertical and horizontal stabilizers."
+                    },
+                    {
+                        name: "Rotor Center Hub Insert",
+                        description: "Critical insert for helicopter rotor hub assemblies.",
+                        features: "High load capability, fatigue resistant, precision fit.",
+                        specifications: "Ti-6Al-4V, close tolerance, non-destructive inspection.",
+                        useCase: "Main rotor hub center section."
+                    },
+                    {
+                        name: "Windshield Frame Seal",
+                        description: "Sealing system for helicopter windshield frames.",
+                        features: "Weatherproof, optically clear, UV resistant.",
+                        specifications: "Polycarbonate compatible, silicone, bubble-free.",
+                        useCase: "Helicopter windshield installation."
+                    },
+                    {
+                        name: "Fire-Protection Rubber Gasket",
+                        description: "Fire-resistant sealing for helicopter systems.",
+                        features: "Intumescent, flame resistant, smoke suppressant.",
+                        specifications: "Phenolic rubber, 1100°C escape time, non-toxic gases.",
+                        useCase: "Engine firewalls and bleed air ducts."
+                    },
+                    {
+                        name: "Cable Routing Bracket",
+                        description: "Organizes and protects helicopter electrical cables.",
+                        features: "EMI suppression, cable protection, configurable.",
+                        specifications: "Aluminum with elastomer protection, tie-wrap provisions.",
+                        useCase: "Helicopter wiring harness management."
+                    },
+                    {
+                        name: "Engine Support Plate",
+                        description: "Mounting plate for helicopter engine installations.",
+                        features: "Vibration isolated, engine loads, maintenance access.",
+                        specifications: "Aero-grade steel, flexible mount points, cooling provision.",
+                        useCase: "Helicopter engine mounting systems."
+                    },
+                    {
+                        name: "Main Rotor Retainer",
+                        description: "Secures main rotor blades during maintenance.",
+                        features: "Blade root compatible, maintenance access, safety lock.",
+                        specifications: "Stainless steel, blade root geometry matched.",
+                        useCase: "Helicopter main rotor blade maintenance and transport."
+                    },
+                    {
+                        name: "Helicopter Auto-Trim Systems",
+                        description: "Automatic trim systems for helicopter flight control.",
+                        features: "Load sensing, automatic adjustment, pilot override.",
+                        specifications: "Electric actuators, 0.1° accuracy, 50,000 hour life.",
+                        useCase: "Long-duration flight comfort and stability."
+                    },
+                    {
+                        name: "Rotor Head Lubrication Systems",
+                        description: "Pressurized lubrication for rotor head bearings.",
+                        features: "Continuous lubrication, contamination filtration, level monitoring.",
+                        specifications: "Synthetic oil, 5000-hour service intervals.",
+                        useCase: "Main rotor head bearing maintenance."
+                    },
+                    {
+                        name: "Helicopter Cabin Climate Controls",
+                        description: "Advanced climate control systems for helicopter cabins.",
+                        features: "Individual zone control, air purification, dehumidification.",
+                        specifications: "Dual-zone, 30,000 BTU capacity, HEPA filtration.",
+                        useCase: "Passenger comfort in executive helicopters."
+                    },
+                    {
+                        name: "Helicopter Ground Handling Equipment",
+                        description: "Specialized equipment for helicopter ground operations.",
+                        features: "Rotor blade protection, towing capability, parking aids.",
+                        specifications: "Carbon fiber covers, 1000 lb towing capacity.",
+                        useCase: "Helicopter ground handling and protection."
+                    },
+                    {
+                        name: "Helicopter Emergency Float Systems",
+                        description: "Deployable float systems for helicopter water landings.",
+                        features: "Automatic inflation, high buoyancy, survival equipment.",
+                        specifications: "2000 lb capacity per float, 30-day supply.",
+                        useCase: "Over-water operations for safety."
+                    },
+                    {
+                        name: "Helicopter Flight Control Computers",
+                        description: "FADEC systems for helicopter engine and flight control.",
+                        features: "Engine management, flight envelope protection, autostability.",
+                        specifications: "Dual redundant, DO-178C Level A, 30,000 hour life.",
+                        useCase: "Modern helicopter flight management."
+                    },
+                    {
+                        name: "Helicopter Landing Gear Systems",
+                        description: "Retractable landing gear for military and civilian helicopters.",
+                        features: "Hydraulic actuation, shock absorption, position indication.",
+                        specifications: "100,000 lb load, 20,000 cycle life.",
+                        useCase: "Military and heavy-lift helicopters."
+                    },
+                    {
+                        name: "Helicopter Mission Equipment Mounts",
+                        description: "Modular mounting systems for mission-specific equipment.",
+                        features: "Quick-change, power and data interfaces, EMI shielded.",
+                        specifications: "100 lb capacity, MIL-STD-704 power, MIL-STD-1553 data.",
+                        useCase: "Search-and-rescue, medevac, and law enforcement."
+                    },
+                    {
+                        name: "Helicopter Noise Reduction Components",
+                        description: "Components for reducing helicopter acoustic signature.",
+                        features: "Blade tip modifications, vibration dampers, acoustic treatments.",
+                        specifications: "5dB noise reduction, 10% fuel penalty.",
+                        useCase: "Urban operations and stealth missions."
+                    },
+                    {
+                        name: "Helicopter Fuel System Components",
+                        description: "Components for helicopter fuel storage and delivery.",
+                        features: "Self-sealing, anti-explosion, boost pumps, quantity indication.",
+                        specifications: "800 gallon capacity, 3000 PSI pumps, 0.1% accuracy.",
+                        useCase: "Heavy-lift helicopter operations."
+                    },
+                    {
+                        name: "Helicopter IFR Navigation Systems",
+                        description: "Instrument flight rules navigation systems for helicopters.",
+                        features: "GPS, VOR, ILS, DME, TCAS, synthetic vision.",
+                        specifications: "Dual GPS/WAAS, 1000+ approaches stored.",
+                        useCase: "All-weather helicopter operations."
+                    },
+                    {
+                        name: "Helicopter Passenger Safety Equipment",
+                        description: "Safety equipment for helicopter passenger evacuation.",
+                        features: "Inflation systems, flotation devices, emergency lighting.",
+                        specifications: "Automatic deployment, 24-hour survival kit.",
+                        useCase: "Offshore transport and emergency services."
+                    },
+                    {
+                        name: "Helicopter Maintenance Platforms",
+                        description: "Specialized platforms for helicopter maintenance access.",
+                        features: "Height adjustment, safety features, tool storage.",
+                        specifications: "50-foot elevation, 1000 lb capacity.",
+                        useCase: "Maintenance and inspection of large helicopters."
+                    },
+                    {
+                        name: "Helicopter Searchlight Systems",
+                        description: "High-intensity searchlight systems for helicopter operations.",
+                        features: "Adjustable beam, remote control, daylight visibility.",
+                        specifications: "10 million candela, 50,000 hour LED life.",
+                        useCase: "Search and rescue, law enforcement, and military."
+                    },
+                    {
+                        name: "Helicopter Cargo Hook Systems",
+                        description: "External cargo hook systems for helicopter lifting.",
+                        features: "Swivel mechanism, load weighing, automatic release.",
+                        specifications: "10,000 lb capacity, 3-axis stabilization.",
+                        useCase: "Construction, logging, and emergency services."
+                    },
+                    {
+                        name: "Helicopter Video Recording Systems",
+                        description: "Video systems for flight recording and documentation.",
+                        features: "Multiple cameras, GPS overlay, cockpit audio recording.",
+                        specifications: "4K resolution, 50-hour storage, crash survival.",
+                        useCase: "Training, accident investigation, and surveillance."
+                    },
+                    {
+                        name: "Helicopter De-Icing Systems",
+                        description: "Ice protection systems for helicopter operations.",
+                        features: "Heated surfaces, pneumatic boots, detection systems.",
+                        specifications: "200°C surface temperature, 50,000-hour life.",
+                        useCase: "All-weather helicopter operations."
+                    },
+                    {
+                        name: "Helicopter Communications Systems",
+                        description: "Communication systems for helicopter operations.",
+                        features: "VHF, UHF, satellite, intercom, noise cancellation.",
+                        specifications: "830-849 MHz, 50-watt output, Bluetooth connectivity.",
+                        useCase: "Air traffic control and internal communications."
+                    },
+                    {
+                        name: "Helicopter Flight Training Devices",
+                        description: "Flight simulators for helicopter pilot training.",
+                        features: "Motion base, realistic controls, scenario programming.",
+                        specifications: "6DOF motion, 180° visual field, FNTP certified.",
+                        useCase: "Pilot certification and recurrent training."
+                    }
+                ]
+            },
+            {
+                category: "SPACE SYSTEMS",
+                emoji: "🚀",
+                icon: "fa-rocket",
+                products: [
+                    {
+                        name: "Satellite Structural Panel",
+                        description: "Lightweight structural component for satellite chassis.",
+                        features: "High strength-to-weight ratio, thermal stability, EMI shielding.",
+                        specifications: "Carbon fiber composite with aluminum honeycomb core.",
+                        useCase: "Primary satellite bus structure."
+                    },
+                    {
+                        name: "Payload Mounting Bracket",
+                        description: "Versatile mounting system for satellite payloads.",
+                        features: "Modal tuning, shock isolation, precision alignment.",
+                        specifications: "Titanium alloy, 0.1mm positional accuracy.",
+                        useCase: "Scientific instruments and communication packages."
+                    },
+                    {
+                        name: "CubeSat Frame Module",
+                        description: "Standardized structural frame for CubeSat missions.",
+                        features: "Modular design, standardized interfaces, deployable systems.",
+                        specifications: "Aluminum 7075, 1U to 12U configurations.",
+                        useCase: "Educational and commercial CubeSat programs."
+                    },
+                    {
+                        name: "Thermal Insulation Tile",
+                        description: "High-temperature insulation for re-entry vehicles.",
+                        features: "Ablative protection, low density, high emissivity.",
+                        specifications: "Phenolic impregnated carbon ablator, 3000°F rated.",
+                        useCase: "Space shuttle and spacecraft thermal protection."
+                    },
+                    {
+                        name: "Rocket Valve Housing",
+                        description: "Pressure vessel for rocket propulsion system valves.",
+                        features: "High pressure rated, temperature compensated, leak-free.",
+                        specifications: "Inconel alloy, 5000 PSI, cryogenic compatible.",
+                        useCase: "Liquid rocket engine control systems."
+                    },
+                    {
+                        name: "Microthruster Fuel Line",
+                        description: "Precision fuel delivery for micro-propulsion systems.",
+                        features: "Minimal dead volume, high reliability, contamination free.",
+                        specifications: "Stainless steel tubing, 0.5mm I.D., ultra-smooth finish.",
+                        useCase: "Attitude control and station keeping thrusters."
+                    },
+                    {
+                        name: "Space-Grade Connector Seal",
+                        description: "Hermetic sealing for space connectors in vacuum.",
+                        features: "Outgassing rated, radiation resistant, extreme temperature.",
+                        specifications: "Fluorinated elastomer, NASA outgassing approved.",
+                        useCase: "Electrical connections in space environments."
+                    },
+                    {
+                        name: "Spacecraft Door Latch Plate",
+                        description: "Secure latching mechanism for spacecraft access doors.",
+                        features: "Vacuum compatible, redundant locking, contamination free.",
+                        specifications: "Stainless steel, pyro-initiated separation, torque limited.",
+                        useCase: "Service module and crew cabin access points."
+                    },
+                    {
+                        name: "Orbital Sensor Housing",
+                        description: "Protected enclosure for space-based sensors.",
+                        features: "Multi-layer insulation, contamination control, pointing stability.",
+                        specifications: "Aluminum with gold plating, conductive anodize.",
+                        useCase: "Earth observation and astronomy instruments."
+                    },
+                    {
+                        name: "Antenna Deployment Plate",
+                        description: "Platform for deploying space-based antenna systems.",
+                        features: "Folded stowage, reliable deployment, RF transparent.",
+                        specifications: "Composite material with spring-loaded deployment.",
+                        useCase: "Communications and radar antenna arrays."
+                    },
+                    {
+                        name: "Reaction Wheel Mounting Ring",
+                        description: "Precision mounting for satellite attitude control wheels.",
+                        features: "Low friction, dynamic balancing, vibration isolation.",
+                        specifications: "Beryllium copper flex pivot, 0.001°/s stability.",
+                        useCase: "Precision attitude control systems."
+                    },
+                    {
+                        name: "Satellite Battery Frame",
+                        description: "Mounting system for satellite power storage units.",
+                        features: "Thermal management, battery isolation, charge monitoring.",
+                        specifications: "Aluminum with thermal interface material, 28V compatible.",
+                        useCase: "Lithium-ion battery pack installations."
+                    },
+                    {
+                        name: "High-Vacuum Seal",
+                        description: "Ultra-low leakage seals for vacuum environments.",
+                        features: "Zero permeation, space compatible, bake-out capable.",
+                        specifications: "Metal O-ring, helium leak rate <1x10⁻¹⁰ std cc/s.",
+                        useCase: "Vacuum chambers and propulsion systems."
+                    },
+                    {
+                        name: "LEO Satellite Support Panel",
+                        description: "Panel for Low Earth Orbit satellite applications.",
+                        features: "Atomic oxygen resistant, UV stable, conductive path.",
+                        specifications: "Polyimide film with aluminum coating, 5-year lifetime.",
+                        useCase: "LEO constellation satellite external panels."
+                    },
+                    {
+                        name: "Space Radar Casing",
+                        description: "Protective housing for space-based radar systems.",
+                        features: "RF transparent, thermal control, micrometeorite protection.",
+                        specifications: "Quartz fiber composite with PTFE resin, 1-40 GHz range.",
+                        useCase: "Synthetic aperture radar for Earth observation."
+                    },
+                    {
+                        name: "Thermal Radiator Bracket",
+                        description: "Mounting system for satellite thermal radiators.",
+                        features: "Passive cooling, thermal conductivity, zero maintenance.",
+                        specifications: "Graphite composite with aluminum facesheets.",
+                        useCase: "Satellite thermal management systems."
+                    },
+                    {
+                        name: "Launch Adapter Plate",
+                        description: "Interface between spacecraft and launch vehicle.",
+                        features: "Pyro-initiated separation, load distribution, modal tuning.",
+                        specifications: "Aluminum with frangible nuts, 50,000 lb ultimate load.",
+                        useCase: "Spacecraft launch vehicle integration."
+                    },
+                    {
+                        name: "Interstage Coupler Ring",
+                        description: "Connection ring between rocket stage sections.",
+                        features: "Clean separation, load transfer, aerodynamic smoothing.",
+                        specifications: "Carbon fiber with explosive bolts, 100,000 lb shear load.",
+                        useCase: "Multi-stage rocket interconnections."
+                    },
+                    {
+                        name: "Propulsion Nozzle Insert",
+                        description: "Thrust vectoring insert for rocket nozzles.",
+                        features: "Ablative protection, throat shaping, cooling channels.",
+                        specifications: "Carbon-carbon composite with internal cooling.",
+                        useCase: "Upper stage and orbital maneuvering engines."
+                    },
+                    {
+                        name: "Space Optics Clamp",
+                        description: "Secure mounting for space telescope optical elements.",
+                        features: "Athermal design, zero stress, optical surface protection.",
+                        specifications: "Invar alloy, kinematic mount, 0.1 arcsecond stability.",
+                        useCase: "Space-based astronomy telescope assemblies."
+                    },
+                    {
+                        name: "Solar Panel Rail Guide",
+                        description: "Deployment guide for satellite solar arrays.",
+                        features: "Low friction, deployment reliability, contamination prevention.",
+                        specifications: "Stainless steel with PTFE coating, 10,000 cycle life.",
+                        useCase: "Solar array deployment mechanisms."
+                    },
+                    {
+                        name: "Ground Station Antenna Part",
+                        description: "Component for ground-based satellite communication.",
+                        features: "High gain, beam steering, weather protection.",
+                        specifications: "Carbon fiber with metallic coating, 360° azimuth.",
+                        useCase: "Ground segment antenna systems."
+                    },
+                    {
+                        name: "Lander Wheel Support Arm",
+                        description: "Landing gear support for planetary rovers.",
+                        features: "Shock absorbing, terrain adaptation, dust exclusion.",
+                        specifications: "Titanium with compliant joints, 1000 impact cycles.",
+                        useCase: "Planetary lander and rover mobility systems."
+                    },
+                    {
+                        name: "Rocket Fin Reinforcement",
+                        description: "Structural enhancement for rocket aerodynamic surfaces.",
+                        features: "Hypersonic stability, thermal protection, load distribution.",
+                        specifications: "Ablative composite material, 2500°F rated.",
+                        useCase: "Launch vehicle aerodynamic control surfaces."
+                    },
+                    {
+                        name: "Thruster Chamber Seal",
+                        description: "Sealing for bipropellant thruster combustion chambers.",
+                        features: "High temperature, chemical compatibility, non-contaminating.",
+                        specifications: "Super alloy metal seal, 3000°F capability.",
+                        useCase: "Orbital maneuvering and reaction control systems."
+                    },
+                    {
+                        name: "Satellite Harness Mount",
+                        description: "Securing system for satellite wiring harnesses.",
+                        features: "EMI management, wire protection, accessibility.",
+                        specifications: "Non-magnetic clamps, cable support every 6 inches.",
+                        useCase: "Satellite internal wiring management."
+                    },
+                    {
+                        name: "Heat Shield Support Shell",
+                        description: "Structural support for atmospheric entry heat shields.",
+                        features: "Aerothermal loads, mass efficiency, attachment points.",
+                        specifications: "Titanium alloy framework, 3000°F rated attachments.",
+                        useCase: "Re-entry vehicle thermal protection systems."
+                    },
+                    {
+                        name: "Communication Relay Bracket",
+                        description: "Mounting for spacecraft communication systems.",
+                        features: "Pointing accuracy, vibration isolation, EMI clean.",
+                        specifications: "Aluminum with vibration isolators, 0.1° accuracy.",
+                        useCase: "Communications antenna mounting."
+                    },
+                    {
+                        name: "Lunar Module Structural Piece",
+                        description: "Critical structure for lunar lander applications.",
+                        features: "Low gravity loads, thermal cycling, micrometeorite protection.",
+                        specifications: "Aluminum-lithium alloy, space qualified welds.",
+                        useCase: "Lunar exploration mission hardware."
+                    },
+                    {
+                        name: "Orbital Docking Adapter",
+                        description: "Universal interface for spacecraft docking systems.",
+                        features: "Automated capture, fluid transfer, electrical connection.",
+                        specifications: "Common berthing mechanism, 1000 kg capture load.",
+                        useCase: "Space station resupply and crew transfer."
+                    },
+                    {
+                        name: "Ion Propulsion System Components",
+                        description: "Components for electric propulsion systems.",
+                        features: "High specific impulse, long operational life, precision thrust.",
+                        specifications: "3000 sec ISP, 20,000 hour life, 0.1-100 mN thrust.",
+                        useCase: "Deep space missions and station keeping."
+                    },
+                    {
+                        name: "Spacecraft Attitude Control Sensors",
+                        description: "Star trackers and gyros for spacecraft attitude determination.",
+                        features: "High precision, radiation hardened, autonomous operation.",
+                        specifications: "0.1 arcsec accuracy, 15-year life, 3-axis sensing.",
+                        useCase: "Precision pointing for astronomical observations."
+                    },
+                    {
+                        name: "Space Solar Cell Assemblies",
+                        description: "High-efficiency solar cells for space applications.",
+                        features: "Radiation resistance, high efficiency, temperature stable.",
+                        specifications: "30% efficiency, 15-year degradation <5%, triple-junction.",
+                        useCase: "Primary power generation for satellites."
+                    },
+                    {
+                        name: "Space Debris Shielding Systems",
+                        description: "Multi-layer shielding to protect spacecraft from debris.",
+                        features: "Whipple shield design, redundant protection, minimal mass.",
+                        specifications: "MMOD protection, 1cm particle at 10 km/s.",
+                        useCase: "Space station and satellite protection."
+                    },
+                    {
+                        name: "Spacecraft Thermal Control Louvers",
+                        description: "Passive thermal control system for spacecraft.",
+                        features: "Automatic regulation, no power required, reliable operation.",
+                        specifications: "0-100% open range, 100,000 cycle life.",
+                        useCase: "Temperature regulation for satellite systems."
+                    },
+                    {
+                        name: "Spacecraft Separation Systems",
+                        description: "Pyrotechnic and mechanical systems for spacecraft separation.",
+                        features: "Clean separation, shock isolation, timed release.",
+                        specifications: "10,000 lb preload, 100 ms separation time.",
+                        useCase: "Satellite deployment and fairing jettison."
+                    },
+                    {
+                        name: "Space Life Support Components",
+                        description: "Components for crew life support in space habitats.",
+                        features: "Closed-loop recycling, CO2 scrubbing, water purification.",
+                        specifications: "1-year consumables, 99% recycling efficiency.",
+                        useCase: "Space station and long-duration missions."
+                    },
+                    {
+                        name: "Space Manufacturing Equipment",
+                        description: "Equipment for manufacturing in microgravity.",
+                        features: "3D printing in zero-g, material processing, quality control.",
+                        specifications: "Polymer and metal printing, 100 micron resolution.",
+                        useCase: "In-space manufacturing and repair."
+                    },
+                    {
+                        name: "Space Radiation Detectors",
+                        description: "Detectors for monitoring space radiation environment.",
+                        features: "Real-time monitoring, particle discrimination, alarm systems.",
+                        specifications: "0.1-10 MeV range, 1 ms response time.",
+                        useCase: "Crew safety and satellite electronics protection."
+                    },
+                    {
+                        name: "Space Communication Lasers",
+                        description: "Laser communication systems for deep space missions.",
+                        features: "High data rate, narrow beam, low power consumption.",
+                        specifications: "10 Gbps data rate, 0.1 μrad divergence.",
+                        useCase: "Earth-Mars communication and high-resolution science data."
+                    },
+                    {
+                        name: "Space Nuclear Power Systems",
+                        description: "Radioisotope thermoelectric generators for deep space.",
+                        features: "Long-life power, radiation hardened, autonomous.",
+                        specifications: "500W output, 14-year life, Pu-238 fuel.",
+                        useCase: "Outer planet missions and distant spacecraft."
+                    },
+                    {
+                        name: "Space Habitat Construction Modules",
+                        description: "Expandable modules for space habitat construction.",
+                        features: "Expandable structure, multiple compartments, life support ready.",
+                        specifications: "300 m³ volume when expanded, 50-year life.",
+                        useCase: "Moon base and Mars habitat construction."
+                    },
+                    {
+                        name: "Space Mining Equipment",
+                        description: "Robotic systems for asteroid and lunar mining.",
+                        features: "Autonomous operation, drilling and extraction, sample analysis.",
+                        specifications: "1000 kg processing capacity, 50-element analysis.",
+                        useCase: "Resource extraction from asteroids and moons."
+                    },
+                    {
+                        name: "Space Telescopes Components",
+                        description: "Precision components for space-based telescopes.",
+                        features: "Diffraction-limited optics, thermal stability, vibration isolation.",
+                        specifications: "10-meter aperture capability, nanometer precision.",
+                        useCase: "Next-generation space telescopes and exoplanet detection."
+                    },
+                    {
+                        name: "Space Weather Monitoring Systems",
+                        description: "Systems for monitoring space weather conditions.",
+                        features: "Real-time data, predictive modeling, alert systems.",
+                        specifications: "Solar wind, magnetic field, energetic particles.",
+                        useCase: "Satellite protection and astronaut safety."
+                    },
+                    {
+                        name: "Space Debris Tracking Systems",
+                        description: "Radar and optical systems for tracking space debris.",
+                        features: "Automated detection, orbit prediction, conjunction analysis.",
+                        specifications: "10 cm object detection, 20,000 object catalog.",
+                        useCase: "Collision avoidance and space traffic management."
+                    },
+                    {
+                        name: "Space Assembly Robots",
+                        description: "Robotic systems for assembling structures in space.",
+                        features: "Dexterous manipulation, tool handling, human assist.",
+                        specifications: "7 DOF arms, 1 mm precision, EVA compatible.",
+                        useCase: "Large structure assembly and maintenance."
+                    },
+                    {
+                        name: "Space Navigation Beacons",
+                        description: "Beacon systems for space navigation and timing.",
+                        features: "Atomic clock reference, RF and optical signals, autonomous operation.",
+                        specifications: "10⁻¹⁵ frequency stability, 50-year life.",
+                        useCase: "Interplanetary navigation and deep space missions."
+                    },
+                    {
+                        name: "Space Agriculture Systems",
+                        description: "Life support systems for growing food in space.",
+                        features: "Controlled environment, LED lighting, hydroponics.",
+                        specifications: "20 plants per module, 20kg annual yield per m³.",
+                        useCase: "Long-duration missions and space colonies."
+                    }
+                ]
+            },
+            {
+                category: "HEALTHCARE PRODUCTS",
+                emoji: "🏥",
+                icon: "fa-heartbeat",
+                products: [
+                    {
+                        name: "Medical-Grade Rubber Seal",
+                        description: "Biocompatible sealing for medical device applications.",
+                        features: "Sterilizable, chemical resistant, USP Class VI approved.",
+                        specifications: "Platinum-cured silicone, 316SS reinforcement, gamma stable.",
+                        useCase: "Implantable devices and surgical instruments."
+                    },
+                    {
+                        name: "IV System Connector",
+                        description: "Safe connection for intravenous fluid delivery.",
+                        features: "Luer-lock compatibility, leak-proof, bubble-free.",
+                        specifications: "Clear polycarbonate, 6% taper, 600 psi rated.",
+                        useCase: "Hospital IV administration sets."
+                    },
+                    {
+                        name: "Surgical Tool Handle Grip",
+                        description: "Ergonomic, non-slip grip for surgical instruments.",
+                        features: "Antimicrobial additive, tactile feel, fatigue reduction.",
+                        specifications: "Medical-grade TPE, slip-resistant texture, autoclavable.",
+                        useCase: "Surgical scissors, forceps, and micro-tools."
+                    },
+                    {
+                        name: "Diagnostic Device Seal",
+                        description: "Precision sealing for analytical medical instruments.",
+                        features: "Chemical compatibility, dimensional stability, low extractables.",
+                        specifications: "Fluorosilicone, Class A surface finish, particle-free.",
+                        useCase: "Blood analyzers and diagnostic equipment."
+                    },
+                    {
+                        name: "Biocompatible Housing Cover",
+                        description: "Patient-contact housing for medical devices.",
+                        features: "Skin safe, antimicrobial, easy to clean.",
+                        specifications: "Medical-grade polycarbonate, FDA compliant, glossy finish.",
+                        useCase: "Patient monitoring and therapy devices."
+                    },
+                    {
+                        name: "Lab Tube Stopper",
+                        description: "Airtight closure for laboratory sample tubes.",
+                        features: "Leak-proof, chemical resistant, tamper-evident.",
+                        specifications: "Natural rubber with PTFE facing, multiple sizes.",
+                        useCase: "Sample collection and storage in labs."
+                    },
+                    {
+                        name: "Sterile Instrument Pad",
+                        description: "Disposable padding for sterile medical procedures.",
+                        features: "Sterile packaging, absorbent, lint-free.",
+                        specifications: "SMS nonwoven fabric, gamma sterilized, individually wrapped.",
+                        useCase: "Surgical prep and instrument draping."
+                    },
+                    {
+                        name: "Medical Pump Valve",
+                        description: "Precision valve for peristaltic and syringe pumps.",
+                        features: "Low dead volume, repeatable flow, contamination prevention.",
+                        specifications: "PFA-lined valve, 0.01 mL accuracy, 100,000 cycle life.",
+                        useCase: "Infusion pumps and drug delivery systems."
+                    },
+                    {
+                        name: "Healthcare Rubber Gasket",
+                        description: "Sealing for medical equipment housings and enclosures.",
+                        features: "Non-toxic, odorless, easy to clean.",
+                        specifications: "Medical-grade EPDM, compression set resistance, IP65 rated.",
+                        useCase: "MRI machines, X-ray equipment, and monitors."
+                    },
+                    {
+                        name: "Blood Analyzer Component",
+                        description: "Critical component for blood analysis instrumentation.",
+                        features: "Precision dimensions, biocompatible surface, low protein binding.",
+                        specifications: "Medical PC with Parylene C coating, Class A finish.",
+                        useCase: "Hematology and chemistry analyzers."
+                    },
+                    {
+                        name: "Oxygen Flow Regulator Part",
+                        description: "Component for precise oxygen delivery control.",
+                        features: "Accurate flow control, patient safety, fail-safe design.",
+                        specifications: "Brass with chrome plating, 0.5-15 LPM range.",
+                        useCase: "Oxygen concentrators and delivery systems."
+                    },
+                    {
+                        name: "Hospital Equipment Knob",
+                        description: "Ergonomic, antimicrobial knob for hospital equipment.",
+                        features: "Easy grip, antimicrobial coating, wipe-down cleanable.",
+                        specifications: "Acetal with silver ion additive, 40mm diameter.",
+                        useCase: "Ventilators, monitors, and therapy devices."
+                    },
+                    {
+                        name: "Nebulizer Seal",
+                        description: "Aerosol generation chamber sealing for nebulizers.",
+                        features: "FDA food contact approved, chemical resistance, consistent output.",
+                        specifications: "Platinum-cured silicone, 0.5-5 micron aerosol generation.",
+                        useCase: "Respiratory therapy and medication delivery."
+                    },
+                    {
+                        name: "Ultrasonic Device Coupler",
+                        description: "Coupling medium for medical ultrasonic applications.",
+                        features: "Acoustic transmission, skin safe, non-staining.",
+                        specifications: "Water-based gel, pH balanced, latex-free.",
+                        useCase: "Ultrasound imaging and therapy applications."
+                    },
+                    {
+                        name: "Sterilizer Chamber Seal",
+                        description: "High-temperature seal for steam sterilization.",
+                        features: "Autoclave stable, repeated cycle durability, leak detection.",
+                        specifications: "PEEK-reinforced silicone, 134°C continuous use, 275°F spike.",
+                        useCase: "Steam sterilizers and autoclaves."
+                    },
+                    {
+                        name: "Disposable Device Housing",
+                        description: "Single-use housing for medical disposables.",
+                        features: "Cost-effective, sterile-ready, recyclable.",
+                        specifications: "Medical-grade ABS, Class II biocompatibility, textured finish.",
+                        useCase: "Single-use sensors and diagnostic devices."
+                    },
+                    {
+                        name: "Diagnostic Cartridge Frame",
+                        description: "Enclosure for disposable diagnostic test cartridges.",
+                        features: "Single insertion, contamination prevention, RFID enabled.",
+                        specifications: "Cyclic olefin copolymer, 100 nano-liter dead volume.",
+                        useCase: "Point-of-care diagnostic cartridges."
+                    },
+                    {
+                        name: "Medical Sensor Support",
+                        description: "Mounting system for patient monitoring sensors.",
+                        features: "Secure attachment, signal integrity, patient comfort.",
+                        specifications: "Medical-grade TPU, adhesive-backed, 3M approved.",
+                        useCase: "ECG, pulse oximetry, and temperature sensors."
+                    },
+                    {
+                        name: "Biotech Tube Connector",
+                        description: "Leak-free connection for biotechnology applications.",
+                        features: "Low hold-up volume, particulate-free, scalable.",
+                        specifications: "USP Class VI fluoropolymer, 1/16 to 3/8 inch tubing.",
+                        useCase: "Bioreactors and pharmaceutical processing."
+                    },
+                    {
+                        name: "Endoscopy Grip Seal",
+                        description: "Sealing for endoscopic instrument controls and handles.",
+                        features: "Fluid barrier, tactile feedback, chemical resistance.",
+                        specifications: "Medical-grade Santoprene, ergonomic texture, 100,000 flex cycles.",
+                        useCase: "Endoscope controls and articulation mechanisms."
+                    },
+                    {
+                        name: "Syringe Plunger Rubber",
+                        description: "Precision sealing plunger for medical syringes.",
+                        features: "Consistent force, zero leachables, glide performance.",
+                        specifications: "Halobutyl rubber with silicone coating, USP <87> tested.",
+                        useCase: "Medical syringes and injection devices."
+                    },
+                    {
+                        name: "Air-Purification Gasket",
+                        description: "Sealing for hospital air purification systems.",
+                        features: "Particle barrier, chemical adsorption, low outgassing.",
+                        specifications: "Activated carbon impregnated EPDM, HEPA compatibility.",
+                        useCase: "Operating room and cleanroom air filtration."
+                    },
+                    {
+                        name: "Childcare Device Safety Seal",
+                        description: "Safety-critical sealing for pediatric medical devices.",
+                        features: "Child-safe materials, small-part test, non-choking hazard.",
+                        specifications: "Lead-free PVC, phthalate-free, ASTM F963 compliant.",
+                        useCase: "Pediatric monitoring and treatment devices."
+                    },
+                    {
+                        name: "Dialysis Machine Coupler",
+                        description: "Connection for dialysis fluid circuits.",
+                        features: "Non-invasive, leak-proof, infection control.",
+                        specifications: "Medical PE with antimicrobial additive, 300 psi rated.",
+                        useCase: "Hemodialysis and peritoneal dialysis machines."
+                    },
+                    {
+                        name: "Ventilator System Seal",
+                        description: "Critical sealing for life-support ventilator systems.",
+                        features: "Reliable sealing, breathing circuit compatibility, patient safety.",
+                        specifications: "Latex-free silicone, DEHP-free, 100% traceability.",
+                        useCase: "ICU ventilators and respiratory support systems."
+                    },
+                    {
+                        name: "Health Monitor Housing",
+                        description: "Enclosure for wearable health monitoring devices.",
+                        features: "Skin compatibility, sweat resistance, antimicrobial.",
+                        specifications: "Biocompatible polycarbonate, IPX7 rated, soft-touch coating.",
+                        useCase: "Fitness trackers and medical monitoring wearables."
+                    },
+                    {
+                        name: "Drug Delivery Valve",
+                        description: "Precision component for implantable drug pumps.",
+                        features: "Long-term reliability, accurate dosing, biocompatible.",
+                        specifications: "Titanium with Parylene C coating, 0.1 mL accuracy.",
+                        useCase: "Chronic pain management and insulin pumps."
+                    },
+                    {
+                        name: "MRI-Safe Rubber Part",
+                        description: "Non-magnetic components for MRI-compatible devices.",
+                        features: "Non-ferromagnetic, RF-transparent, patient safety.",
+                        specifications: "Non-magnetic stainless steel reinforced silicone.",
+                        useCase: "MRI-compatible monitoring and positioning aids."
+                    },
+                    {
+                        name: "Respirator Mask Connector",
+                        description: "Interface for medical respirator and mask systems.",
+                        features: "Patient seal, flow control, contamination prevention.",
+                        specifications: "Medical TPE with antimicrobial coating, N95 compatibility.",
+                        useCase: "Hospital respiratory protection systems."
+                    },
+                    {
+                        name: "Medical Storage Panel",
+                        description: "Secure storage solution for medical supplies.",
+                        features: "Inventory control, tamper evidence, easy access.",
+                        specifications: "Antimicrobial coated metal, lockable, modular.",
+                        useCase: "Hospital supply storage and dispensing."
+                    },
+                    {
+                        name: "Surgical Drape Systems",
+                        description: "Comprehensive draping systems for sterile surgery setup.",
+                        features: "Fluid-proof, flame-resistant, anti-static.",
+                        specifications: "SMS fabric, adhesive borders, fenestration options.",
+                        useCase: "Surgical procedures requiring sterile field maintenance."
+                    },
+                    {
+                        name: "Patient Monitoring Electrode Pads",
+                        description: "Disposable electrode pads for patient vital sign monitoring.",
+                        features: "Low impedance, hypoallergenic, long-term wear.",
+                        specifications: "Ag/AgCl gel, 48-hour adhesion, ECG and EMG compatible.",
+                        useCase: "ICU, OR, and ambulatory monitoring."
+                    },
+                    {
+                        name: "Pharmaceutical Processing Seals",
+                        description: "Sealing solutions for drug manufacturing equipment.",
+                        features: "USP Class VI, FDA approved, extractable-free.",
+                        specifications: "Fluoroelastomer with PTFE backup rings.",
+                        useCase: "Reactors, centrifuges, and filling equipment in pharma."
+                    },
+                    {
+                        name: "Medical Gas System Components",
+                        description: "Valves and regulators for hospital gas distribution.",
+                        features: "Cross-contamination prevention, pressure regulation, fail-safe.",
+                        specifications: "Medical-grade brass, oxygen compatible, 200 PSI rated.",
+                        useCase: "Oxygen, nitrogen, nitrous oxide, and medical air systems."
+                    },
+                    {
+                        name: "Biopsy Needle Components",
+                        description: "Precision components for minimally invasive tissue sampling.",
+                        features: "Sharp cutting edges, echogenic properties, radiopacity markers.",
+                        specifications: "Medical-grade stainless steel, 14-18 gauge, 5-20 cm length.",
+                        useCase: "Tissue diagnosis and cancer detection procedures."
+                    },
+                    {
+                        name: "Orthopedic Implant Components",
+                        description: "Biocompatible components for bone fixation systems.",
+                        features: "Osteoconductive, corrosion resistant, sterilizable.",
+                        specifications: "Ti-6Al-4V, PEEK, and UHMWPE materials, various sizes.",
+                        useCase: "Bone screws, plates, and joint replacement systems."
+                    },
+                    {
+                        name: "Cardiac Pacemaker Enclosures",
+                        description: "Hermetically sealed enclosures for pacemaker electronics.",
+                        features: "TI grade metal, hermetic seal, MRI conditional.",
+                        specifications: "Titanium, 0.1 µm seal integrity, 10-year life.",
+                        useCase: "Cardiac rhythm management devices."
+                    },
+                    {
+                        name: "Insulin Pump Tubing Sets",
+                        description: "Flexible tubing sets for diabetic insulin delivery.",
+                        features: "Kink-resistant, UV-stabilized, low dead volume.",
+                        specifications: "Medical-grade PE, 27-31 gauge, 24-inch length.",
+                        useCase: "Continuous insulin delivery for diabetic patients."
+                    },
+                    {
+                        name: "Dental Handpiece Components",
+                        description: "Precision components for dental drilling and cleaning tools.",
+                        features: "High-speed rotation, fiber-optic illumination, water spray.",
+                        specifications: "Tungsten carbide burs, 350,000 RPM, LED light guide.",
+                        useCase: "Restorative and preventive dental procedures."
+                    },
+                    {
+                        name: "Transdermal Patch Adhesive Systems",
+                        description: "Controlled-release drug delivery patches.",
+                        features: "Rate-controlling membrane, skin-friendly adhesive, tamper-resistant.",
+                        specifications: "Acrylic adhesive, 24-72 hour release, various drug options.",
+                        useCase: "Pain management, hormone therapy, motion sickness."
+                    },
+                    {
+                        name: "Prosthetic Joint Components",
+                        description: "Components for artificial hip, knee, and shoulder joints.",
+                        features: "Wear-resistant, biocompatible, customizable geometry.",
+                        specifications: "CoCrMo, UHMWPE, and ceramic materials, patient-specific options.",
+                        useCase: "Joint replacement surgery for arthritis and trauma."
+                    },
+                    {
+                        name: "Medical Fluid Warming Systems",
+                        description: "Devices for warming IV fluids and blood products.",
+                        features: "Precise temperature control, safety limits, rapid warming.",
+                        specifications: "37°C output, 1000 ml/min flow rate, temperature display.",
+                        useCase: "Surgery, emergency medicine, and infusion therapy."
+                    },
+                    {
+                        name: "Surgical Stapler Reloads",
+                        description: "Single-use reload cartridges for surgical staplers.",
+                        features: "Consistent staple formation, tissue compression control, multiple sizes.",
+                        specifications: "Titanium staples, 30-60 staples per reload, curved or straight.",
+                        useCase: "Minimally invasive and open surgical procedures."
+                    },
+                    {
+                        name: "Neonatal Care Equipment Components",
+                        description: "Specialized components for newborn intensive care.",
+                        features: "Soft touch materials, small geometries, temperature control.",
+                        specifications: "DEHP-free, 24-hour sterility maintenance, low-profile designs.",
+                        useCase: "NICU monitoring, feeding, and life support systems."
+                    },
+                    {
+                        name: "Surgical Navigation System Parts",
+                        description: "Components for image-guided surgical procedures.",
+                        features: "Registration tools, tracking sensors, positioning fixtures.",
+                        specifications: "Sterilizable, radiolucent, 0.5mm accuracy.",
+                        useCase: "Neurosurgery, orthopedics, and spinal procedures."
+                    },
+                    {
+                        name: "Dialysis Catheter Components",
+                        description: "Long-term access catheters for renal replacement therapy.",
+                        features: "Dual-lumen design, cuff fixation, antimicrobial coating.",
+                        specifications: "Medical-grade silicone, 12-16 French, 15-20 cm length.",
+                        useCase: "Chronic hemodialysis access when AV fistula unavailable."
+                    },
+                    {
+                        name: "Medical Laser Components",
+                        description: "Precision components for medical laser systems.",
+                        features: "Beam delivery, tissue interaction control, safety interlocks.",
+                        specifications: "Fiber optic delivery, 0.5-100W power handling, various wavelengths.",
+                        useCase: "Surgery, dermatology, ophthalmology, and therapeutic applications."
+                    },
+                    {
+                        name: "Smart Pill Dispensers",
+                        description: "Automated medication dispensing systems for homecare.",
+                        features: "Scheduled dispensing, reminder alarms, compliance tracking.",
+                        specifications: "7-day calendar, 4-8 compartments per day, smartphone connectivity.",
+                        useCase: "Elderly care, chronic disease management, medication adherence."
+                    },
+                    {
+                        name: "Cardiovascular Stent Parts",
+                        description: "Components for minimally invasive vascular repair.",
+                        features: "Flexible delivery system, radial strength, biocompatible coating.",
+                        specifications: "316L stainless steel, 2-4 mm diameter, 8-30 mm length.",
+                        useCase: "Treatment of coronary artery disease and stenosis."
+                    },
+                    {
+                        name: "Sleep Apnea Therapy Devices",
+                        description: "CPAP and BiPAP components for sleep disorder treatment.",
+                        features: "Pressure adjustment, humidification, mask comfort.",
+                        specifications: "5-20 cmH2O pressure range, heated humidifier, leak compensation.",
+                        useCase: "Obstructive sleep apnea treatment and respiratory support."
+                    }
+                ]
+            },
+            {
+                category: "RENEWABLE ENERGY",
+                emoji: "🌱",
+                icon: "fa-leaf",
+                products: [
+                    {
+                        name: "Solar Panel Mount Bracket",
+                        description: "Durable mounting solution for photovoltaic installations.",
+                        features: "UV-resistant, corrosion-proof, modular design.",
+                        specifications: "Anodized aluminum, 6061-T6, wind load rated for 120 mph.",
+                        useCase: "Rooftop and ground-mounted solar arrays."
+                    },
+                    {
+                        name: "Wind Turbine Hub Seal",
+                        description: "Critical seal for wind turbine nacelle protection.",
+                        features: "Weather-resistant, vibration damping, long-life.",
+                        specifications: "Neoprene with embedded mesh, IP65 rated, -40°C to 100°C.",
+                        useCase: "Wind turbine generator nacelles."
+                    },
+                    {
+                        name: "Energy Storage Housing",
+                        description: "Protective housing for battery energy storage.",
+                        features: "Thermal management, fire suppression, remote monitoring.",
+                        specifications: "Stainless steel with thermal barriers, NEMA 4 rated.",
+                        useCase: "Grid-scale battery storage systems."
+                    },
+                    {
+                        name: "Inverter Cooling Plate",
+                        description: "Thermal management for solar power inverters.",
+                        features: "Optimized heat transfer, corrosion resistant, lightweight.",
+                        specifications: "Copper-aluminum composite, microchannel design.",
+                        useCase: "Solar inverter thermal management."
+                    },
+                    {
+                        name: "Biogas System Valve Seal",
+                        description: "Sealing for anaerobic digestion and biogas systems.",
+                        features: "Biogas compatible, hydrogen sulfide resistant, long-life.",
+                        specifications: "EPDM with antioxidant additives, Class B fire rated.",
+                        useCase: "Anaerobic digesters and biogas upgrading."
+                    },
+                    {
+                        name: "Hydropower Turbine Spacer",
+                        description: "Precision spacers for hydroelectric turbine assemblies.",
+                        features: "Corrosion resistant, dimensionally stable, underwater rated.",
+                        specifications: "Marine-grade bronze with protective coating.",
+                        useCase: "Hydroelectric turbine maintenance and construction."
+                    },
+                    {
+                        name: "Renewable Pipe Connector",
+                        description: "Specialized connector for renewable energy fluid systems.",
+                        features: "Chemical compatibility, pressure rated, leak-free.",
+                        specifications: "PVDF with EPDM O-rings, 150 PSI, high-purity fluids.",
+                        useCase: "Geothermal and biofuel processing systems."
+                    },
+                    {
+                        name: "Solar Rail Clamp",
+                        description: "Secure attachment clamp for solar panel racking.",
+                        features: "Tool-free installation, wind-resistant, grounding compatible.",
+                        specifications: "Zinc-plated steel with polymer coating, 3000 lb pull strength.",
+                        useCase: "Solar panel rail mounting systems."
+                    },
+                    {
+                        name: "Wind Blade Root Insert",
+                        description: "Critical connection point for wind turbine blades.",
+                        features: "High fatigue strength, precise fit, load distribution.",
+                        specifications: "High-strength steel with threaded inserts, 30-year life.",
+                        useCase: "Wind turbine blade-to-hub connections."
+                    },
+                    {
+                        name: "Renewable Pump Rubber",
+                        description: "Diaphragm and seal components for renewable pumps.",
+                        features: "Chemical resistant, abrasion resistant, energy efficient.",
+                        specifications: "Nitrile with carbon black reinforcement, 100,000 hour MTBF.",
+                        useCase: "Water pumping for irrigation and solar tracking."
+                    },
+                    {
+                        name: "Battery Pack Insulation Part",
+                        description: "Thermal insulation for battery pack safety and efficiency.",
+                        features: "Thermal runaway mitigation, flame retardant, lightweight.",
+                        specifications: "Microwave-transparent ceramic fiber, 1200°C rated.",
+                        useCase: "Electric vehicle and stationary battery packs."
+                    },
+                    {
+                        name: "Thermal Expansion Seal",
+                        description: "Sealing system accommodating thermal cycling.",
+                        features: "Flexibility under expansion, long-term sealing, weather resistance.",
+                        specifications: "Silicone with reinforcing fibers, 200% elongation.",
+                        useCase: "Solar thermal and geothermal systems."
+                    },
+                    {
+                        name: "Solar Junction Box Plate",
+                        description: "Electrical connections for photovoltaic modules.",
+                        features: "UV-stable, flame-retardant, sealed connections.",
+                        specifications: "Glass-filled polyester, IP67 rated, 1000VDC rated.",
+                        useCase: "Photovoltaic module electrical junction boxes."
+                    },
+                    {
+                        name: "Wind Tower Bolt Cover",
+                        description: "Protective covers for wind tower flange bolts.",
+                        features: "Corrosion protection, tamper resistance, aerodynamic.",
+                        specifications: "UV-stabilized polyethylene, bolt-grade security.",
+                        useCase: "Wind tower section connections."
+                    },
+                    {
+                        name: "Renewable Flow Divider",
+                        description: "Distribution system for renewable energy fluid flows.",
+                        features: "Even distribution, minimal pressure drop, maintenance access.",
+                        specifications: "316SS with PTFE seals, equal flow division.",
+                        useCase: "Solar thermal collector manifolds."
+                    },
+                    {
+                        name: "Biomass Feed System Seal",
+                        description: "Sealing for biomass handling and feeding systems.",
+                        features: "Abrasion resistance, dust containment, temperature stability.",
+                        specifications: "Urethane with fabric reinforcement, 200°C capability.",
+                        useCase: "Wood pellet and agricultural waste handling."
+                    },
+                    {
+                        name: "High-Durability Rubber Ring",
+                        description: "Long-lasting sealing for challenging renewable applications.",
+                        features: "Extended life, chemical resistance, thermal stability.",
+                        specifications: "Fluoroelastomer with special additives, 20-year life.",
+                        useCase: "Concentrated solar power systems."
+                    },
+                    {
+                        name: "Turbine Shaft Gasket",
+                        description: "Sealing for rotating shafts in renewable turbines.",
+                        features: "Dynamic sealing, wear compensation, self-adjusting.",
+                        specifications: "Carbon-graphite with spring loading, 3600 RPM capability.",
+                        useCase: "Hydro and wind turbine shaft seals."
+                    },
+                    {
+                        name: "Solar Cable Guide",
+                        description: "Routing system for DC and AC solar cables.",
+                        features: "UV-resistant, cable protection, tool-free assembly.",
+                        specifications: "UV-stabilized polymer, 1000V rated, 600 lbs support.",
+                        useCase: "Solar farm cable management."
+                    },
+                    {
+                        name: "Wind Nacelle Support Plate",
+                        description: "Mounting and support for wind turbine nacelle components.",
+                        features: "Vibration isolation, load distribution, maintenance access.",
+                        specifications: "Structural steel with vibration damping, 50-ton capacity.",
+                        useCase: "Wind turbine nacelle internal components."
+                    },
+                    {
+                        name: "Green Energy Valve Body",
+                        description: "Valve housing for renewable energy fluid control.",
+                        features: "Corrosion resistance, flow control, automation ready.",
+                        specifications: "Duplex stainless steel, electric actuator compatible.",
+                        useCase: "Solar thermal and geothermal plant control systems."
+                    },
+                    {
+                        name: "Renewable System Bushing",
+                        description: "Bearing and isolation components for renewable systems.",
+                        features: "Vibration isolation, wear resistance, maintenance-free.",
+                        specifications: "Bronze-graphite composite, self-lubricating.",
+                        useCase: "Solar tracker drive mechanisms."
+                    },
+                    {
+                        name: "Energy Storage Locking Plate",
+                        description: "Safety and access control for energy storage systems.",
+                        features: "Keyed locks, safety interlocks, emergency access.",
+                        specifications: "Galvanized steel with stainless hardware, UL listed.",
+                        useCase: "Battery storage system enclosures."
+                    },
+                    {
+                        name: "Solar Panel Corner Frame",
+                        description: "Corner reinforcement for photovoltaic panel frames.",
+                        features: "Strengthened corners, mounting compatibility, weather seal.",
+                        specifications: "Aluminum with structural foam filling, 10G acceleration.",
+                        useCase: "Large-format solar panel installations."
+                    },
+                    {
+                        name: "Water Turbine Pressure Seal",
+                        description: "Sealing for hydrokinetic and water turbine systems.",
+                        features: "Submersible, high-pressure capability, marine growth resistant.",
+                        specifications: "Neoprene with metal reinforcement, 300 PSI, marine grade.",
+                        useCase: "Tidal and river current energy systems."
+                    },
+                    {
+                        name: "Battery Cooler Pipe Holder",
+                        description: "Support and positioning for battery thermal management.",
+                        features: "Secure mounting, vibration resistance, thermal pathway control.",
+                        specifications: "Polymer clips with elastomeric cushioning, 200°C rated.",
+                        useCase: "Battery pack cooling system installation."
+                    },
+                    {
+                        name: "Turbine Blade Spacer",
+                        description: "Precision spacing for wind and water turbine blades.",
+                        features: "Dimensional stability, fatigue resistance, aerodynamic profile.",
+                        specifications: "Fiberglass-reinforced polymer, custom spacing.",
+                        useCase: "Turbine assembly and maintenance."
+                    },
+                    {
+                        name: "Eco-Grade Seal",
+                        description: "Environmentally responsible sealing solution.",
+                        features: "Recyclable materials, low environmental impact, non-toxic.",
+                        specifications: "Bio-based polymers with recycled content, USDA certified.",
+                        useCase: "Green building and sustainable energy systems."
+                    },
+                    {
+                        name: "Solar Pump Connector",
+                        description: "Connection system for solar-powered water pumps.",
+                        features: "Weather-resistant, corrosion-proof, easy installation.",
+                        specifications: "PVDF with stainless steel reinforcement, submersible rated.",
+                        useCase: "Solar water pumping systems."
+                    },
+                    {
+                        name: "Green Energy Housing Plate",
+                        description: "Protective housing for renewable energy control systems.",
+                        features: "NEMA 4 rated, solar panel integrated, smart monitoring.",
+                        specifications: "Powder-coated aluminum with polycarbonate windows.",
+                        useCase: "Remote monitoring and control enclosures."
+                    },
+                    {
+                        name: "Geothermal Heat Exchanger Components",
+                        description: "Components for ground-source heat pump systems.",
+                        features: "High thermal conductivity, corrosion resistance, long-term stability.",
+                        specifications: "High-density polyethylene, 50-year life, thermal fusion joints.",
+                        useCase: "Residential and commercial geothermal HVAC systems."
+                    },
+                    {
+                        name: "Smart Grid Integration Controllers",
+                        description: "Controllers for integrating renewable energy sources with the grid.",
+                        features: "Real-time monitoring, load balancing, predictive control.",
+                        specifications: "IEEE 1547 compliant, 1 MW capacity, web-based interface.",
+                        useCase: "Distributed energy resource management systems."
+                    },
+                    {
+                        name: "Tidal Energy Converter Parts",
+                        description: "Components for converting tidal flow to electricity.",
+                        features: "Marine-grade materials, biofouling resistant, high efficiency.",
+                        specifications: "Stainless steel and titanium, 50-year life, 2 MW capacity.",
+                        useCase: "Tidal energy farms and coastal power generation."
+                    },
+                    {
+                        name: "Biomass Gasification System Components",
+                        description: "Components for converting biomass to synthetic gas.",
+                        features: "High temperature resistance, ash resistance, modularity.",
+                        specifications: "Refractory-lined steel, 800°C operating temperature.",
+                        useCase: "Waste-to-energy and distributed power generation."
+                    },
+                    {
+                        name: "Solar Concentrator Mirror Segments",
+                        description: "Precision mirrors for concentrated solar power systems.",
+                        features: "High reflectivity, weather resistant, shape retention.",
+                        specifications: "Silver-coated glass, 94% reflectivity, 25-year life.",
+                        useCase: "CSP plants and solar thermal power generation."
+                    },
+                    {
+                        name: "Wave Energy Converter Buoy Components",
+                        description: "Floating components for capturing ocean wave energy.",
+                        features: "Corrosion resistant, impact tolerant, power conversion.",
+                        specifications: "Marine-grade aluminum, 100 kW output, 25-year life.",
+                        useCase: "Offshore wave energy farms and remote power generation."
+                    },
+                    {
+                        name: "Renewable Energy Forecasting Sensors",
+                        description: "Sensors for predicting renewable energy output.",
+                        features: "Weather monitoring, irradiance sensing, wind measurement.",
+                        specifications: "Solar irradiance, anemometer, weather station, cloud detection.",
+                        useCase: "Grid integration and energy trading optimization."
+                    },
+                    {
+                        name: "Green Hydrogen Production Equipment",
+                        description: "Electrolysis equipment for producing clean hydrogen fuel.",
+                        features: "High efficiency, scalable, renewable energy compatible.",
+                        specifications: "PEM electrolyzer, 2-20 MW capacity, 90% efficiency.",
+                        useCase: "Industrial hydrogen production and energy storage."
+                    },
+                    {
+                        name: "Algae Biofuel Cultivation Systems",
+                        description: "Systems for cultivating algae for biofuel production.",
+                        features: "Photobioreactor design, nutrient delivery, harvesting system.",
+                        specifications: "1000 m² cultivation area, 100 L/day production.",
+                        useCase: "Sustainable aviation fuel and transportation fuel production."
+                    },
+                    {
+                        name: "Smart Microgrid Components",
+                        description: "Components for localized renewable energy grids.",
+                        features: "Autonomous operation, load management, resilience.",
+                        specifications: "50 kW to 10 MW capacity, islanding capability.",
+                        useCase: "Community microgrids and critical facility backup."
+                    },
+                    {
+                        name: "Agricultural Solar Canopy Systems",
+                        description: "Solar installations with dual agricultural use.",
+                        features: "Crop protection, energy generation, water conservation.",
+                        specifications: "Adjustable tilt, 50% canopy coverage, dual-axis tracking.",
+                        useCase: "Agrivoltaics and sustainable farming solutions."
+                    },
+                    {
+                        name: "Renewable Energy Storage Batteries",
+                        description: "Advanced battery systems for renewable energy storage.",
+                        features: "Long cycle life, fast charging, thermal management.",
+                        specifications: "LFP lithium iron phosphate, 10,000 cycles, 10-year warranty.",
+                        useCase: "Solar and wind energy time-shifting."
+                    },
+                    {
+                        name: "Vertical Axis Wind Turbine Components",
+                        description: "Components for omni-directional wind energy capture.",
+                        features: "Low wind start-up, bird-friendly design, compact footprint.",
+                        specifications: "Savonius/Darrieus hybrid, 1-100 kW range.",
+                        useCase: "Urban wind power and distributed generation."
+                    },
+                    {
+                        name: "Floating Solar Platform Systems",
+                        description: "Solar panels mounted on floating platforms for water bodies.",
+                        features: "Corrosion resistance, anchoring system, wave accommodation.",
+                        specifications: "HDPE floats, 10 MW capacity, 25-year life.",
+                        useCase: "Reservoirs, ponds, and industrial water bodies."
+                    },
+                    {
+                        name: "Renewable Energy Monitoring Systems",
+                        description: "Comprehensive monitoring for renewable energy installations.",
+                        features: "Real-time analytics, predictive maintenance, performance optimization.",
+                        specifications: "SCADA integration, IoT connectivity, weather correlation.",
+                        useCase: "Utility-scale and commercial renewable systems."
+                    },
+                    {
+                        name: "Perovskite Solar Cell Components",
+                        description: "Next-generation materials for high-efficiency solar cells.",
+                        features: "High efficiency potential, low-cost manufacturing, flexibility.",
+                        specifications: ">25% efficiency, solution-processable, tandem cell compatibility.",
+                        useCase: "Future generation PV technology development and deployment."
+                    },
+                    {
+                        name: "Small-Scale Hydropower Systems",
+                        description: "Micro and pico hydropower systems for rural electrification.",
+                        features: "Low head requirement, fish-friendly design, grid/t Off-grid.",
+                        specifications: "1 kW to 100 kW, 2-20m head, Pelton/Turgo runners.",
+                        useCase: "Remote communities and small-scale power generation."
+                    },
+                    {
+                        name: "Renewable Energy Backup Generators",
+                        description: "Backup power systems using renewable fuels.",
+                        features: "Biogas/biodiesel compatibility, automatic transfer, emissions control.",
+                        specifications: "10-500 kW, <5-second switchover, Tier 4 emissions.",
+                        useCase: "Critical facilities and renewable energy system backup."
+                    },
+                    {
+                        name: "Agrivoltaic Mounting Structures",
+                        description: "Specialized mounting for co-location of solar panels and crops.",
+                        features: "Variable shading, crop-specific design, agricultural access.",
+                        specifications: "Single or dual rows, 2-4m clearance, east-west orientation.",
+                        useCase: "Dual land use for agriculture and renewable energy."
+                    }
+                ]
+            }
+        ];
+
+        // Function to render categories and products
+        function renderProducts(searchTerm = '') {
+            const container = document.getElementById('categoriesContainer');
+            container.innerHTML = '';
+
+            let hasResults = false;
+
+            products.forEach((categoryData, catIndex) => {
+                const filteredProducts = searchTerm ?
+                    categoryData.products.filter(product =>
+                        product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        product.features.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) :
+                    categoryData.products;
+
+                if (filteredProducts.length === 0 && searchTerm) {
+                    return; // Skip empty categories during search
+                }
+
+                hasResults = true;
+
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category';
+                categoryElement.style.animationDelay = `${catIndex * 0.2}s`;
+
+                categoryElement.innerHTML = `
+                    <div class="category-header">
+                        <i class="fas ${categoryData.icon}"></i>
+                        <h2 class="category-title">${categoryData.emoji} ${categoryData.category} (${filteredProducts.length} PRODUCTS)</h2>
+                    </div>
+                    <div class="category-image">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='200' viewBox='0 0 800 200'%3E%3Crect width='800' height='200' fill='%232c5282'/%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='100' cy='100' r='80'/%3E%3Ccircle cx='700' cy='100' r='80'/%3E%3C/g%3E%3Cg fill='%23ffffff'%3E%3C%2Fg%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23ffffff'%3E${encodeURIComponent(categoryData.category.toUpperCase())}%3C/text%3E%3C/svg%3E" alt="${categoryData.category}" style="width: 100%; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="products-grid" id="products-${catIndex}">
+                        ${filteredProducts.map((product, prodIndex) => `
+                            <div class="product-card stagger-animation" style="--delay: ${prodIndex}">
+                                <div class="product-image">
+                                    <img src="${product.image}" alt="${product.name}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                                    <span class="product-number">${prodIndex + 1}</span>
+                                </div>
+                                <h3 class="product-name">${product.name}</h3>
+                                <p class="product-description">${product.description}</p>
+                                <div class="product-specs">
+                                    <strong>Features:</strong> ${product.features}<br>
+                                    <strong>Specifications:</strong> ${product.specifications}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                container.appendChild(categoryElement);
+            });
+
+            // Show no results message if search term provided but no matches found
+            if (!hasResults && searchTerm) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>No products found for "${searchTerm}"</h3>
+                        <p>Try adjusting your search terms</p>
+                    </div>
+                `;
+            }
+
+            // Trigger animations for visible products
+            setTimeout(() => {
+                const productCards = document.querySelectorAll('.product-card');
+                productCards.forEach(card => {
+                    card.classList.add('visible');
+                });
+            }, 100);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+
+            // Add search functionality
+            const searchInput = document.getElementById('searchInput');
+            let searchTimeout;
+
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    renderProducts(searchInput.value.trim());
+                }, 300); // Debounce search by 300ms
+            });
+        });
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Test functionality
+        function testPageFunctionality() {
+            console.log("AEPL Products page loaded successfully");
+            console.log("Categories: " + products.length);
+            console.log("Total products: " + products.reduce((total, category) => total + category.products.length, 0));
+
+            // Add a subtle notification that the page is working
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = '#48BB78';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 15px';
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            notification.style.zIndex = '1000';
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s';
+            notification.textContent = 'Page loaded successfully! 🚀';
+            document.body.appendChild(notification);
+
+            // Fade in the notification
+            setTimeout(() => {
+                notification.style.opacity = '1';
+            }, 500);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Run tests when page is loaded
+        window.addEventListener('load', testPageFunctionality);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="News & Updates - The Salem Aeropark - Stay updated with the latest aerospace industry news and company updates">
+    <meta name="keywords" content="aerospace news, industry updates, company news, engineering updates, manufacturing news, aviation news, defense updates">
+    <meta name="author" content="The Salem Aeropark">
+    <title>News & Updates - The Salem Aeropark</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Bootstrap (for grid system) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Modern Styles -->
+    <link rel="stylesheet" href="css/zensar-styles.css">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="videos/earth_space_back ground_6.mp4" as="video">
+
+    <style>
+        /* News-specific styles */
+        .breaking-news-ticker {
+            background: linear-gradient(90deg, #0033a0, #00a6d2);
+            color: white;
+            padding: 10px 0;
+        }
+        
+        .ticker-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ticker-label {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-right: 20px;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            display: flex;
+            animation: ticker-scroll 30s linear infinite;
+        }
+        
+        .ticker-item {
+            padding: 0 20px;
+            white-space: nowrap;
+            border-left: 1px solid rgba(255,255,255,0.3);
+            margin-left: 1px;
+        }
+        
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .news-category-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            padding: 8px 16px;
+            border-radius: 25px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: var(--zensar-primary);
+            color: white;
+            border-color: var(--zensar-primary);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-category {
+            display: inline-block;
+            background: var(--zensar-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .news-date {
+            display: block;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--zensar-dark);
+        }
+        
+        .news-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--zensar-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .trending-news {
+            background: linear-gradient(135deg, var(--zensar-primary), var(--zensar-secondary));
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .trending-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .trending-badge {
+            background: var(--zensar-accent);
+            color: var(--zensar-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+        }
+        
+        .search-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .search-input {
+            padding: 15px 20px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            padding: 0 25px;
+            border-radius: 50px;
+            background: var(--zensar-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .pagination-custom {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn.active, .page-btn:hover {
+            background: var(--zensar-primary);
+            color: white;
+            border-color: var(--zensar-primary);
+        }
+        
+        .social-share {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook { background: #3b5998; }
+        .twitter { background: #1da1f2; }
+        .linkedin { background: #0077b5; }
+        
+        .load-more-btn {
+            background: linear-gradient(135deg, var(--zensar-primary), var(--zensar-secondary));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 40px auto 0;
+        }
+        
+        .load-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+
+        .hero-title-animated {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero-subtitle-animated {
+            animation: fadeIn 1.2s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons-animated {
+            animation: fadeIn 1.2s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .ticker-item {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .news-card {
+            animation: scaleIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+        .news-card:nth-child(4) { animation-delay: 0.4s; }
+        .news-card:nth-child(5) { animation-delay: 0.5s; }
+        .news-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Additional Animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+        }
+
+        @keyframes colorChange {
+            0% { color: #ffffff; }
+            25% { color: #00a6d2; }
+            50% { color: #0033a0; }
+            75% { color: #00a6d2; }
+            100% { color: #ffffff; }
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        .animate-bounce {
+            animation: bounce 1.5s infinite;
+        }
+
+        .animate-spin {
+            animation: spin 2s linear infinite;
+        }
+
+        .animate-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .animate-glow {
+            animation: glow 2s infinite;
+        }
+
+        .animate-color-change {
+            animation: colorChange 3s infinite;
+        }
+
+        .animate-slide-down {
+            animation: slideDown 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-wiggle {
+            animation: wiggle 0.8s ease-in-out;
+        }
+
+        .hover-grow {
+            transition: all 0.3s ease;
+        }
+
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+
+        .hover-rotate {
+            transition: all 0.4s ease;
+        }
+
+        .hover-rotate:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(0, 166, 210, 0.7);
+        }
+
+        .news-category {
+            animation: slideInRight 0.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        .news-date {
+            animation: slideInRight 0.5s ease-out 0.4s forwards;
+            opacity: 0;
+        }
+
+        .news-title {
+            animation: slideInLeft 0.5s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .news-excerpt {
+            animation: fadeIn 0.5s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+
+        .news-meta {
+            animation: fadeIn 0.5s ease-out 0.7s forwards;
+            opacity: 0;
+        }
+
+        /* Typing Animation */
+        .typing-animation {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: orange }
+        }
+
+        .typing-animation-pause {
+            animation:
+                typing 3.5s steps(40, end) 0.5s,
+                blink-caret .75s step-end 4s infinite;
+        }
+
+        .typing-animation-fade {
+            overflow: hidden;
+            border-right: .15em solid orange;
+            white-space: nowrap;
+            animation:
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end 4s infinite,
+                fade-out 0.5s ease-in 4.5s forwards;
+        }
+
+        @keyframes fade-out {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+    </style>
+</head>
+<body class="news-page">
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news-ticker animate-fade-in">
+        <div class="container">
+            <div class="ticker-container">
+                <div class="ticker-label animate-pulse hover-grow"><i class="fas fa-bolt"></i> BREAKING</div>
+                <div class="ticker-content">
+                    <div class="ticker-item animate-fade-in delay-100 hover-grow">Salem Aeropark partners with NASA on Mars mission components</div>
+                    <div class="ticker-item animate-fade-in delay-200 hover-grow">New defense contract worth $50M announced</div>
+                    <div class="ticker-item animate-fade-in delay-300 hover-grow">Record quarterly earnings reported</div>
+                    <div class="ticker-item animate-fade-in delay-400 hover-grow">Innovation lab opens in Bangalore</div>
+                    <div class="ticker-item animate-fade-in delay-500 hover-grow">Salem Aeropark partners with NASA on Mars mission components</div>
+                    <div class="ticker-item animate-fade-in delay-600 hover-grow">New defense contract worth $50M announced</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="header-container">
+            <a href="/" class="logo" aria-label="The Salem Aeropark Home">
+                <div class="logo-text">
+                    <span class="logo-main">THE SALEM</span>
+                    <span class="logo-accent">AEROPARK</span>
+                </div>
+            </a>
+
+            <div class="nav-wrapper">
+                <nav class="nav-menu" role="navigation" aria-label="Main navigation">
+                    <a href="index.html" class="nav-link hover-grow animate-fade-in delay-100">
+                        <span class="nav-link-content">Home</span>
+                    </a>
+                    <a href="about.html" class="nav-link hover-grow animate-fade-in delay-200">
+                        <span class="nav-link-content">About</span>
+                    </a>
+                    <a href="services.html" class="nav-link hover-grow animate-fade-in delay-300">
+                        <span class="nav-link-content">Services</span>
+                    </a>
+                    <a href="gallery.html" class="nav-link hover-grow animate-fade-in delay-400">
+                        <span class="nav-link-content">Gallery</span>
+                    </a>
+                    <a href="news.html" class="nav-link active hover-grow animate-fade-in delay-500" aria-current="page">
+                        <span class="nav-link-content">News</span>
+                    </a>
+                    <a href="careers.html" class="nav-link hover-grow animate-fade-in delay-600">
+                        <span class="nav-link-content">Careers</span>
+                    </a>
+                    <a href="search.html" class="nav-link hover-grow animate-fade-in delay-700">
+                        <span class="nav-link-content">Search</span>
+                    </a>
+                    <a href="contact.html" class="nav-link hover-grow animate-fade-in delay-800">
+                        <span class="nav-link-content">Contact</span>
+                    </a>
+                </nav>
+
+                <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <!-- Video Background -->
+            <div class="video-background">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/earth_space_back ground_6.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Dark Overlay for Text Readability -->
+            <div class="hero-overlay"></div>
+
+            <div class="container">
+                <div class="hero-content text-center">
+                </div>
+            </div>
+        </section>
+
+        <!-- News Filters & Search -->
+        <section class="section animate-fade-in" id="news-filters" style="background-color: black; color: white; padding: 40px 0;">
+            <div class="container">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-6 animate-slide-in-left">
+                        <h2 class="mb-0" style="color: white;">Latest Updates</h2>
+                        <p class="text-muted mb-0" style="color: lightgray;">Stay informed with the latest news and insights</p>
+                    </div>
+                    <div class="col-md-6 text-md-end animate-slide-in-right">
+                        <div class="d-flex flex-wrap justify-content-md-end gap-3 align-items-center">
+                            <div class="results-count" style="color: white;">
+                                <strong>24</strong> articles found
+                            </div>
+                            <div class="sort-options">
+                                <select class="form-select form-select-sm" style="background-color: #333; color: white; border-color: #555;">
+                                    <option style="color: black;">Most Recent</option>
+                                    <option style="color: black;">Most Popular</option>
+                                    <option style="color: black;">Oldest First</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="news-category-filter animate-fade-in delay-300">
+                    <button class="category-btn hover-grow" data-category="all" style="background-color: #333; color: white; border-color: #555;">All News</button>
+                    <button class="category-btn hover-grow" data-category="aerospace" style="background-color: #333; color: white; border-color: #555;">Aerospace</button>
+                    <button class="category-btn hover-grow" data-category="defense" style="background-color: #333; color: white; border-color: #555;">Defense</button>
+                    <button class="category-btn hover-grow" data-category="space" style="background-color: #333; color: white; border-color: #555;">Space</button>
+                    <button class="category-btn hover-grow" data-category="technology" style="background-color: #333; color: white; border-color: #555;">Technology</button>
+                    <button class="category-btn hover-grow" data-category="company" style="background-color: #333; color: white; border-color: #555;">Company</button>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container animate-fade-in delay-500" style="max-width: 600px; margin: 0 auto 40px;">
+                    <input type="text" class="search-input" placeholder="Search news articles..." style="background-color: #333; color: white; border-color: #555;">
+                    <button class="search-btn" style="background: #007bff; color: white;">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main News Grid -->
+        <section class="section animate-fade-in" id="news-grid" style="background-color: black; color: white; padding: 40px 0;">
+            <div class="container">
+                <div class="news-grid">
+                    <!-- Featured News Article -->
+                    <div class="news-card" data-category="aerospace" style="background-color: #222; color: white;">
+                        <div class="news-image">
+                            <img src="images/corporate-hq.jpg" alt="Salem Aeropark partners with Boeing">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Aerospace</span>
+                            <span class="news-date"><i class="far fa-calendar"></i> December 15, 2025</span>
+                            <h3 class="news-title">Salem Aeropark Announces Strategic Partnership with Boeing for Next-Generation Aircraft Components</h3>
+                            <p class="news-excerpt">The Salem Aeropark has signed a landmark agreement with Boeing to manufacture critical components for the upcoming 787 Dreamliner expansion program, marking a significant milestone in our aerospace manufacturing capabilities.</p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <div class="author-avatar">JD</div>
+                                    <span>John Doe</span>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Article 2 -->
+                    <div class="news-card" data-category="defense" style="background-color: #222; color: white;">
+                        <div class="news-image">
+                            <img src="images/manufacturing-rd.jpg" alt="Defense contract">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Defense</span>
+                            <span class="news-date" style="color: #ccc;"><i class="far fa-calendar" style="color: #aaa;"></i> December 12, 2025</span>
+                            <h3 class="news-title" style="color: white;">Major Defense Contract Awarded for Advanced Missile Guidance Systems</h3>
+                            <p class="news-excerpt" style="color: #ddd;">Salem Aeropark has been awarded a $50 million contract by the Ministry of Defense to develop next-generation guidance systems for precision missile applications.</p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <div class="author-avatar">SM</div>
+                                    <span style="color: white;">Sarah Miller</span>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" class="social-btn facebook" style="background: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn twitter" style="background: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-btn linkedin" style="background: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Article 3 -->
+                    <div class="news-card" data-category="space" style="background-color: #222; color: white;">
+                        <div class="news-image">
+                            <img src="images/aerospace-division.jpg" alt="Space mission">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Space</span>
+                            <span class="news-date" style="color: #ccc;"><i class="far fa-calendar" style="color: #aaa;"></i> December 10, 2025</span>
+                            <h3 class="news-title" style="color: white;">NASA Partners with Salem Aeropark for Mars Mission Component Development</h3>
+                            <p class="news-excerpt" style="color: #ddd;">In a significant development for space exploration, Salem Aeropark has been selected to develop specialized components for NASA's upcoming Mars Sample Return mission.</p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <div class="author-avatar">RP</div>
+                                    <span style="color: white;">Raj Patel</span>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" class="social-btn facebook" style="background: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn twitter" style="background: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-btn linkedin" style="background: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Article 4 -->
+                    <div class="news-card" data-category="technology" style="background-color: #222; color: white;">
+                        <div class="news-image">
+                            <img src="images/gallery-1.jpg" alt="AI technology">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Technology</span>
+                            <span class="news-date" style="color: #ccc;"><i class="far fa-calendar" style="color: #aaa;"></i> December 8, 2025</span>
+                            <h3 class="news-title" style="color: white;">Salem Aeropark Launches AI-Powered Quality Control System in Manufacturing</h3>
+                            <p class="news-excerpt" style="color: #ddd;">Our new AI-powered system increases manufacturing efficiency by 25% while reducing defect rates to less than 0.01%, setting new industry standards.</p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <div class="author-avatar">AT</div>
+                                    <span style="color: white;">Anna Taylor</span>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" class="social-btn facebook" style="background: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn twitter" style="background: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-btn linkedin" style="background: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Article 5 -->
+                    <div class="news-card" data-category="company" style="background-color: #222; color: white;">
+                        <div class="news-image">
+                            <img src="images/gallery-2.jpg" alt="Company milestone">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Company</span>
+                            <span class="news-date"><i class="far fa-calendar"></i> December 5, 2025</span>
+                            <h3 class="news-title">Salem Aeropark Reaches Record Quarterly Earnings, Reports 32% Growth</h3>
+                            <p class="news-excerpt">The company reports its best quarterly results in history, driven by increased demand in defense and aerospace sectors and successful expansion into new markets.</p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <div class="author-avatar">MT</div>
+                                    <span>Michael Turner</span>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" class="social-btn facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn twitter"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Article 6 -->
+                    <div class="news-card" data-category="aerospace" style="background-color: #222; color: white;">
+                        <div class="news-image">
+                            <img src="images/engineering-facilities.jpg" alt="New facility">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Aerospace</span>
+                            <span class="news-date" style="color: #ccc;"><i class="far fa-calendar" style="color: #aaa;"></i> December 2, 2025</span>
+                            <h3 class="news-title" style="color: white;">New State-of-the-Art Manufacturing Facility Opens in Tamil Nadu</h3>
+                            <p class="news-excerpt" style="color: #ddd;">The new 500,000 sq ft facility will house advanced manufacturing capabilities for aircraft engine components, increasing production capacity by 40%.</p>
+                            <div class="news-meta">
+                                <div class="news-author">
+                                    <div class="author-avatar">KP</div>
+                                    <span style="color: white;">Kumar Patel</span>
+                                </div>
+                                <div class="social-share">
+                                    <a href="#" class="social-btn facebook" style="background: #3b5998;"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="social-btn twitter" style="background: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                                    <a href="#" class="social-btn linkedin" style="background: #0077b5;"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center animate-fade-in delay-700">
+                    <button class="load-more-btn animate-pulse" style="background: linear-gradient(135deg, #0033a0, #00a6d2); color: white; border: none;">Load More Articles <i class="fas fa-arrow-down ms-2"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending News Section -->
+        <section class="section trending-news" id="trending">
+            <div class="container">
+                <div class="section-header text-center mb-5">
+                    <h2 class="section-title text-white">Trending Now</h2>
+                    <p class="section-subtitle text-light">Most read articles this week</p>
+                </div>
+
+                <div class="trending-grid">
+                    <div class="trending-card">
+                        <span class="trending-badge">TRENDING</span>
+                        <h4>Revolutionary Composite Materials Reduce Aircraft Weight by 30%</h4>
+                        <p>An innovative carbon fiber composite developed by our research team promises significant fuel efficiency improvements for next-generation aircraft.</p>
+                        <div class="read-more mt-3">
+                            <a href="#" class="text-white">Read Full Article <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="trending-card">
+                        <span class="trending-badge">POPULAR</span>
+                        <h4>Global Aerospace Market Expected to Reach $1.2 Trillion by 2030</h4>
+                        <p>Industry analysts project significant growth in aerospace manufacturing, driven by increasing demand for commercial and defense aircraft.</p>
+                        <div class="read-more mt-3">
+                            <a href="#" class="text-white">Read Full Article <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="trending-card">
+                        <span class="trending-badge">HOT</span>
+                        <h4>Women in Aerospace: Breaking Barriers in Engineering Leadership</h4>
+                        <p>How Salem Aeropark is fostering gender diversity in aerospace engineering and manufacturing leadership roles.</p>
+                        <div class="read-more mt-3">
+                            <a href="#" class="text-white">Read Full Article <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section animate-fade-in" id="newsletter" style="background-color: black; color: blue; padding: 60px 0;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 animate-slide-in-left">
+                        <h2 style="color: blue;">Stay Updated</h2>
+                        <p class="mb-4" style="color: blue;">Subscribe to our newsletter and never miss an update from the aerospace industry. Get expert insights, company news, and market trends delivered to your inbox.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2 animate-fade-in delay-100" style="color: blue;"><i class="fas fa-check-circle me-2" style="color: lightblue;"></i>Daily industry updates</li>
+                            <li class="mb-2 animate-fade-in delay-200" style="color: blue;"><i class="fas fa-check-circle me-2" style="color: lightblue;"></i>Exclusive reports and analysis</li>
+                            <li class="mb-2 animate-fade-in delay-300" style="color: blue;"><i class="fas fa-check-circle me-2" style="color: lightblue;"></i>Company announcements</li>
+                            <li class="animate-fade-in delay-400" style="color: blue;"><i class="fas fa-check-circle me-2" style="color: lightblue;"></i>Market insights and trends</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 animate-slide-in-right">
+                        <div class="card p-4" style="background-color: #222; color: blue;">
+                            <h4 style="color: blue;">Subscribe to Our Newsletter</h4>
+                            <form>
+                                <div class="mb-3 animate-fade-in delay-500">
+                                    <input type="text" class="form-control" placeholder="Full Name" style="background-color: #333; color: blue; border-color: #555;">
+                                </div>
+                                <div class="mb-3 animate-fade-in delay-600">
+                                    <input type="email" class="form-control" placeholder="Email Address" style="background-color: #333; color: blue; border-color: #555;">
+                                </div>
+                                <div class="mb-3 animate-fade-in delay-700">
+                                    <select class="form-control" style="background-color: #333; color: blue; border-color: #555;">
+                                        <option value="" style="color: blue;">Select Interest Area</option>
+                                        <option value="aerospace" style="color: blue;">Aerospace News</option>
+                                        <option value="defense" style="color: blue;">Defense Updates</option>
+                                        <option value="space" style="color: blue;">Space Industry</option>
+                                        <option value="technology" style="color: blue;">Technology Trends</option>
+                                        <option value="all" style="color: blue;">All Updates</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 animate-pulse" style="background-color: #00a6d2; border-color: #00a6d2; color: white;">Subscribe Now</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section animate-fade-in" id="news-cta" style="background-color: blue; color: white; padding: 60px 0;">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-lg-8 animate-scale-in">
+                        <div class="card text-center p-5" style="background-color: blue; color: white;">
+                            <h2 class="mb-4 animate-float" style="color: white;">Connect With Our Experts</h2>
+                            <p class="mb-4 animate-fade-in delay-200" style="color: white;">Have questions about our aerospace solutions? Our team of industry experts is ready to assist with your inquiries.</p>
+                            <div class="d-flex justify-content-center gap-3 flex-wrap animate-fade-in delay-400">
+                                <a href="contact.html" class="btn btn-light btn-lg text-primary fw-bold animate-pulse" style="background-color: white; color: blue;">Contact Us</a>
+                                <a href="services.html" class="btn btn-outline-light btn-lg animate-pulse delay-200" style="background-color: transparent; color: white; border-color: white;">Explore Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript for additional animations -->
+    <script>
+        // Initialize animations when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to news cards
+            const newsCards = document.querySelectorAll('.news-card');
+            newsCards.forEach(card => {
+                card.classList.add('hover-lift');
+
+                // Add animation to news content elements
+                const category = card.querySelector('.news-category');
+                const date = card.querySelector('.news-date');
+                const title = card.querySelector('.news-title');
+                const excerpt = card.querySelector('.news-excerpt');
+                const author = card.querySelector('.news-author');
+                const socialButtons = card.querySelectorAll('.social-btn');
+
+                if (category) {
+                    category.classList.add('animate-wiggle');
+                }
+
+                if (date) {
+                    date.classList.add('animate-glow');
+                }
+
+                if (title) {
+                    title.classList.add('animate-color-change');
+                }
+
+                if (author) {
+                    author.classList.add('hover-grow');
+                    const avatar = author.querySelector('.author-avatar');
+                    if (avatar) {
+                        avatar.classList.add('animate-bounce');
+                    }
+                }
+
+                socialButtons.forEach((btn, index) => {
+                    setTimeout(() => {
+                        btn.classList.add('animate-pulse');
+                    }, index * 200);
+                });
+            });
+
+            // Add ripple effect to buttons on click
+            const buttons = document.querySelectorAll('button, .btn, .category-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Add ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+
+                    // Remove ripple after animation
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add intersection observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements that should animate when scrolled into view
+            document.querySelectorAll('.news-card, .newsletter-section, .section').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add more animations to other elements
+            const headerLinks = document.querySelectorAll('.nav-link');
+            if (headerLinks.length > 0) {
+                headerLinks.forEach((link, index) => {
+                    link.addEventListener('mouseenter', function() {
+                        this.classList.add('animate-shake');
+                    });
+
+                    link.addEventListener('animationend', function() {
+                        this.classList.remove('animate-shake');
+                    });
+                });
+            }
+
+            // Add animated cursor effects to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .category-btn');
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    document.body.style.cursor = 'pointer';
+                });
+
+                element.addEventListener('mouseleave', function() {
+                    document.body.style.cursor = 'default';
+                });
+            });
+
+            // Add parallax effect to hero section
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                window.addEventListener('scroll', function() {
+                    const scrollPosition = window.pageYOffset;
+                    heroSection.style.backgroundPositionY = -scrollPosition * 0.5 + 'px';
+                });
+            }
+
+            // Animate the logo on page load
+            const logo = document.querySelector('.logo');
+            if (logo) {
+                setTimeout(() => {
+                    logo.classList.add('animate-bounce');
+                }, 1000);
+            }
+
+            // Add enhanced animations to hero section elements
+            const heroElements = document.querySelectorAll('.hero .tagline, .hero .hero-title, .hero .hero-subtitle');
+            heroElements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.classList.add('animate-float');
+                }, index * 500);
+            });
+
+            // Add special hover effect to hero buttons
+            const heroButtons = document.querySelectorAll('.hero .btn');
+            heroButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.classList.add('animate-bounce');
+                });
+
+                button.addEventListener('animationend', function() {
+                    this.classList.remove('animate-bounce');
+                });
+            });
+        });
+
+        // Add additional animations after a delay
+        window.addEventListener('load', function() {
+            // Add wave animation to all paragraphs
+            const paragraphs = document.querySelectorAll('p');
+            paragraphs.forEach((p, index) => {
+                setTimeout(() => {
+                    p.classList.add('animate-wiggle');
+                }, index * 150);
+            });
+
+            // Add rotating animation to all icons
+            const icons = document.querySelectorAll('i');
+            icons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.classList.add('animate-spin');
+                    setTimeout(() => {
+                        icon.classList.remove('animate-spin');
+                    }, 1000);
+                }, index * 100);
+            });
+        });
+    </script>
+
+    <style>
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h4>The Salem Aeropark</h4>
+                <p>Global Engineering and Manufacturing Group serving aviation, space, missile and healthcare industries.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="components-3d.html">3D Viewer</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Divisions</h4>
+                <ul>
+                    <li><a href="#">Aircraft Components</a></li>
+                    <li><a href="#">Defense & Missile</a></li>
+                    <li><a href="#">Space Systems</a></li>
+                    <li><a href="#">Healthcare Products</a></li>
+                    <li><a href="#">Renewable Energy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt me-2"></i> The Salem Aeropark, India</p>
+                <p><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i> info@thesalemaeropark.com</p>
+                <p><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 The Salem Aeropark. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/modern-scripts.js"></script>
+
+    <script>
+        // Category filtering functionality
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // In a real implementation, this would filter the news cards
+                console.log(`Filtering by category: ${category}`);
+            });
+        });
+
+        // Load more button functionality
+        document.querySelector('.load-more-btn').addEventListener('click', function() {
+            // In a real implementation, this would load more articles
+            alert('Loading more articles...');
+        });
+
+        // Search functionality
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-input').value;
+            if(searchTerm.trim() !== '') {
+                // In a real implementation, this would search for articles
+                alert(`Searching for: ${searchTerm}`);
+            }
+        });
+
+        // Enter key in search
+        document.querySelector('.search-input').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                document.querySelector('.search-btn').click();
+            }
+        });
+    </script>
+</body>
+</html>

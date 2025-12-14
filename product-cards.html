@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Product Groups - Modern Card Layout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Modern Design */
+        :root {
+            --primary-color: #0033a0;
+            --secondary-color: #00a6d2;
+            --accent-color: #ff8c00;
+            --text-color: #263238;
+            --light-text: #f8f9fa;
+            --background-color: #ffffff;
+            --card-background: rgba(255, 255, 255, 0.95);
+            --dark-overlay: rgba(0, 0, 0, 0.4);
+            --border-radius: 16px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        .product-groups-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Grid Layout */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        /* Card Styles */
+        .product-card {
+            position: relative;
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Video Background Container */
+        .card-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .card-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        /* Dark Overlay */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-overlay);
+            z-index: 2;
+            backdrop-filter: blur(2px); /* Light blur for additional effect */
+        }
+
+        /* Content Layer */
+        .product-content {
+            position: relative;
+            z-index: 3; /* Above video and overlay */
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-icon-container {
+            position: relative;
+            z-index: 3; /* Above video and overlay */
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            margin: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 10px;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+
+        .text-primary { color: var(--primary-color); }
+        .text-danger { color: #dc3545; }
+        .text-info { color: #17a2b8; }
+        .text-warning { color: #ffc107; }
+        .text-success { color: #28a745; }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .product-features li {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-features i {
+            margin-right: 10px;
+        }
+
+        .product-certifications {
+            margin-top: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-content {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation for when cards enter viewport */
+        .product-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <section class="product-groups-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Product Groups</h2>
+                <p class="section-subtitle">Specialized expertise across multiple industries</p>
+            </div>
+
+            <div class="products-grid">
+                <!-- Card 1 - Aerospace -->
+                <div class="product-card" data-video="AH-64.mp4">
+                    <div class="card-video-container">
+                        <video class="card-video" preload="none" playsinline>
+                            <source data-src="videos/AH-64.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="product-icon-container">
+                        <i class="fas fa-plane fa-3x text-primary"></i>
+                        <div class="product-badge">AEROSPACE</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Aircraft Components</h3>
+                        <p class="product-description">Manufacturing airframe components, seals, O-rings and specialized parts for civil and military aircraft with stringent quality standards.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Airframe assembly components</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Hydraulic system parts</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Fuel system components</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Environmental control systems</li>
+                        </ul>
+                        <div class="product-certifications">
+                            <span class="badge">Quality</span>
+                            <span class="badge">Certified</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Defense -->
+                <div class="product-card" data-video="AH-64.mp4">
+                    <div class="card-video-container">
+                        <video class="card-video" preload="none" playsinline>
+                            <source data-src="videos/AH-64.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="product-icon-container">
+                        <i class="fas fa-shield-alt fa-3x text-danger"></i>
+                        <div class="product-badge">DEFENSE</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Defense & Missile Systems</h3>
+                        <p class="product-description">Advanced engineering solutions for defense systems and missile applications with strict security protocols.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Missile components manufacturing</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Defense electronics</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Security systems</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Electronic warfare components</li>
+                        </ul>
+                        <div class="product-certifications">
+                            <span class="badge">Military</span>
+                            <span class="badge">ISO 9001</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 - Aviation -->
+                <div class="product-card" data-video="AH-64.mp4">
+                    <div class="card-video-container">
+                        <video class="card-video" preload="none" playsinline>
+                            <source data-src="videos/AH-64.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="product-icon-container">
+                        <i class="fas fa-helicopter fa-3x text-info"></i>
+                        <div class="product-badge">AVIATION</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Helicopter & Civil Aviation</h3>
+                        <p class="product-description">Parts and maintenance support for helicopter and civil aviation sectors with comprehensive service offerings.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Rotor blade components</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Transmission systems</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Avionics integration</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Maintenance services</li>
+                        </ul>
+                        <div class="product-certifications">
+                            <span class="badge">FAA</span>
+                            <span class="badge">EASA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 - Space -->
+                <div class="product-card" data-video="AH-64.mp4">
+                    <div class="card-video-container">
+                        <video class="card-video" preload="none" playsinline>
+                            <source data-src="videos/AH-64.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="product-icon-container">
+                        <i class="fas fa-satellite fa-3x text-warning"></i>
+                        <div class="product-badge">SPACE</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Space Systems</h3>
+                        <p class="product-description">Satellite/payload integration, launch-support components and mission-related hardware for space exploration.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Satellite manufacturing</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Launch vehicle components</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Space mission hardware</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Ground systems integration</li>
+                        </ul>
+                        <div class="product-certifications">
+                            <span class="badge">NASA</span>
+                            <span class="badge">ISRO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 - Healthcare -->
+                <div class="product-card" data-video="AH-64.mp4">
+                    <div class="card-video-container">
+                        <video class="card-video" preload="none" playsinline>
+                            <source data-src="videos/AH-64.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="product-icon-container">
+                        <i class="fas fa-heartbeat fa-3x text-success"></i>
+                        <div class="product-badge">HEALTHCARE</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Healthcare Products</h3>
+                        <p class="product-description">Medical-grade rubber components and related manufactured parts for healthcare applications with biocompatibility.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Medical device components</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Biocompatible materials</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Sterile manufacturing</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Quality assurance</li>
+                        </ul>
+                        <div class="product-certifications">
+                            <span class="badge">FDA</span>
+                            <span class="badge">ISO 13485</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 - Renewable -->
+                <div class="product-card" data-video="AH-64.mp4">
+                    <div class="card-video-container">
+                        <video class="card-video" preload="none" playsinline>
+                            <source data-src="videos/AH-64.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-overlay"></div>
+                    </div>
+                    <div class="product-icon-container">
+                        <i class="fas fa-leaf fa-3x text-success"></i>
+                        <div class="product-badge">RENEWABLE</div>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Renewable Energy</h3>
+                        <p class="product-description">Components and support systems for renewable energy applications with sustainable manufacturing approaches.</p>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Solar panel components</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Wind turbine parts</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Energy storage systems</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i> Sustainable solutions</li>
+                        </ul>
+                        <div class="product-certifications">
+                            <span class="badge">LEED</span>
+                            <span class="badge">ISO 14001</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lazy loading videos using Intersection Observer
+            const videoCards = document.querySelectorAll('.product-card');
+
+            // Options for the intersection observer
+            const observerOptions = {
+                root: null, // Use the viewport as root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            // Create the intersection observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element is in the viewport, load the video
+                        const card = entry.target;
+                        const video = card.querySelector('.card-video');
+                        const source = video.querySelector('source');
+
+                        // Set the source to the actual video file
+                        source.src = source.getAttribute('data-src');
+
+                        // Load the video
+                        video.load();
+
+                        // Start playing the video
+                        video.play().catch(e => {
+                            // If autoplay is blocked (common in browsers), play will fail
+                            // In that case, we still want to load the video
+                            console.log('Autoplay prevented:', e);
+                        });
+
+                        // Add the visible class for the animation
+                        card.classList.add('visible');
+
+                        // Stop observing this element since it's loaded
+                        observer.unobserve(card);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe each video card
+            videoCards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Fade-in animation for cards that are already in viewport
+            const cardsAlreadyVisible = Array.from(videoCards).filter(card => {
+                const rect = card.getBoundingClientRect();
+                return rect.top < window.innerHeight && rect.bottom >= 0;
+            });
+
+            cardsAlreadyVisible.forEach(card => {
+                card.classList.add('visible');
+            });
+
+            // Additional hover effect enhancements
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const videoContainer = this.querySelector('.card-video-container');
+                    const overlay = this.querySelector('.card-overlay');
+
+                    // Slightly increase dark overlay on hover for more depth
+                    if (overlay) {
+                        overlay.style.background = 'rgba(0, 0, 0, 0.5)';
+                    }
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    const videoContainer = this.querySelector('.card-video-container');
+                    const overlay = this.querySelector('.card-overlay');
+
+                    // Revert to original overlay on mouse leave
+                    if (overlay) {
+                        overlay.style.background = 'rgba(0, 0, 0, 0.4)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
